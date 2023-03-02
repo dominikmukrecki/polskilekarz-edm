@@ -3,6 +3,8 @@ import path from 'path';
 import TodoLists from './collections/TodoLists';
 import Users from './collections/Users';
 
+require('dotenv').config();
+
 export default buildConfig({
   serverURL: 'http://localhost:3000',
   admin: {
