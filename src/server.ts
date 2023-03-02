@@ -1,7 +1,11 @@
 import express from 'express';
 import payload from 'payload';
+import dotenv from 'dotenv';
 
-require('dotenv').config();
+dotenv.config({
+  path: path.resolve(__dirname, '../stack.env'),
+});
+
 const app = express();
 
 // Redirect root to Admin panel
