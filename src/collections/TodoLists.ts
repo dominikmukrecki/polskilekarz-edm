@@ -9,7 +9,7 @@ const Todo: CollectionConfig = {
   access: {
     create: () => true,
     read: () => true,
-    update: () => true,
+    update: () => false,
     delete: () => false,
   },
   fields: [
