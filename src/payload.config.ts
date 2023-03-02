@@ -2,8 +2,11 @@ import { buildConfig } from 'payload/config';
 import path from 'path';
 import TodoLists from './collections/TodoLists';
 import Users from './collections/Users';
+import dotenv from 'dotenv';
 
-require('dotenv').config();
+dotenv.config({
+  path: path.resolve(__dirname, '../stack.env'),
+});
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
