@@ -10,7 +10,7 @@ const Todo: CollectionConfig = {
     create: () => true,
     read: () => true,
     update: () => true,
-    delete: () => true,
+    delete: () => false,
   },
   fields: [
     {
