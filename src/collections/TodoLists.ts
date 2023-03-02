@@ -5,6 +5,7 @@ const Todo: CollectionConfig = {
   admin: {
     defaultColumns: ['listName', 'tasks', 'updatedAt'],
     useAsTitle: 'listName',
+    hideAPIURL: true,
   },
   access: {
     create: () => true,
