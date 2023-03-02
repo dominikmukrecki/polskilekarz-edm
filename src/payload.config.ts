@@ -6,7 +6,7 @@ import Users from './collections/Users';
 require('dotenv').config();
 
 export default buildConfig({
-  serverURL: 'http://localhost:3000',
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   admin: {
     user: Users.slug,
   },
