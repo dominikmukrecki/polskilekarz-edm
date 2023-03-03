@@ -17,5 +17,3 @@ Ensure you are passing all needed environment variables when starting up your co
 The 3 typical env vars will be `MONGODB_URI`, `PAYLOAD_SECRET`, and `PAYLOAD_CONFIG_PATH`
 
 `docker run --env-file .env -p 3000:3000 my-tag`
-
-test
