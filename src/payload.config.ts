@@ -1,6 +1,6 @@
 import { buildConfig } from 'payload/config';
 import path from 'path';
-import TodoLists from './collections/TodoLists';
+import Contacts from './collections/Contacts';
 import Users from './collections/Users';
 
 export default buildConfig({
@@ -10,7 +10,7 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [
-    TodoLists,
+    Contacts,
     Users,
   ],
   typescript: {
