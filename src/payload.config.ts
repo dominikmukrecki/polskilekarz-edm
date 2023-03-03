@@ -1,10 +1,11 @@
 import { buildConfig } from 'payload/config';
-import path from 'path'; 
+import path from 'path';
 import TodoLists from './collections/TodoLists';
 import Users from './collections/Users';
 
 export default buildConfig({
   serverURL: 'http://localhost:3000',
+  cors: "*",
   admin: {
     user: Users.slug,
   },
