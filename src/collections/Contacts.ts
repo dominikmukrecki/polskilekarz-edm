@@ -17,6 +17,15 @@ const Contacts: CollectionConfig = {
       name: 'contactName',
       type: 'text',
     },
+    {
+      name: 'birthDate',
+      type: 'date',
+      admin: {
+        date: {
+          pickerAppearance: 'dayOnly',
+        },
+      },
+    },
   ],
 }
 
