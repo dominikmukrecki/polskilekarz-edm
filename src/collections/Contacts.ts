@@ -20,9 +20,6 @@ const Contacts: CollectionConfig = {
     {
       name: 'birthDate',
       type: 'date',
-      admin: {
-        date: {
-          pickerAppearance: 'dayOnly',
         },
       },
     },
