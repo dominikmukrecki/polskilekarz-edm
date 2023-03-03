@@ -13,14 +13,17 @@ const Contacts: CollectionConfig = {
     delete: () => true,
   },
   fields: [
-    {
-      name: 'contactName',
-      type: 'text',
-    },
-    {
-      name: 'birthDate',
-      type: 'date',
-    },
+    type: 'row',
+    fields: [
+      {
+        name: 'contactName',
+        type: 'text',
+      },
+      {
+        name: 'birthDate',
+        type: 'date',
+      },
+    ],
   ],
 }
 
