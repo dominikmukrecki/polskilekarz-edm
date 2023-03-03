@@ -20,8 +20,6 @@ const Contacts: CollectionConfig = {
     {
       name: 'birthDate',
       type: 'date',
-        },
-      },
     },
   ],
 }
