@@ -5,7 +5,8 @@ import Users from './collections/Users';
 
 export default buildConfig({
   serverURL: 'http://localhost:3000',
-  cors: "*",
+  cors: '*',
+  csrf: ['http://35.198.160.131:3000/'],
   admin: {
     user: Users.slug,
   },
