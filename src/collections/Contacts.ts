@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload/types';
 
-const Todo: CollectionConfig = {
+const Contacts: CollectionConfig = {
   slug: 'contacts',
   admin: {
     useAsTitle: 'contactName',
