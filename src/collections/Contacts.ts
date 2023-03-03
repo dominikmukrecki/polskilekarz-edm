@@ -1,9 +1,9 @@
-import { CollectionConfig } from 'payload/types';
+import { CollectionConfig } from "payload/types";
 
 const Contacts: CollectionConfig = {
-  slug: 'contacts',
+  slug: "contacts",
   admin: {
-    useAsTitle: 'contactName',
+    useAsTitle: "contactName",
     hideAPIURL: true,
   },
   access: {
@@ -13,18 +13,20 @@ const Contacts: CollectionConfig = {
     delete: () => true,
   },
   fields: [
-    type: 'row',
-    fields: [
-      {
-        name: 'contactName',
-        type: 'text',
-      },
-      {
-        name: 'birthDate',
-        type: 'date',
-      },
-    ],
+    {
+      type: "row",
+      fields: [
+        {
+          name: "contactName",
+          type: "text",
+        },
+        {
+          name: "birthDate",
+          type: "date",
+        },
+      ],
+    },
   ],
-}
+};
 
 export default Contacts;
