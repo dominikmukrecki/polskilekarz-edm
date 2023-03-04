@@ -21,12 +21,12 @@ services:
       - traefik.http.routers.payload.service=payload
       - traefik.http.services.payload.loadbalancer.server.port=3000
     env_file:
-      - stack.env
+      - ./stack.env
     environment:
-      MONGODB_URI: mongodb://mongo:27017/payload
-      PORT: 3000
-      NODE_ENV: development
-      PAYLOAD_SECRET: TESTING
+      MONGODB_URI:
+      PORT:
+      NODE_ENV:
+      PAYLOAD_SECRET:
       PAYLOAD_PUBLIC_SERVER_URL:
       HOSTNAME:
     networks:
