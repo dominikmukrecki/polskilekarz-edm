@@ -12,7 +12,7 @@ const Contacts: CollectionConfig = {
       name: "name",
       admin: {
         components: {
-          Field: MyCustomUIField;
+          Field: MyCustomUIField,
         },
       },
     },
