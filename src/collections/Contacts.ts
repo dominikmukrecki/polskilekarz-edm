@@ -13,8 +13,8 @@ const Contacts: CollectionConfig = {
       admin: {
         components: {
           Field: MyCustomUIField;
-        }
-      }
+        },
+      },
     },
     {
       type: "row",
@@ -39,7 +39,7 @@ const Contacts: CollectionConfig = {
 
 const MyCustomUIField: React.FC = () => {
   return (
-    <span>test</span>;
+    <span>test</span>
   );
 };
 
