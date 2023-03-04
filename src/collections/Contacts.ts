@@ -9,16 +9,6 @@ const Contacts: CollectionConfig = {
   },
   fields: [
     {
-      type: "ui",
-      name: "name",
-      label: "test",
-      admin: {
-        components: {
-          Field: MyCustomUIField,
-        },
-      },
-    },
-    {
       type: "row",
       fields: [
         {
@@ -29,6 +19,16 @@ const Contacts: CollectionConfig = {
           name: "contactEmial",
           type: "email",
         },
+        {
+          type: "ui",
+          name: "name",
+          label: "test",
+          admin: {
+            components: {
+              Field: MyCustomUIField,
+            },
+          },
+        },    
       ],
     },
   ],
@@ -40,7 +40,11 @@ const Contacts: CollectionConfig = {
 };
 
 const MyCustomUIField: React.FC = () => {
-  return "test";
+  return (
+    <div>
+      <p>test</p>
+    </div>
+  );
 };
 
 export default Contacts;
