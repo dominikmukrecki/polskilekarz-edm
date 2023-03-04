@@ -29,7 +29,6 @@ const Contacts: CollectionConfig = {
   ],
   versions: {
     drafts: {
-      drafts: true,
       autosave: true,
     },
   },
