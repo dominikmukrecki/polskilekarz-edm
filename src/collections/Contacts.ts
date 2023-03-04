@@ -6,12 +6,6 @@ const Contacts: CollectionConfig = {
     useAsTitle: "contactName",
     hideAPIURL: true,
   },
-  access: {
-    create: () => true,
-    read: () => true,
-    update: () => true,
-    delete: () => true,
-  },
   fields: [
     {
       type: "row",
@@ -21,8 +15,8 @@ const Contacts: CollectionConfig = {
           type: "text",
         },
         {
-          name: "birthDate",
-          type: "date",
+          name: "contactEmial",
+          type: "email",
         },
       ],
     },
