@@ -1,4 +1,5 @@
 import { CollectionConfig } from "payload/types";
+import React from "react";
 
 const Contacts: CollectionConfig = {
   slug: "contacts",
