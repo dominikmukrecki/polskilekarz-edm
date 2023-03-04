@@ -40,7 +40,7 @@ const Contacts: CollectionConfig = {
 
 const MyCustomUIField: React.FC = () => {
   const data = "test";
-  return <span>asdf</span>;
+  return;
 };
 
 export default Contacts;
