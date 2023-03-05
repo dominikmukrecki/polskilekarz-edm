@@ -15,7 +15,7 @@ const Patients: CollectionConfig = {
     {
       name: 'birthdate',
       label: 'Birthdate',
-      type: 'text',
+      type: 'date',
       admin: {
         components: {
           Cell: DatePickerCell,
