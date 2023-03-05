@@ -39,7 +39,12 @@ const Patients: CollectionConfig = {
       name: 'displayedName',
       label: 'Displayed Name',
       type: 'text',
-      defaultValue: '{{name}} - {{birthdate}}',
+      defaultValue: ({ data }) => {
+        const { name, birthdate } = data;
+        const birthdateObj = new Date(birthdate);
+        const birthdateString = birthdateObj.toLocaleDateString();
+        return `${name} (${birthdateString})`;
+      },
       required: false,
       admin: {
         readOnly: true,
