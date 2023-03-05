@@ -29,7 +29,7 @@ const contactFields = [
   {
     name: 'address',
     label: 'Address',
-    type: 'textarea',
+    type: 'text',
     required: true,
   },
   {
