@@ -8,10 +8,6 @@ const Contacts: CollectionConfig = {
   },
   fields: [
     {
-      name: "contactName",
-      type: "text",
-    },
-    {
       name: "contactName1",
       type: "text",
     },
