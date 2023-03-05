@@ -1,18 +1,32 @@
 import { CollectionConfig, CollectionBeforeChangeHook } from 'payload/types';
 
-const beforeChangeHook: CollectionBeforeChangeHook = async ({
+const createDisplayNameHook: CollectionBeforeChangeHook = async ({
   data,
   locale
 }) => {
   const { firstName, lastName, birthdate } = data;
   const formattedBirthdate = new Date(birthdate).toLocaleDateString({ locale });
   data.displayName = `${firstName} ${lastName}, born: ${formattedBirthdate}`;
+  return data;
+};
 
-  const birthDate = new Date(birthdate);
+const generateAgeHook: CollectionBeforeChangeHook = async ({ data }) => {
+  const birthDate = new Date(data.birthdate);
   const diff = Date.now() - birthDate.getTime();
   const age = new Date(diff);
   data.age = `${Math.abs(age.getUTCFullYear() - 1970)} years and ${age.getUTCMonth()} months`;
+  return data;
+};
 
+const parsePeselHook: CollectionBeforeChangeHook = async ({ data }) => {
+  const { pesel } = data;
+  const birthYear = parseInt(pesel.substring(0, 2));
+  const birthMonth = parseInt(pesel.substring(2, 4)) % 20;
+  const birthDay = parseInt(pesel.substring(4, 6));
+  const gender = parseInt(pesel.substring(9, 10)) % 2 === 0 ? 'Female' : 'Male';
+  const birthdate = new Date(`${birthYear}-${birthMonth}-${birthDay}`).toISOString();
+  data.birthdate = birthdate;
+  data.gender = gender;
   return data;
 };
 
@@ -116,7 +130,7 @@ const Patients: CollectionConfig = {
     useAsTitle: 'displayName',
   },
   hooks: {
-    beforeChange: [beforeChangeHook],
+    beforeChange: [createDisplayNameHook, generateAgeHook, parsePeselHook],
   },
 };
 
