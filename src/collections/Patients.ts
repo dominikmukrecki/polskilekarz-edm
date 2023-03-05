@@ -1,6 +1,6 @@
-import { CollectionConfig, CollectionBeforeChangeHook, CollectionBeforeValidateHook } from 'payload/types';
+import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
 
-const createDisplayNameHook: CollectionBeforeChangeHook = async ({
+const createDisplayNameHook: CollectionBeforeValidateHook = async ({
   data,
   locale
 }) => {
@@ -10,7 +10,7 @@ const createDisplayNameHook: CollectionBeforeChangeHook = async ({
   return data;
 };
 
-const generateAgeHook: CollectionBeforeChangeHook = async ({ data }) => {
+const generateAgeHook: CollectionBeforeValidateHook = async ({ data }) => {
   const birthDate = new Date(data.birthdate);
   const diff = Date.now() - birthDate.getTime();
   const age = new Date(diff);
@@ -146,11 +146,7 @@ fields: [
     useAsTitle: 'displayName',
   },
   hooks: {
-    beforeChange: [
-      createDisplayNameHook,
-      generateAgeHook,
-    ],
-    beforeValidate: [parsePeselHook],
+    beforeValidate: [parsePeselHook,createDisplayNameHook,generateAgeHook],
   },
   versions: {
     drafts: {
