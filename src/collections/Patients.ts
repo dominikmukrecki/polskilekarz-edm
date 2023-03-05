@@ -1,4 +1,4 @@
-import { CollectionConfig, Hook, CollectionBeforeChangeHook } from 'payload/types';
+import { CollectionConfig, CollectionBeforeChangeHook } from 'payload/types';
 
 const beforeChangeHook: CollectionBeforeChangeHook = async ({
   data,
@@ -6,6 +6,7 @@ const beforeChangeHook: CollectionBeforeChangeHook = async ({
   const { name, birthdate } = data;
   const formattedBirthdate = new Date(birthdate).toLocaleString('pl_PL');
   data.displayName = `${name}, ur.: ${formattedBirthdate}`;
+  data.age = Math.floor((Date.now() - new Date(birthdate).getTime()) / 3.15576e+10);
   return data;
 }
 
@@ -23,6 +24,15 @@ const Patients: CollectionConfig = {
       label: 'Birthdate',
       type: 'date',
       required: true,
+    },
+    {
+      name: 'age',
+      label: 'Age',
+      type: 'number',
+      required: false,
+      admin: {
+        readOnly: true,
+      },
     },
     {
       name: 'gender',
