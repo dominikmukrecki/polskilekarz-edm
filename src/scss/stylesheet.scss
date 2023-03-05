@@ -9,27 +9,58 @@
     --hippie-blue-700: #32546c;
     --hippie-blue-800: #30485a;
     --hippie-blue-900: #2b3e4e;
-  
+
     --color-base-0: rgb(255, 255, 255);
     --color-base-50: var(--hippie-blue-50);
     --color-base-100: var(--hippie-blue-100);
-    --color-base-150: rgb(221, 234, 238);
+    --color-base-150: var(--hippie-blue-100);
     --color-base-200: var(--hippie-blue-200);
-    --color-base-250: rgb(150, 197, 208);
+    --color-base-250: var(--hippie-blue-200);
     --color-base-300: var(--hippie-blue-300);
-    --color-base-350: rgb(78, 159, 176);
+    --color-base-350: var(--hippie-blue-300);
     --color-base-400: var(--hippie-blue-400);
-    --color-base-450: rgb(48, 117, 132);
+    --color-base-450: var(--hippie-blue-400);
     --color-base-500: var(--hippie-blue-500);
-    --color-base-550: rgb(34, 94, 106);
+    --color-base-550: var(--hippie-blue-500);
     --color-base-600: var(--hippie-blue-600);
-    --color-base-650: rgb(27, 71, 80);
+    --color-base-650: var(--hippie-blue-600);
     --color-base-700: var(--hippie-blue-700);
-    --color-base-750: rgb(21, 48, 54);
+    --color-base-750: var(--hippie-blue-700);
     --color-base-800: var(--hippie-blue-800);
-    --color-base-850: rgb(16, 32, 36);
+    --color-base-850: var(--hippie-blue-800);
     --color-base-900: var(--hippie-blue-900);
-    --color-base-950: rgb(5, 10, 11);
+    --color-base-950: var(--hippie-blue-900);
     --color-base-1000: rgb(0, 0, 0);
-  }
+
+    --flush-mahogany-50: #fdf3f3;
+    --flush-mahogany-100: #fbe6e5;
+    --flush-mahogany-200: #f9d0cf;
+    --flush-mahogany-300: #f3b0ae;
+    --flush-mahogany-400: #ea837f;
+    --flush-mahogany-500: #dd5b56;
+    --flush-mahogany-600: #c93f3a;
+    --flush-mahogany-700: #a8312d;
+    --flush-mahogany-800: #8c2b28;
+    --flush-mahogany-900: #752a27;
+
+    --color-warning-50: var(--flush-mahogany-50);
+    --color-warning-100: var(--flush-mahogany-100);
+    --color-warning-150: var(--flush-mahogany-100); /* changed from hardcoded value */
+    --color-warning-200: var(--flush-mahogany-200);
+    --color-warning-250: var(--flush-mahogany-200); /* changed from hardcoded value */
+    --color-warning-300: var(--flush-mahogany-300);
+    --color-warning-350: var(--flush-mahogany-300); /* changed from hardcoded value */
+    --color-warning-400: var(--flush-mahogany-400);
+    --color-warning-450: var(--flush-mahogany-400); 
+    --color-warning-500: var(--flush-mahogany-500);
+    --color-warning-550: var(--flush-mahogany-500); 
+    --color-warning-600: var(--flush-mahogany-600);
+    --color-warning-650: var(--flush-mahogany-600); 
+    --color-warning-700: var(--flush-mahogany-700);
+    --color-warning-750: var(--flush-mahogany-700); 
+    --color-warning-800: var(--flush-mahogany-800);
+    --color-warning-850: var(--flush-mahogany-800); 
+    --color-warning-900: var(--flush-mahogany-900);
+    --color-warning-950: var(--flush-mahogany-900); /* changed from hardcoded value */
   
+}
