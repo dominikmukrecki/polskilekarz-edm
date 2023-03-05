@@ -4,9 +4,14 @@ const beforeChangeHook: CollectionBeforeChangeHook = async ({
   data,
 }) => {
   const { name, birthdate } = data;
-  const formattedBirthdate = new Date(birthdate).toLocaleString('pl-PL');
+  const formattedBirthdate = new Date(birthdate).toLocaleDateString('pl-PL');
   data.displayName = `${name}, ur.: ${formattedBirthdate}`;
-  data.age = Math.floor((Date.now() - new Date(birthdate).getTime()) / 3.15576e+10);
+
+  const birthDate = new Date(birthdate);
+  const diff = Date.now() - birthDate.getTime();
+  const age = new Date(diff);
+  data.age = Math.abs(age.getUTCFullYear() - 1970) + " years and " + age.getUTCMonth() + " months";
+  
   return data;
 }
 
