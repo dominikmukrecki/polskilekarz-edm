@@ -73,6 +73,7 @@ const Patients: CollectionConfig = {
       defaultValue: 'New Patient',
       admin: {
         position: 'sidebar',
+        readOnly: true,
       },
     },
     {
