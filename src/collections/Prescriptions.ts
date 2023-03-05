@@ -1,14 +1,6 @@
 import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
 
-interface Prescription {
-  patient: string;
-  medicine: string;
-  issuingDate: Date;
-  daysOfValidity: number;
-  expirationDate?: Date;
-}
-
-const calculateExpirationDate: CollectionBeforeValidateHook<Prescription> = async ({ data }) => {
+const calculateExpirationDate: CollectionBeforeValidateHook = async ({ data }) => {
   const { issuingDate, daysOfValidity } = data;
   if (!issuingDate || !daysOfValidity) return data;
 
@@ -28,9 +20,6 @@ const Prescription: CollectionConfig = {
       type: 'relationship',
       relationTo: 'patients',
       required: true,
-      admin: {
-        width: '50%',
-      },
     },
     {
       name: 'medicine',
@@ -38,9 +27,6 @@ const Prescription: CollectionConfig = {
       type: 'relationship',
       relationTo: 'medicines',
       required: true,
-      admin: {
-        width: '50%',
-      },
     },
     {
       name: 'issuingDate',
@@ -50,7 +36,6 @@ const Prescription: CollectionConfig = {
       defaultValue: today.toISOString(),
       admin: {
         position: 'sidebar',
-        readOnly: true,
       },
     },
     {
@@ -60,7 +45,6 @@ const Prescription: CollectionConfig = {
       required: true,
       admin: {
         position: 'sidebar',
-        width: '50%',
       },
     },
     {
