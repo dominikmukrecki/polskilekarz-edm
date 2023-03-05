@@ -1,0 +1,14 @@
+$brand-color: #38668D;
+
+.sidebar {
+    background-color: $brand-color;
+  }
+  
+  .button-primary {
+    background-color: $brand-color;
+    
+    &:hover {
+      background-color: darken($brand-color, 5%);
+    }
+  }
+  
