@@ -3,13 +3,11 @@ import { useState } from 'react';
 import { useHook } from '@payloadcms/config/dist/admin/useHook';
 
 const beforeChangeHook: CollectionBeforeChangeHook = async ({
-  data, // incoming data to update or create with
-  req, // full express request
-  operation, // name of the operation ie. 'create', 'update'
-  originalDoc, // original document
+  data,
 }) => {
   const { name, birthdate } = data;
-  data.displayName = `${name} - ${birthdate}`;
+  const formattedBirthdate = new Date(birthdate).toLocaleDateString();
+  data.displayName = `${name} - ${formattedBirthdate}`;
   return data;
 }
 
