@@ -22,7 +22,7 @@ export default buildConfig({
   },
   i18n: {
     locales: ['en', 'pl'],
-    defaultLocale: 'en',
+    defaultLocale: 'pl',
     translations,
   },
 });
