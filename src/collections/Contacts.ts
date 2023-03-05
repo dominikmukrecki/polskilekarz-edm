@@ -22,7 +22,8 @@ const contactFields: Field[] = [
       const regex = /^\+?\d{0,3}[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
       if (value && !regex.test(value)) {
         return req.t('invalidPhoneFormat');
-      }
+      },
+    },
   },
 ];
 
