@@ -27,12 +27,18 @@ const Patients: CollectionConfig = {
           label: 'First Name',
           type: 'text',
           required: true,
+          admin: {
+            width: '50%',
+          },
         },
         {
           name: 'lastName',
           label: 'Last Name',
           type: 'text',
           required: true,
+          admin: {
+            width: '50%',
+          },
         },
       ],
     },
@@ -44,6 +50,9 @@ const Patients: CollectionConfig = {
           label: 'Birthdate',
           type: 'date',
           required: true,
+          admin: {
+            width: '50%',
+          },
         },
         {
           name: 'gender',
@@ -64,6 +73,9 @@ const Patients: CollectionConfig = {
             },
           ],
           required: true,
+          admin: {
+            width: '50%',
+          },
         },
       ],
     },
