@@ -4,16 +4,17 @@ interface PrescriptionData {
   patient: string;
   medicine: string;
   issuingDate: Date;
-  daysOfValidity: number;
   expirationDate?: Date;
 }
 
-const calculateExpirationDate: CollectionBeforeValidateHook<PrescriptionData> = async ({ data }) => {
-  const { issuingDate, daysOfValidity } = data;
-  if (!issuingDate || !daysOfValidity) return data;
-
-  const expirationDate = new Date();
-  expirationDate.setDate(issuingDate.getDate() + daysOfValidity);
+const validateExpirationDate: CollectionBeforeValidateHook<PrescriptionData> = async ({ data }) => {
+  const { issuingDate, expirationDate } = data;
+  if (!expirationDate) return data;
+  
+  if (issuingDate && expirationDate.getTime() < issuingDate.getTime()) {
+    throw new Error('Expiration date must be later than issuing date');
+  }
+  
   return data;
 };
 
@@ -47,21 +48,11 @@ const Prescription: CollectionConfig = {
       },
     },
     {
-      name: 'daysOfValidity',
-      label: 'Days of Validity',
-      type: 'number',
-      required: true,
-      admin: {
-        position: 'sidebar',
-      },
-    },
-    {
       name: 'expirationDate',
       label: 'Expiration Date',
       type: 'date',
       required: false,
       admin: {
-        readOnly: true,
         position: 'sidebar',
       },
     },
@@ -70,8 +61,7 @@ const Prescription: CollectionConfig = {
     useAsTitle: 'medicine.commonName',
   },
   hooks: {
-    beforeValidate: [calculateExpirationDate],
+    beforeValidate: [validateExpirationDate],
   },
 };
 
-export default Prescription;
