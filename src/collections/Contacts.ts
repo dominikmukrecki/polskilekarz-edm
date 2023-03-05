@@ -23,11 +23,6 @@ const Contacts: CollectionConfig = {
           type: "ui",
           name: "name",
           label: "test",
-          admin: {
-            components: {
-              Field: MyCustomUIField,
-            },
-          },
         },    
       ],
     },

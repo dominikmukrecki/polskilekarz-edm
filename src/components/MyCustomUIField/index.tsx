@@ -1,12 +1,11 @@
 import React from 'react';
 
-
-const MyCustomUIField: React.FC = () => {
+function MyCustomUIField() {
     return (
-      <p>
-        test
-      </p>
+        <p>
+            test
+        </p>
     );
-  };
+}
 
   export default MyCustomUIField;
