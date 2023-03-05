@@ -1,12 +1,10 @@
 import { CollectionConfig, Hook, CollectionBeforeChangeHook } from 'payload/types';
-import { useState } from 'react';
-import { useHook } from '@payloadcms/config/dist/admin/useHook';
 
 const beforeChangeHook: CollectionBeforeChangeHook = async ({
   data,
 }) => {
   const { name, birthdate } = data;
-  const formattedBirthdate = new Date(birthdate).toLocaleDateString();
+  const formattedBirthdate = new Date(birthdate).toLocaleDateString('pl_PL');
   data.displayName = `${name} - ${formattedBirthdate}`;
   return data;
 }
