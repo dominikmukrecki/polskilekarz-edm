@@ -4,7 +4,10 @@ const createDisplayNameHook: CollectionBeforeValidateHook = async ({
   data,
   locale
 }) => {
-  const { firstName, lastName, birthdate } = data;
+  const { firstName, lastName, birthdate } = data || {};
+  if (!firstName || !lastName || !birthdate) {
+    return null;
+  }
   const formattedBirthdate = new Date(birthdate).toLocaleDateString({ locale });
   data.displayName = `${firstName} ${lastName}, born: ${formattedBirthdate}`;
   return data;
@@ -20,6 +23,9 @@ const generateAgeHook: CollectionBeforeValidateHook = async ({ data }) => {
 
 const parsePeselHook: CollectionBeforeValidateHook = async ({ data }) => {
   const { pesel } = data;
+  if (!pesel) {
+    return null;
+  }
   const birthYear = parseInt(pesel.substring(0, 2));
   const birthMonth = parseInt(pesel.substring(2, 4)) % 20;
   const birthDay = parseInt(pesel.substring(4, 6));
