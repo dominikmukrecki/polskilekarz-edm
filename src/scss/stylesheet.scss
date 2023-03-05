@@ -1,15 +1,25 @@
-$brand-color: #38668D;
-$primary-color: #38668D;
+:root {
+  --brand-color: #38668D;
 
-.sidebar {
-    background-color: $brand-color;
-  }
-  
-  .button-primary {
-    background-color: $brand-color;
-    
-    &:hover {
-      background-color: darken($brand-color, 5%);
-    }
-  }
-  
+  --color-base-0: rgb(255, 255, 255);
+  --color-base-50: rgb(245, 245, 245);
+  --color-base-100: rgb(235, 235, 235);
+  --color-base-150: rgb(221, 221, 221);
+  --color-base-200: rgb(208, 208, 208);
+  --color-base-250: rgb(195, 195, 195);
+  --color-base-300: rgb(181, 181, 181);
+  --color-base-350: rgb(168, 168, 168);
+  --color-base-400: rgb(154, 154, 154);
+  --color-base-450: rgb(141, 141, 141);
+  --color-base-500: var(--brand-color);
+  --color-base-550: rgb(56, 102, 141);
+  --color-base-600: rgb(45, 83, 115);
+  --color-base-650: rgb(35, 64, 88);
+  --color-base-700: rgb(28, 51, 70);
+  --color-base-750: rgb(22, 40, 55);
+  --color-base-800: rgb(17, 31, 43);
+  --color-base-850: rgb(12, 22, 31);
+  --color-base-900: rgb(8, 14, 20);
+  --color-base-950: rgb(3, 6, 9);
+  --color-base-1000: rgb(0, 0, 0);
+}
