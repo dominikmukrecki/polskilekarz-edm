@@ -2,6 +2,7 @@ import { buildConfig } from 'payload/config';
 import path from 'path';
 import Contacts from './collections/Contacts';
 import Users from './collections/Users';
+import Patients from './collections/Patients';
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
@@ -12,6 +13,7 @@ export default buildConfig({
   collections: [
     Contacts,
     Users,
+    Patients,
   ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts')
