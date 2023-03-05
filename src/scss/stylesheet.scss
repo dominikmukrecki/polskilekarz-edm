@@ -1,25 +1,35 @@
 :root {
-  --brand-color: #38668D;
-
-  --color-base-0: rgb(255, 255, 255);
-  --color-base-50: rgb(245, 245, 245);
-  --color-base-100: rgb(235, 235, 235);
-  --color-base-150: rgb(221, 221, 221);
-  --color-base-200: rgb(208, 208, 208);
-  --color-base-250: rgb(195, 195, 195);
-  --color-base-300: rgb(181, 181, 181);
-  --color-base-350: rgb(168, 168, 168);
-  --color-base-400: rgb(154, 154, 154);
-  --color-base-450: rgb(141, 141, 141);
-  --color-base-500: var(--brand-color);
-  --color-base-550: rgb(56, 102, 141);
-  --color-base-600: rgb(45, 83, 115);
-  --color-base-650: rgb(35, 64, 88);
-  --color-base-700: rgb(28, 51, 70);
-  --color-base-750: rgb(22, 40, 55);
-  --color-base-800: rgb(17, 31, 43);
-  --color-base-850: rgb(12, 22, 31);
-  --color-base-900: rgb(8, 14, 20);
-  --color-base-950: rgb(3, 6, 9);
-  --color-base-1000: rgb(0, 0, 0);
-}
+    --hippie-blue-50: #f1f7fa;
+    --hippie-blue-100: #dcebf1;
+    --hippie-blue-200: #bdd9e4;
+    --hippie-blue-300: #90bdd0;
+    --hippie-blue-400: #6aa2bc;
+    --hippie-blue-500: #3f7c9b;
+    --hippie-blue-600: #376683;
+    --hippie-blue-700: #32546c;
+    --hippie-blue-800: #30485a;
+    --hippie-blue-900: #2b3e4e;
+  
+    --color-base-0: rgb(255, 255, 255);
+    --color-base-50: var(--hippie-blue-50);
+    --color-base-100: var(--hippie-blue-100);
+    --color-base-150: rgb(221, 234, 238);
+    --color-base-200: var(--hippie-blue-200);
+    --color-base-250: rgb(150, 197, 208);
+    --color-base-300: var(--hippie-blue-300);
+    --color-base-350: rgb(78, 159, 176);
+    --color-base-400: var(--hippie-blue-400);
+    --color-base-450: rgb(48, 117, 132);
+    --color-base-500: var(--hippie-blue-500);
+    --color-base-550: rgb(34, 94, 106);
+    --color-base-600: var(--hippie-blue-600);
+    --color-base-650: rgb(27, 71, 80);
+    --color-base-700: var(--hippie-blue-700);
+    --color-base-750: rgb(21, 48, 54);
+    --color-base-800: var(--hippie-blue-800);
+    --color-base-850: rgb(16, 32, 36);
+    --color-base-900: var(--hippie-blue-900);
+    --color-base-950: rgb(5, 10, 11);
+    --color-base-1000: rgb(0, 0, 0);
+  }
+  
