@@ -38,8 +38,13 @@ const parsePeselHook: CollectionBeforeValidateHook = async ({ data }) => {
   return data;
 };
 
-const validatePeselOrBirthdateAndGender: CollectionBeforeValidateHook = async ({ data }) => {
+const validatePeselOrBirthdateAndGender: CollectionBeforeValidateHook = async ({ data, req }) => {
   const { pesel, birthdate, gender } = data;
+
+  // If the version being saved is a draft, skip validation
+  if (data.id === undefined) {
+    return data;
+  }
 
   if (!pesel && (!birthdate || !gender)) {
     throw new Error('Either PESEL or both birthdate and gender are required');
@@ -47,7 +52,6 @@ const validatePeselOrBirthdateAndGender: CollectionBeforeValidateHook = async ({
 
   return data;
 };
-
 
 const Patients: CollectionConfig = {
   slug: 'patients',
