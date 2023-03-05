@@ -8,17 +8,16 @@ const Contacts: CollectionConfig = {
   },
   fields: [
     {
-      type: "row",
-      fields: [
-        {
-          name: "contactName",
-          type: "text",
-        },
-        {
-          name: "contactEmial",
-          type: "email",
-        },
-      ],
+      name: "contactName",
+      type: "text",
+    },
+    {
+      name: "contactName1",
+      type: "text",
+    },
+    {
+      name: "contactEmial",
+      type: "email",
     },
     {
       name: "customID",
