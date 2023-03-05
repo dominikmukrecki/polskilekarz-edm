@@ -4,8 +4,8 @@ const beforeChangeHook: CollectionBeforeChangeHook = async ({
   data,
 }) => {
   const { name, birthdate } = data;
-  const formattedBirthdate = new Date(birthdate).toString();
-  data.displayName = `${name} - ${formattedBirthdate}`;
+  const formattedBirthdate = new Date(birthdate).toLocaleString('pl_PL');
+  data.displayName = `${name}, ur.: ${formattedBirthdate}`;
   return data;
 }
 
