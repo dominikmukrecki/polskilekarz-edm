@@ -23,6 +23,6 @@ export default buildConfig({
   },
   i18n: {
     locales: ['en-US', 'pl-PL'],
-    defaultLocale: 'pl-PL',
+    defaultLocale: 'en-US',
   },
 });
