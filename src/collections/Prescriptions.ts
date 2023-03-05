@@ -9,9 +9,11 @@ interface PrescriptionData {
 
 const calculateExpirationDate: CollectionBeforeValidateHook<PrescriptionData> = async ({ data }) => {
   const { issuingDate, daysOfValidity } = data;
+
   if (!issuingDate || !daysOfValidity) return data;
 
-  data.expirationDate = issuingDate + daysOfValidity;
+  data.expirationDate = new Date(issuingDate.getTime() + daysOfValidity * 24 * 60 * 60 * 1000);
+
   return data;
 };
 
