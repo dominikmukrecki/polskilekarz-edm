@@ -6,7 +6,7 @@ const beforeChangeHook: CollectionBeforeChangeHook = async ({
 }) => {
   const { name, birthdate } = data;
   const currentLang =  router.locale;
-  const formattedBirthdate = new Date(birthdate).toLocaleDateString(currentLangs);
+  const formattedBirthdate = new Date(birthdate).toLocaleDateString(currentLang);
   data.displayName = `${name} - ${formattedBirthdate}`;
   return data;
 }
