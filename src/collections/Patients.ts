@@ -1,5 +1,17 @@
-import { CollectionConfig, Hook } from 'payload/types';
-import { format } from 'date-fns';
+import { CollectionConfig, Hook, CollectionBeforeChangeHook } from 'payload/types';
+import { useState } from 'react';
+import { useHook } from '@payloadcms/config/dist/admin/useHook';
+
+const beforeChangeHook: CollectionBeforeChangeHook = async ({
+  data, // incoming data to update or create with
+  req, // full express request
+  operation, // name of the operation ie. 'create', 'update'
+  originalDoc, // original document
+}) => {
+  const { name, birthdate } = data;
+  data.displayName = `${name} - ${birthdate}`;
+  return data;
+}
 
 const Patients: CollectionConfig = {
   slug: 'patients',
@@ -45,19 +57,21 @@ const Patients: CollectionConfig = {
         position: 'sidebar',
       },
     },
+    {
+      name: 'contacts',
+      label: 'Contacts',
+      type: 'relationship',
+      relationTo: 'contacts',
+      hasMany: true,
+      required: false,
+    },
   ],
   admin: {
     useAsTitle: 'displayName',
   },
   hooks: {
     beforeChange: [
-      async (hook) => {
-        const { data } = hook;
-        const { name, birthdate } = data;
-        const formattedBirthdate = format(new Date(birthdate), 'yyyy-MM-dd');
-        data.displayName = `${name} - ${formattedBirthdate}`;
-        return hook;
-      },
+      beforeChangeHook
     ],
   },
 };
