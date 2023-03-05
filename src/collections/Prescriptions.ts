@@ -1,6 +1,14 @@
 import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
 
-const calculateExpirationDate: CollectionBeforeValidateHook = async ({ data }) => {
+interface PrescriptionData {
+  patient: string;
+  medicine: string;
+  issuingDate: Date;
+  daysOfValidity: number;
+  expirationDate?: Date;
+}
+
+const calculateExpirationDate: CollectionBeforeValidateHook<PrescriptionData> = async ({ data }) => {
   const { issuingDate, daysOfValidity } = data;
   if (!issuingDate || !daysOfValidity) return data;
 
