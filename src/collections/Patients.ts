@@ -14,6 +14,12 @@ const Patients: CollectionConfig = {
       label: 'Birthdate',
       type: 'date',
       required: true,
+        admin: {
+            date: {
+                yearDropdown: true,
+                scrollableYearDropdown: true,
+            },
+        },
     },
     {
       name: 'gender',
