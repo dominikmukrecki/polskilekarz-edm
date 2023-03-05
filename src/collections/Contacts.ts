@@ -16,9 +16,8 @@ const Contacts: CollectionConfig = {
       type: "email",
     },
     {
-      name: "labes",
+      name: "label",
       type: "ui",
-      description: "test",
     }
   ],
 };
