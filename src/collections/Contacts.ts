@@ -7,13 +7,7 @@ const Contacts: CollectionConfig = {
     hideAPIURL: true,
   },
   fields: [
-    {
-      name: "customID",
-      type: "text",
-      admin: {
-        readOnly: true,
-      },
-    },
+
     {
       type: "row",
       fields: [
@@ -24,6 +18,13 @@ const Contacts: CollectionConfig = {
         {
           name: "contactEmial",
           type: "email",
+        },
+        {
+          name: "customID",
+          type: "text",
+          admin: {
+            readOnly: true,
+          },
         },
       ],
     },
