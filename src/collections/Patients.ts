@@ -1,5 +1,5 @@
 import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
-import { getDraftsConfig } from '../shared/draftsConfig.ts';
+import getDraftsConfig from '../shared/draftsConfig';
 
 const createDisplayNameHook: CollectionBeforeValidateHook = async ({
   data,
