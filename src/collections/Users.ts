@@ -3,31 +3,31 @@ import { CollectionConfig } from 'payload/types';
 const Fields = [
   {
     name: 'name',
-    label: 'Name',
+    label: req.t('fields.name'),
     type: 'text',
     required: true,
   },
   {
     name: 'email',
-    label: 'Email',
+    label: req.t('fields.email'),
     type: 'email',
     required: true,
   },
   {
     name: 'roles',
-    label: 'Roles',
+    label: req.t('fields.roles'),
     type: 'select',
     options: [
       {
-        label: 'Admin',
+        label: req.t('fields.admin'),
         value: 'admin',
       },
       {
-        label: 'Doctor',
+        label: req.t('fields.doctor'),
         value: 'doctor',
       },
       {
-        label: 'Assistant',
+        label: req.t('fields.assistant'),
         value: 'assistant',
       },
     ],
@@ -35,7 +35,6 @@ const Fields = [
     defaultValue: ['assistant'],
     required: true,
   },
-  // Add more fields as needed
 ] as const;
 
 const Users: CollectionConfig = {
