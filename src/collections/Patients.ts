@@ -35,6 +35,17 @@ const Patients: CollectionConfig = {
       ],
       required: true,
     },
+    {
+      name: 'displayedName',
+      label: 'Displayed Name',
+      type: 'text',
+      defaultValue: '{{name}} - {{birthdate}}',
+      required: false,
+      admin: {
+        readOnly: true,
+        hidden: false,
+      },
+    },
   ],
 };
 
