@@ -40,11 +40,10 @@ const Contacts: CollectionConfig = {
 };
 
 const MyCustomUIField: React.FC = () => {
-  const test: "test";
   return (
-    <div>
-      <p>{test}</p>
-    </div>
+    <p>
+      test
+    </p>
   );
 };
 
