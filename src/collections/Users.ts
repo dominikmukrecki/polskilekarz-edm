@@ -1,5 +1,3 @@
-import { CollectionConfig } from 'payload/types';
-
 const Fields = [
   {
     name: 'name',
@@ -19,15 +17,24 @@ const Fields = [
     type: 'select',
     options: [
       {
-        label: 'Admin',
+        label: {
+          en: 'Admin',
+          pl: 'Administrator',
+        },
         value: 'admin',
       },
       {
-        label: 'Doctor',
+        label: {
+          en: 'Doctor',
+          pl: 'Lekarz',
+        },
         value: 'doctor',
       },
       {
-        label: 'Assistant',
+        label: {
+          en: 'Assistant',
+          pl: 'Asystent',
+        },
         value: 'assistant',
       },
     ],
@@ -35,19 +42,4 @@ const Fields = [
     defaultValue: ['assistant'],
     required: true,
   },
-  // Add more fields as needed
-] as const;
-
-const Users: CollectionConfig = {
-  slug: 'users',
-  auth: true,
-  admin: {
-    useAsTitle: 'email',
-  },
-  access: {
-    read: () => true,
-  },
-  fields: Fields,
-};
-
-export default Users;
+];
