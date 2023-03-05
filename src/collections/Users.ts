@@ -1,6 +1,6 @@
-import { CollectionConfig } from 'payload/types';
+import { CollectionConfig, Field } from 'payload/types';
 
-const Fields = [
+const Fields: Field[] = [
   {
     name: 'name',
     label: 'Name',
@@ -34,8 +34,7 @@ const Fields = [
     defaultValue: ['assistant'],
     required: true,
   },
-  // Add more fields as needed
-] as const;
+];
 
 const Users: CollectionConfig = {
   slug: 'users',
