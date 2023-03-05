@@ -1,4 +1,4 @@
-export default {
+export const pl = {
     fields: {
       name: 'Imię',
       email: 'Email',
