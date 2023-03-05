@@ -2,7 +2,7 @@ import { CollectionConfig, CollectionBeforeChangeHook } from 'payload/types';
 
 const beforeChangeHook: CollectionBeforeChangeHook = async ({ data }) => {
   const { name, email, phone } = data;
-  data.displayName = `${name} - ${email} - ${phone}`;
+  data.displayName = `${name} | ${email} | ${phone}`;
   return data;
 };
 
@@ -55,6 +55,9 @@ const Contacts: CollectionConfig = {
     read: () => true,
   },
   fields: contactFields,
+  admin: {
+    useAsTitle: 'displayName',
+  },
   hooks: {
     beforeChange: [beforeChangeHook],
   },

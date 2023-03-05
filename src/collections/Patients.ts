@@ -1,10 +1,10 @@
 import { CollectionConfig, CollectionBeforeChangeHook } from 'payload/types';
 
 const beforeChangeHook: CollectionBeforeChangeHook = async ({
-  data,
+  data, locale
 }) => {
   const { firstName, lastName, birthdate } = data;
-  const formattedBirthdate = new Date(birthdate).toLocaleDateString('pl-PL');
+  const formattedBirthdate = new Date(birthdate).toLocaleDateString({locale});
   data.displayName = `${firstName} ${lastName}, ur.: ${formattedBirthdate}`;
 
   const birthDate = new Date(birthdate);
@@ -69,7 +69,8 @@ const Patients: CollectionConfig = {
       name: 'displayName',
       label: 'Display Name',
       type: 'text',
-      required: false,
+      required: true,
+      defaultValue: 'New Patient',
       admin: {
         position: 'sidebar',
       },
