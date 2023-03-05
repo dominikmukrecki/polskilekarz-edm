@@ -133,7 +133,7 @@ fields: [
     label: 'Age',
     type: 'text',
     required: false,
-    defaultValue: 'Age not calculated yet'
+    defaultValue: 'Age not calculated yet',
     admin: {
       readOnly: true,
       position: 'sidebar',
