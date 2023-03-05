@@ -4,6 +4,7 @@ import Contacts from './collections/Contacts';
 import Users from './collections/Users';
 import Patients from './collections/Patients';
 import Medicines from './collections/Medicines';
+import Prescription from './collections/Prescriptions';
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
@@ -17,6 +18,7 @@ export default buildConfig({
     Contacts,
     Patients,
     Medicines,
+    Prescription,
   ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
