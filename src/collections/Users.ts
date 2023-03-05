@@ -34,6 +34,9 @@ const userFields = [
     hasMany: true,
     defaultValue: ['assistant'],
     required: true,
+    admin: {
+      position: 'sidebar',
+    },
   },
   // Add more fields as needed
 ];

@@ -43,6 +43,7 @@ const Patients: CollectionConfig = {
       required: false,
       admin: {
         readOnly: true,
+        position: 'sidebar',
       },
     },
     {
@@ -83,6 +84,9 @@ const Patients: CollectionConfig = {
       relationTo: 'contacts',
       hasMany: true,
       required: false,
+      admin: {
+        position: 'sidebar',
+      },
     },
   ],
   admin: {
