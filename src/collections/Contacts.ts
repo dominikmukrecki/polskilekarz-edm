@@ -3,25 +3,25 @@ import { Field } from '@payloadcms/config/dist/fields';
 const contactFields: Field[] = [
   {
     name: 'Name',
-    label: () => req.t('nameLabel'),
+    label: 'Name',
     type: 'text',
     required: true,
   },
   {
     name: 'Email',
-    label: () => req.t('emailLabel'),
+    label: 'Email',
     type: 'email',
     required: true,
   },
   {
     name: 'Phone',
-    label: () => req.t('phoneLabel'),
+    label: 'Phone',
     type: 'text',
     required: false,
     validate: (value) => {
       const regex = /^\+?\d{0,3}[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
       if (value && !regex.test(value)) {
-        return req.t('invalidPhoneFormat');
+        return 'Invalid phone number format';
       }
       return true;
     },

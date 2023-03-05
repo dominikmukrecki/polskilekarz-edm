@@ -1,42 +1,3 @@
-import { CollectionConfig } from 'payload/types';
-
-const Fields = [
-  {
-    name: 'name',
-    label: req.t('fields.name'),
-    type: 'text',
-    required: true,
-  },
-  {
-    name: 'email',
-    label: req.t('fields.email'),
-    type: 'email',
-    required: true,
-  },
-  {
-    name: 'roles',
-    label: req.t('fields.roles'),
-    type: 'select',
-    options: [
-      {
-        label: req.t('fields.admin'),
-        value: 'admin',
-      },
-      {
-        label: req.t('fields.doctor'),
-        value: 'doctor',
-      },
-      {
-        label: req.t('fields.assistant'),
-        value: 'assistant',
-      },
-    ],
-    hasMany: true,
-    defaultValue: ['assistant'],
-    required: true,
-  },
-] as const;
-
 const Users: CollectionConfig = {
   slug: 'users',
   auth: true,
@@ -46,7 +7,41 @@ const Users: CollectionConfig = {
   access: {
     read: () => true,
   },
-  fields: Fields,
+  fields: [
+    {
+      name: 'name',
+      label: 'Name',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'email',
+      label: 'Email',
+      type: 'email',
+      required: true,
+    },
+    {
+      name: 'roles',
+      label: 'Roles',
+      type: 'select',
+      options: [
+        {
+          label: 'Admin',
+          value: 'admin',
+        },
+        {
+          label: 'Doctor',
+          value: 'doctor',
+        },
+        {
+          label: 'Assistant',
+          value: 'assistant',
+        },
+      ],
+      hasMany: true,
+      defaultValue: ['assistant'],
+      required: true,
+    },
+    // Add more fields as needed
+  ],
 };
-
-export default Users;

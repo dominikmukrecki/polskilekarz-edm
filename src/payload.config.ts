@@ -2,7 +2,6 @@ import { buildConfig } from 'payload/config';
 import path from 'path';
 import Contacts from './collections/Contacts';
 import Users from './collections/Users';
-import { translations } from './translations';
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
