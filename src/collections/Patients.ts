@@ -57,22 +57,6 @@ fields: [
     ],
   },
   {
-    name: 'pesel',
-    label: 'PESEL',
-    type: 'text',
-    required: false,
-    validate: (value) => {
-      const regex = /^[0-9]{11}$/;
-      if (value && !regex.test(value)) {
-        return 'Invalid PESEL format';
-      }
-      return true;
-    },
-    admin: {
-      width: '50%',
-    },
-  },
-  {
     type: 'row',
     fields: [
       {
@@ -108,6 +92,22 @@ fields: [
         },
       },
     ],
+  },
+  {
+    name: 'pesel',
+    label: 'PESEL',
+    type: 'text',
+    required: false,
+    validate: (value) => {
+      const regex = /^[0-9]{11}$/;
+      if (value && !regex.test(value)) {
+        return 'Invalid PESEL format';
+      }
+      return true;
+    },
+    admin: {
+      width: '50%',
+    },
   },
   {
     name: 'age',
