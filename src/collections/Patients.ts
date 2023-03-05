@@ -1,4 +1,4 @@
-import { CollectionConfig, CollectionBeforeChangeHook } from 'payload/types';
+import { CollectionConfig, CollectionBeforeChangeHook, CollectionBeforeValidateHook } from 'payload/types';
 
 const createDisplayNameHook: CollectionBeforeChangeHook = async ({
   data,
@@ -18,7 +18,7 @@ const generateAgeHook: CollectionBeforeChangeHook = async ({ data }) => {
   return data;
 };
 
-const parsePeselHook: CollectionBeforeChangeHook = async ({ data }) => {
+const parsePeselHook: CollectionBeforeValidateHook = async ({ data }) => {
   const { pesel } = data;
   const birthYear = parseInt(pesel.substring(0, 2));
   const birthMonth = parseInt(pesel.substring(2, 4)) % 20;
@@ -149,8 +149,8 @@ const Patients: CollectionConfig = {
     beforeChange: [
       createDisplayNameHook,
       generateAgeHook,
-      parsePeselHook,
     ],
+    beforeValidate: [parsePeselHook],
   },
 };
 
