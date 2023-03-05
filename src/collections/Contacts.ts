@@ -19,9 +19,9 @@ const Contacts: CollectionConfig = {
           type: "email",
         },
         {
+          name: "customID",
           type: "text",
-          name: "name",
-          readonly: true,
+          readOnly: true,
         },    
       ],
     },
