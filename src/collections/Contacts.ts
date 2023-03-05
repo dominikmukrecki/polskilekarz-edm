@@ -21,8 +21,10 @@ const Contacts: CollectionConfig = {
         {
           name: "customID",
           type: "text",
-          readOnly: true,
-        },    
+          admin: {
+            readOnly: true,
+          },
+        },
       ],
     },
   ],
