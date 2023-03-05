@@ -1,5 +1,4 @@
 import { CollectionConfig } from "payload/types";
-import MyCustomUIField from "../components/MyCustomUIField";
 
 const Contacts: CollectionConfig = {
   slug: "contacts",
@@ -20,9 +19,9 @@ const Contacts: CollectionConfig = {
           type: "email",
         },
         {
-          type: "ui",
+          type: "test",
           name: "name",
-          label: "test",
+          readonly: true,
         },    
       ],
     },
