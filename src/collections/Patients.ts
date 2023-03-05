@@ -1,7 +1,6 @@
 import { CollectionConfig } from 'payload/types';
-import DatePicker from 'react-datepicker';
 import { useState } from 'react';
-
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const Patients: CollectionConfig = {
@@ -19,20 +18,7 @@ const Patients: CollectionConfig = {
       type: 'text',
       admin: {
         components: {
-          Cell: ({ cell, onChange }) => {
-            const [selectedDate, setSelectedDate] = useState<Date | null>(
-              new Date(cell.value)
-            );
-
-            const handleChange = (date: Date | null) => {
-              setSelectedDate(date);
-              onChange(date?.toISOString());
-            };
-
-            return (
-              <DatePicker/>
-            );
-          },
+          Cell: DatePickerCell,
         },
       },
       required: true,
@@ -58,6 +44,19 @@ const Patients: CollectionConfig = {
       required: true,
     },
   ],
+};
+
+const DatePickerCell = ({ cell, onChange }: any) => {
+  const [selectedDate, setSelectedDate] = useState<Date | null>(
+    new Date(cell.value)
+  );
+
+  const handleChange = (date: Date | null) => {
+    setSelectedDate(date);
+    onChange(date?.toISOString());
+  };
+
+  return <DatePicker selected={selectedDate} onChange={handleChange} />;
 };
 
 export default Patients;
