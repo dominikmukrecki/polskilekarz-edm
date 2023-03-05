@@ -17,7 +17,7 @@ const Contacts: CollectionConfig = {
     },
     {
       name: "labes",
-      type: "ui"
+      type: "ui",
       description: "test",
     }
   ],
