@@ -1,28 +1,12 @@
-import { CollectionConfig, Field } from 'payload/types';
-import { useState, useEffect } from 'react';
+import { CollectionConfig, CollectionBeforeChangeHook } from 'payload/types';
 
-interface User {
-  name: string;
-  email: string;
-}
-
-const useDisplayName = (user: User): string => {
-  const [displayName, setDisplayName] = useState('');
-
-  useEffect(() => {
-    if (user.name && user.email) {
-      setDisplayName(`${user.name} (${user.email})`);
-    } else if (user.name) {
-      setDisplayName(user.name);
-    } else if (user.email) {
-      setDisplayName(user.email);
-    }
-  }, [user]);
-
-  return displayName;
+const beforeChangeHook: CollectionBeforeChangeHook = async ({ data }) => {
+  const { name, email } = data;
+  data.displayName = `${name}, ${email}`;
+  return data;
 };
 
-const userFields: Field[] = [
+const userFields = [
   {
     name: 'name',
     label: 'Name',
@@ -64,9 +48,11 @@ const userFields: Field[] = [
     name: 'displayName',
     label: 'Display Name',
     type: 'text',
+    required: true,
+    defaultValue: 'New User',
     admin: {
-      readOnly: true,
       position: 'sidebar',
+      readOnly: true,
     },
   },
   // Add more fields as needed
@@ -76,20 +62,15 @@ const Users: CollectionConfig = {
   slug: 'users',
   auth: true,
   admin: {
-    useAsTitle: 'email',
+    useAsTitle: 'displayName',
   },
   access: {
     read: () => true,
   },
-  hooks: {
-    afterChange: async ({ operation, doc }) => {
-      if (operation === 'create' || operation === 'update') {
-        const displayName = useDisplayName({ name: doc.name, email: doc.email });
-        await payload.update('users', { id: doc.id }, { displayName });
-      }
-    },
-  },
   fields: userFields,
+  hooks: {
+    beforeChange: [beforeChangeHook],
+  },
 };
 
 export default Users;
