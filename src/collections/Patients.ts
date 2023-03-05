@@ -1,6 +1,17 @@
 import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
 
-const createDisplayNameHook: CollectionBeforeValidateHook = async ({
+interface PatientData {
+  firstName: string;
+  lastName: string;
+  birthdate?: Date;
+  pesel?: string;
+  gender?: 'male' | 'female';
+  displayName?: string;
+  age?: string;
+}
+
+// A hook that generates a display name from the first and last name of the patient, along with their birthdate
+const createDisplayNameHook: CollectionBeforeValidateHook<PatientData> = async ({
   data,
   locale
 }) => {
@@ -13,7 +24,8 @@ const createDisplayNameHook: CollectionBeforeValidateHook = async ({
   return data;
 };
 
-const generateAgeHook: CollectionBeforeValidateHook = async ({ data }) => {
+// A hook that calculates the age of the patient based on their birthdate
+const generateAgeHook: CollectionBeforeValidateHook<PatientData> = async ({ data }) => {
   if (!data.birthdate) return null;
 
   const birthDate = new Date(data.birthdate);
@@ -23,11 +35,13 @@ const generateAgeHook: CollectionBeforeValidateHook = async ({ data }) => {
   return data;
 };
 
-const parsePeselHook: CollectionBeforeValidateHook = async ({ data }) => {
+// A hook that parses a PESEL number and extracts the birthdate and gender
+const parsePeselHook: CollectionBeforeValidateHook<PatientData> = async ({ data }) => {
   const { pesel } = data;
   if (!pesel) {
     return null;
   }
+  
   const birthYear = parseInt(pesel.substring(0, 2));
   const birthMonth = parseInt(pesel.substring(2, 4)) % 20;
   const birthDay = parseInt(pesel.substring(4, 6));
@@ -38,7 +52,8 @@ const parsePeselHook: CollectionBeforeValidateHook = async ({ data }) => {
   return data;
 };
 
-const validatePeselOrBirthdateAndGender: CollectionBeforeValidateHook = async ({ data, req }) => {
+// A hook that validates that either a PESEL number or both birthdate and gender are present
+const validatePeselOrBirthdateAndGender: CollectionBeforeValidateHook<PatientData> = async ({ data, req }) => {
   const { pesel, birthdate, gender } = data;
 
   // If the version being saved is a draft, skip validation
