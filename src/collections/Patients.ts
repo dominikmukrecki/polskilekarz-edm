@@ -1,6 +1,4 @@
 import { CollectionConfig, Hook } from 'payload/types';
-import { useState } from 'react';
-import { useHook } from '@payloadcms/config/dist/admin/useHook';
 
 const Patients: CollectionConfig = {
   slug: 'patients',
@@ -50,10 +48,11 @@ const Patients: CollectionConfig = {
   ],
   hooks: {
     beforeChange: [
-      async (hook: Hook) => {
+      (hook: Hook) => {
         const { data } = hook;
         const { name, birthdate } = data;
         data.displayedName = `${name} - ${birthdate}`;
+
         return hook;
       },
     ],
