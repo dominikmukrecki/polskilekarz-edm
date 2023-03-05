@@ -1,25 +1,30 @@
-import { CollectionConfig } from "payload/types";
+import { Field } from '@payloadcms/config/dist/fields';
 
-const Contacts: CollectionConfig = {
-  slug: "contacts1",
-  admin: {
-    useAsTitle: "contactEmail",
-    hideAPIURL: true,
+const contactFields: Field[] = [
+  {
+    name: 'contactName',
+    label: 'Name',
+    type: 'text',
+    required: true,
+    maxLength: 50,
   },
-  fields: [
-    {
-      name: "contactName1",
-      type: "text",
-    },
-    {
-      name: "contactEmail",
-      type: "email",
-    },
-    {
-      name: "label",
-      type: "ui",
-    }
-  ],
-};
+  {
+    name: 'contactEmail',
+    label: 'Email',
+    type: 'email',
+    required: true,
+    maxLength: 100,
+  },
+  {
+    name: 'contactPhone',
+    label: 'Phone',
+    type: 'text',
+    required: false,
+    maxLength: 20,
+  },
+];
 
-export default Contacts;
+export default {
+  slug: 'contacts',
+  fields: contactFields,
+};
