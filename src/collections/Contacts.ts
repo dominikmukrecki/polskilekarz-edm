@@ -19,7 +19,7 @@ const Contacts: CollectionConfig = {
           type: "email",
         },
         {
-          type: "test",
+          type: "text",
           name: "name",
           readonly: true,
         },    
