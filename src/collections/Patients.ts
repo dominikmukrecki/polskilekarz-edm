@@ -1,4 +1,5 @@
 import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
+import { getDraftsConfig } from '../shared/draftsConfig.ts';
 
 const createDisplayNameHook: CollectionBeforeValidateHook = async ({
   data,
@@ -174,12 +175,7 @@ fields: [
     ],
   },
   versions: {
-    drafts: {
-      autosave: ({ data }) => {
-        const hasData = Object.values(data).some((value) => Boolean(value));
-        return hasData;
-      },
-    },
+    drafts: getDraftsConfig,
   },
 };
 
