@@ -5,7 +5,7 @@ const beforeChangeHook: CollectionBeforeChangeHook = async ({
 }) => {
   const { firstName, lastName, birthdate } = data;
   const formattedBirthdate = new Date(birthdate).toLocaleDateString({locale});
-  data.displayName = `${firstName} ${lastName}, ur.: ${formattedBirthdate}`;
+  data.displayName = `${firstName} ${lastName}, born: ${formattedBirthdate}`;
 
   const birthDate = new Date(birthdate);
   const diff = Date.now() - birthDate.getTime();

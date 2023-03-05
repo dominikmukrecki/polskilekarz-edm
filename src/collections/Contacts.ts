@@ -43,6 +43,7 @@ const contactFields = [
     label: 'Display Name',
     type: 'text',
     required: true,
+    defaultValue: 'New Patient',
     admin: {
       position: 'sidebar',
     },
