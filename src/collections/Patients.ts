@@ -18,24 +18,50 @@ const beforeChangeHook: CollectionBeforeChangeHook = async ({
 const Patients: CollectionConfig = {
   slug: 'patients',
   fields: [
-    {
-      name: 'firstName',
-      label: 'First Name',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'lastName',
-      label: 'Last Name',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'birthdate',
-      label: 'Birthdate',
-      type: 'date',
-      required: true,
-    },
+    type: 'row',
+    fields: [
+      {
+        name: 'firstName',
+        label: 'First Name',
+        type: 'text',
+        required: true,
+      },
+      {
+        name: 'lastName',
+        label: 'Last Name',
+        type: 'text',
+        required: true,
+      },
+    ],
+    type: 'row',
+    fields: [
+      {
+        name: 'birthdate',
+        label: 'Birthdate',
+        type: 'date',
+        required: true,
+      },
+      {
+        name: 'gender',
+        label: 'Gender',
+        type: 'select',
+        options: [
+          {
+            label: 'Male',
+            value: 'male',
+          },
+          {
+            label: 'Female',
+            value: 'female',
+          },
+          {
+            label: 'Other',
+            value: 'other',
+          },
+        ],
+        required: true,
+      },
+    ],
     {
       name: 'age',
       label: 'Age',
@@ -45,26 +71,6 @@ const Patients: CollectionConfig = {
         readOnly: true,
         position: 'sidebar',
       },
-    },
-    {
-      name: 'gender',
-      label: 'Gender',
-      type: 'select',
-      options: [
-        {
-          label: 'Male',
-          value: 'male',
-        },
-        {
-          label: 'Female',
-          value: 'female',
-        },
-        {
-          label: 'Other',
-          value: 'other',
-        },
-      ],
-      required: true,
     },
     {
       name: 'displayName',
