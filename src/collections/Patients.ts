@@ -50,9 +50,7 @@ const Patients: CollectionConfig = {
     afterChange: [
       (hook: Hook) => {
         const { data } = hook;
-        const { name, birthdate } = data;
-        data.displayedName = `${name} - ${birthdate}`;
-
+        data.displayedName = `${data.name} - ${birthdate.birthdate}`;
         return hook;
       },
     ],
