@@ -60,7 +60,7 @@ fields: [
     name: 'pesel',
     label: 'PESEL',
     type: 'text',
-    required: true,
+    required: false,
     validate: (value) => {
       const regex = /^[0-9]{11}$/;
       if (value && !regex.test(value)) {
@@ -79,12 +79,7 @@ fields: [
         name: 'birthdate',
         label: 'Birthdate',
         type: 'date',
-        required: false,
-        dependsOn: {
-          pesel: {
-            exists: false,
-          },
-        },
+        required: true,
         admin: {
           width: '50%',
         },
@@ -108,11 +103,6 @@ fields: [
           },
         ],
         required: false,
-        dependsOn: {
-          pesel: {
-            exists: false,
-          },
-        },
         admin: {
           width: '50%',
         },
