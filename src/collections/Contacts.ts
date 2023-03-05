@@ -1,20 +1,20 @@
-import { Field } from '@payloadcms/config/dist/fields';
+import { CollectionConfig } from 'payload/types';
 
-const contactFields: Field[] = [
+const contactFields = [
   {
-    name: 'Name',
+    name: 'name',
     label: 'Name',
     type: 'text',
     required: true,
   },
   {
-    name: 'Email',
+    name: 'email',
     label: 'Email',
     type: 'email',
     required: true,
   },
   {
-    name: 'Phone',
+    name: 'phone',
     label: 'Phone',
     type: 'text',
     required: false,
@@ -28,7 +28,12 @@ const contactFields: Field[] = [
   },
 ];
 
-export default {
+const Contacts: CollectionConfig = {
   slug: 'contacts',
+  access: {
+    read: () => true,
+  },
   fields: contactFields,
 };
+
+export default Contacts;
