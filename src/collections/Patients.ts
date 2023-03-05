@@ -188,7 +188,6 @@ fields: [
   hooks: {
     beforeValidate: [
       validatePeselOrBirthdateAndGender,
-      validatePeselHook,
       parsePeselHook,
       createDisplayNameHook,
       generateAgeHook,
