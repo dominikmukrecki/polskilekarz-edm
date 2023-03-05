@@ -56,7 +56,15 @@ const DatePickerCell = ({ cell, onChange }: any) => {
     onChange(date?.toISOString());
   };
 
-  return <DatePicker selected={selectedDate} onChange={handleChange} />;
+  return (
+    <DatePicker
+      selected={selectedDate}
+      onChange={handleChange}
+      dateFormat="dd/MM/yyyy"
+      showYearDropdown
+      scrollableYearDropdown
+    />
+  );
 };
 
 export default Patients;
