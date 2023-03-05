@@ -29,18 +29,46 @@ const contactFields = [
     label: 'Address',
     type: 'textarea',
     required: true,
-    validate: (value) => {
-      const regex = /^(\d+[a-z]? )?(.*?) ?(.*?), (.*?), (.*?)$/i;
-      if (value && !regex.test(value)) {
-        return 'Invalid address format. Please use the format: "Street Address, City, State, Zip Code".';
-      }
-      return true;
-    },
     admin: {
       placeholder: 'Street Address, City, State, Zip Code',
     },
   },
-];
+  {
+    name: 'generatedAddresses',
+    label: 'Generated Addresses',
+    type: 'array',
+    required: false,
+    fields: [
+      {
+        name: 'address',
+        type: 'text',
+        label: 'Address',
+        required: true,
+      },
+      {
+        name: 'city',
+        type: 'text',
+        label: 'City',
+        required: true,
+      },
+      {
+        name: 'state',
+        type: 'text',
+        label: 'State',
+        required: true,
+      },
+      {
+        name: 'zipCode',
+        type: 'text',
+        label: 'Zip Code',
+        required: true,
+      },
+    ],
+    admin: {
+      readOnly: true,
+    },
+  }
+  ];
 
 const Contacts: CollectionConfig = {
   slug: 'contacts',
