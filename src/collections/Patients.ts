@@ -1,5 +1,5 @@
 import { CollectionConfig } from 'payload/types';
-import { validate } from '@payloadcms/config/dist/utils/validate';
+import { validate } from 'payload/config/dist/utils/validate';
 
 const Patients: CollectionConfig = {
   slug: 'patients',
