@@ -1,4 +1,4 @@
-import { CollectionConfig, Hook } from 'payload/types';
+import { CollectionConfig } from 'payload/types';
 
 const Patients: CollectionConfig = {
   slug: 'patients',
@@ -34,6 +34,13 @@ const Patients: CollectionConfig = {
         },
       ],
       required: true,
+    },
+    {
+      name: 'contacts',
+      label: 'Contacts',
+      type: 'relationship',
+      relationTo: 'contacts',
+      hasMany: true,
     },
   ],
 };
