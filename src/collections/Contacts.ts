@@ -2,25 +2,27 @@ import { Field } from '@payloadcms/config/dist/fields';
 
 const contactFields: Field[] = [
   {
-    name: 'contactName',
+    name: 'Name',
     label: 'Name',
     type: 'text',
     required: true,
-    maxLength: 50,
   },
   {
-    name: 'contactEmail',
+    name: 'Email',
     label: 'Email',
     type: 'email',
     required: true,
-    maxLength: 100,
   },
   {
-    name: 'contactPhone',
+    name: 'Phone',
     label: 'Phone',
     type: 'text',
     required: false,
-    maxLength: 20,
+    validate: (value) => {
+      const regex = /^\+?\d{0,3}[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+      if (value && !regex.test(value)) {
+        return req.t('invalidPhoneFormat');
+      }
   },
 ];
 
