@@ -17,6 +17,8 @@ const calculateExpirationDate: CollectionBeforeValidateHook<Prescription> = asyn
   return data;
 };
 
+const today = new Date();
+
 const Prescription: CollectionConfig = {
   slug: 'prescriptions',
   fields: [
@@ -45,8 +47,10 @@ const Prescription: CollectionConfig = {
       label: 'Date of Issuing',
       type: 'date',
       required: true,
+      defaultValue: today.toISOString(),
       admin: {
-        width: '50%',
+        position: 'sidebar',
+        readOnly: true,
       },
     },
     {
@@ -55,6 +59,7 @@ const Prescription: CollectionConfig = {
       type: 'number',
       required: true,
       admin: {
+        position: 'sidebar',
         width: '50%',
       },
     },
