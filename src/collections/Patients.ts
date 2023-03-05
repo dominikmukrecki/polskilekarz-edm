@@ -1,5 +1,4 @@
 import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
-import getDraftsConfig from '../shared/draftsConfig';
 
 const createDisplayNameHook: CollectionBeforeValidateHook = async ({
   data,
@@ -175,7 +174,7 @@ fields: [
     ],
   },
   versions: {
-    drafts: getDraftsConfig,
+    drafts: true,
   },
 };
 
