@@ -39,7 +39,7 @@ const Patients: CollectionConfig = {
     {
       name: 'age',
       label: 'Age',
-      type: 'number',
+      type: 'text',
       required: false,
       admin: {
         readOnly: true,
