@@ -1,5 +1,5 @@
 import { CollectionConfig } from "payload/types";
-import React from "react";
+import MyCustomUIField from "../components/MyCustomUIField";
 
 const Contacts: CollectionConfig = {
   slug: "contacts",
@@ -37,14 +37,6 @@ const Contacts: CollectionConfig = {
       autosave: true,
     },
   },
-};
-
-const MyCustomUIField: React.FC = () => {
-  return (
-    <p>
-      test
-    </p>
-  );
 };
 
 export default Contacts;
