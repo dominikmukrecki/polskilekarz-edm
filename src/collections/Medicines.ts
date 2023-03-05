@@ -10,7 +10,7 @@ interface Medicine {
 
 const createDisplayName: CollectionBeforeValidateHook<Medicine> = async ({ data }) => {
   const { commonName, brandName, pharmaceuticalForm, amountAndUnit } = data;
-  data.displayName = `${commonName} (${brandName}) - ${pharmaceuticalForm} (${amountAndUnit})`;
+  data.displayName = `${commonName} (${brandName}) - ${pharmaceuticalForm}, ${amountAndUnit}`;
   return data;
 };
 
@@ -47,6 +47,10 @@ const Medicines: CollectionConfig = {
       type: 'text',
       required: true,
       defaultValue: 'New Medicine',
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+        },        
     },
   ],
   admin: {
