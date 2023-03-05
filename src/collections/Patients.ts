@@ -32,127 +32,127 @@ const parsePeselHook: CollectionBeforeValidateHook = async ({ data }) => {
 
 const Patients: CollectionConfig = {
   slug: 'patients',
-  fields: [
-    {
-      type: 'row',
-      fields: [
-        {
-          name: 'firstName',
-          label: 'First Name',
-          type: 'text',
-          required: true,
-          admin: {
-            width: '50%',
-          },
+fields: [
+  {
+    type: 'row',
+    fields: [
+      {
+        name: 'firstName',
+        label: 'First Name',
+        type: 'text',
+        required: true,
+        admin: {
+          width: '50%',
         },
-        {
-          name: 'lastName',
-          label: 'Last Name',
-          type: 'text',
-          required: true,
-          admin: {
-            width: '50%',
-          },
+      },
+      {
+        name: 'lastName',
+        label: 'Last Name',
+        type: 'text',
+        required: true,
+        admin: {
+          width: '50%',
         },
-      ],
-    },
-    {
-      name: 'pesel',
-      label: 'PESEL',
-      type: 'text',
-      required: true,
-      validate: (value) => {
-        const regex = /^[0-9]{11}$/;
-        if (value && !regex.test(value)) {
-          return 'Invalid PESEL format';
-        }
-        return true;
       },
-      admin: {
-        width: '50%',
-      },
+    ],
+  },
+  {
+    name: 'pesel',
+    label: 'PESEL',
+    type: 'text',
+    required: true,
+    validate: (value) => {
+      const regex = /^[0-9]{11}$/;
+      if (value && !regex.test(value)) {
+        return 'Invalid PESEL format';
+      }
+      return true;
     },
-    {
-      type: 'row',
-      fields: [
-        {
-          name: 'birthdate',
-          label: 'Birthdate',
-          type: 'date',
-          required: false,
-          dependsOn: {
-            pesel: {
-              exists: false,
-            },
-          },
-          admin: {
-            width: '50%',
-          },
-        },
-        {
-          name: 'gender',
-          label: 'Gender',
-          type: 'select',
-          options: [
-            {
-              label: 'Male',
-              value: 'male',
-            },
-            {
-              label: 'Female',
-              value: 'female',
-            },
-            {
-              label: 'Other',
-              value: 'other',
-            },
-          ],
-          required: false,
-          dependsOn: {
-            pesel: {
-              exists: false,
-            },
-          },
-          admin: {
-            width: '50%',
-          },
-        },
-      ],
-    },
-    {
-      name: 'age',
-      label: 'Age',
-      type: 'text',
-      required: false,
-      admin: {
-        readOnly: true,
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'contacts',
-      label: 'Contacts',
-      type: 'relationship',
-      relationTo: 'contacts',
-      hasMany: true,
-      required: false,
-      admin: {
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'displayName',
-      label: 'Display Name',
-      type: 'text',
-      required: true,
-      defaultValue: 'New Patient',
-      admin: {
-        position: 'sidebar',
-        readOnly: true,
-      },
-    },
-  ],
     admin: {
+      width: '50%',
+    },
+  },
+  {
+    type: 'row',
+    fields: [
+      {
+        name: 'birthdate',
+        label: 'Birthdate',
+        type: 'date',
+        required: false,
+        dependsOn: {
+          pesel: {
+            exists: false,
+          },
+        },
+        admin: {
+          width: '50%',
+        },
+      },
+      {
+        name: 'gender',
+        label: 'Gender',
+        type: 'select',
+        options: [
+          {
+            label: 'Male',
+            value: 'male',
+          },
+          {
+            label: 'Female',
+            value: 'female',
+          },
+          {
+            label: 'Other',
+            value: 'other',
+          },
+        ],
+        required: false,
+        dependsOn: {
+          pesel: {
+            exists: false,
+          },
+        },
+        admin: {
+          width: '50%',
+        },
+      },
+    ],
+  },
+  {
+    name: 'age',
+    label: 'Age',
+    type: 'text',
+    required: false,
+    admin: {
+      readOnly: true,
+      position: 'sidebar',
+    },
+  },
+  {
+    name: 'contacts',
+    label: 'Contacts',
+    type: 'relationship',
+    relationTo: 'contacts',
+    hasMany: true,
+    required: false,
+    admin: {
+      position: 'sidebar',
+    },
+  },
+  {
+    name: 'displayName',
+    label: 'Display Name',
+    type: 'text',
+    required: true,
+    defaultValue: 'New Patient',
+    admin: {
+      position: 'sidebar',
+      readOnly: true,
+    },
+  },
+],
+  admin: {
     useAsTitle: 'displayName',
   },
   hooks: {
@@ -161,6 +161,11 @@ const Patients: CollectionConfig = {
       generateAgeHook,
     ],
     beforeValidate: [parsePeselHook],
+  },
+  versions: {
+    drafts: {
+      autosave: true,
+    },
   },
 };
 
