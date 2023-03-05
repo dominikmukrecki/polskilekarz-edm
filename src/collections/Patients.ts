@@ -1,7 +1,8 @@
 import { CollectionConfig } from 'payload/types';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import { useState } from 'react';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 const Patients: CollectionConfig = {
   slug: 'patients',
@@ -15,23 +16,21 @@ const Patients: CollectionConfig = {
     {
       name: 'birthdate',
       label: 'Birthdate',
-      type: 'custom',
-      defaultValue: new Date(),
+      type: 'text',
       admin: {
         components: {
-          Cell: ({ cellData, onChange }: any) => {
-            const [date, setDate] = useState<Date>(cellData);
+          Cell: ({ cell, onChange }) => {
+            const [selectedDate, setSelectedDate] = useState<Date | null>(
+              new Date(cell.value)
+            );
+
+            const handleChange = (date: Date | null) => {
+              setSelectedDate(date);
+              onChange(date?.toISOString());
+            };
 
             return (
-              <DatePicker
-                selected={date}
-                onChange={(newDate: Date) => {
-                  setDate(newDate);
-                  onChange(newDate);
-                }}
-                showYearDropdown
-                dateFormat="dd/MM/yyyy"
-              />
+              <DatePicker/>
             );
           },
         },
