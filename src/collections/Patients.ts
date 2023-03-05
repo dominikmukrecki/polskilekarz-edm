@@ -173,9 +173,15 @@ fields: [
       generateAgeHook,
     ],
   },
-    versions: {
+  versions: {
     drafts: {
-      autosave: true,
+      autosave: ({ isNewDocument, data }) => {
+        if (isNewDocument) {
+          return false;
+        }
+        const hasData = Object.values(data).some((value) => Boolean(value));
+        return hasData;
+      },
     },
   },
 };
