@@ -8,6 +8,13 @@ const Contacts: CollectionConfig = {
   },
   fields: [
     {
+      name: "customID",
+      type: "text",
+      admin: {
+        readOnly: true,
+      },
+    },
+    {
       type: "row",
       fields: [
         {
@@ -17,13 +24,6 @@ const Contacts: CollectionConfig = {
         {
           name: "contactEmial",
           type: "email",
-        },
-        {
-          name: "customID",
-          type: "text",
-          admin: {
-            readOnly: true,
-          },
         },
       ],
     },
