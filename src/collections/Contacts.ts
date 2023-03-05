@@ -1,7 +1,7 @@
 import { CollectionConfig } from "payload/types";
 
 const Contacts: CollectionConfig = {
-  slug: "contacts",
+  slug: "contacts1",
   admin: {
     useAsTitle: "contactEmail",
     hideAPIURL: true,
