@@ -13,7 +13,6 @@ const Patients: CollectionConfig = {
       name: 'birthdate',
       label: 'Birthdate',
       type: 'date',
-      format: 'date',
       required: true,
     },
     {
