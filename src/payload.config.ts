@@ -9,6 +9,7 @@ export default buildConfig({
   cors: '*',
   admin: {
     user: Users.slug,
+    css: path.resolve(__dirname, 'scss/stylesheet.scss'),
   },
   collections: [
     Users,
@@ -16,7 +17,7 @@ export default buildConfig({
     Patients,
   ],
   typescript: {
-    outputFile: path.resolve(__dirname, 'payload-types.ts')
+    outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
