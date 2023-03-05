@@ -11,8 +11,8 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [
-    Contacts,
     Users,
+    Contacts,
     Patients,
   ],
   typescript: {
