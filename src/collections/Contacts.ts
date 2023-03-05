@@ -3,7 +3,7 @@ import { CollectionConfig } from "payload/types";
 const Contacts: CollectionConfig = {
   slug: "contacts",
   admin: {
-    useAsTitle: "contactName",
+    useAsTitle: "contactEmail",
     hideAPIURL: true,
   },
   fields: [
@@ -12,7 +12,7 @@ const Contacts: CollectionConfig = {
       type: "text",
     },
     {
-      name: "contactEmial",
+      name: "contactEmail",
       type: "email",
     },
     {
