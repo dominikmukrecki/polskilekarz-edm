@@ -23,36 +23,6 @@ const generateAgeHook: CollectionBeforeValidateHook = async ({ data }) => {
   return data;
 };
 
-const validatePeselHook: CollectionBeforeValidateHook = async ({ data }) => {
-  const { pesel } = data;
-  if (!pesel) return null;
-
-  const regex = /^[0-9]{11}$/;
-  if (!regex.test(pesel)) {
-    throw new Error('Invalid PESEL format');
-  }
-
-  const [year, month, day, _, gender] = pesel.match(/^(\d{2})(\d{2})(\d{2})\d(\d{1})$/)?.slice(1) || [];
-  if (!year || !month || !day || !gender) {
-    throw new Error('Invalid PESEL format');
-  }
-
-  const monthNumber = parseInt(month);
-  const century = monthNumber < 13 ? '19' : monthNumber < 33 ? '20' : monthNumber < 53 ? '21' : '18';
-  const birthDate = new Date(`${century}${year}-${month}-${day}`);
-  if (isNaN(birthDate.getTime())) {
-    throw new Error('Invalid PESEL format');
-  }
-
-  const checkSum = (9 * parseInt(pesel[0]) + 7 * parseInt(pesel[1]) + 3 * parseInt(pesel[2]) + parseInt(pesel[3]) + 9 * parseInt(pesel[4]) + 7 * parseInt(pesel[5]) + 3 * parseInt(pesel[6]) + parseInt(pesel[7]) + 9 * parseInt(pesel[8]) + 7 * parseInt(pesel[9])) % 10;
-  if (checkSum !== parseInt(pesel[10])) {
-    throw new Error('Invalid PESEL checksum');
-  }
-
-  return data;
-};
-
-
 const parsePeselHook: CollectionBeforeValidateHook = async ({ data }) => {
   const { pesel } = data;
   if (!pesel) {
@@ -81,6 +51,28 @@ const validatePeselOrBirthdateAndGender: CollectionBeforeValidateHook = async ({
   }
 
   return data;
+};
+
+const validatePesel = (value) => {
+  const regex = /^[0-9]{11}$/;
+  if (value && !regex.test(value)) {
+    return 'Invalid PESEL format';
+  }
+  const [year, month, day, _, gender] = value.match(/^(\d{2})(\d{2})(\d{2})\d(\d{1})$/)?.slice(1) || [];
+  if (!year || !month || !day || !gender) {
+    return 'Invalid PESEL format';
+  }
+  const monthNumber = parseInt(month);
+  const century = monthNumber < 13 ? '19' : monthNumber < 33 ? '20' : monthNumber < 53 ? '21' : '18';
+  const birthDate = new Date(`${century}${year}-${month}-${day}`);
+  if (isNaN(birthDate.getTime())) {
+    return 'Invalid PESEL format';
+  }
+  const checkSum = (9 * parseInt(value[0]) + 7 * parseInt(value[1]) + 3 * parseInt(value[2]) + parseInt(value[3]) + 9 * parseInt(value[4]) + 7 * parseInt(value[5]) + 3 * parseInt(value[6]) + parseInt(value[7]) + 9 * parseInt(value[8]) + 7 * parseInt(value[9])) % 10;
+  if (checkSum !== parseInt(value[10])) {
+    return 'Invalid PESEL checksum';
+  }
+  return true;
 };
 
 const Patients: CollectionConfig = {
@@ -151,7 +143,8 @@ fields: [
     label: 'PESEL',
     type: 'text',
     required: false,
-      admin: {
+    validate: validatePesel,
+    admin: {
       width: '50%',
     },
   },
