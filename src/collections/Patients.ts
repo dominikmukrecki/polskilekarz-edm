@@ -3,9 +3,9 @@ import { CollectionConfig, CollectionBeforeChangeHook } from 'payload/types';
 const beforeChangeHook: CollectionBeforeChangeHook = async ({
   data,
 }) => {
-  const { name, birthdate } = data;
+  const { firstName, lastName, birthdate } = data;
   const formattedBirthdate = new Date(birthdate).toLocaleDateString('pl-PL');
-  data.displayName = `${name}, ur.: ${formattedBirthdate}`;
+  data.displayName = `${firstName} ${lastName}, ur.: ${formattedBirthdate}`;
 
   const birthDate = new Date(birthdate);
   const diff = Date.now() - birthDate.getTime();
@@ -19,8 +19,14 @@ const Patients: CollectionConfig = {
   slug: 'patients',
   fields: [
     {
-      name: 'name',
-      label: 'Name',
+      name: 'firstName',
+      label: 'First Name',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'lastName',
+      label: 'Last Name',
       type: 'text',
       required: true,
     },
