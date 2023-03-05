@@ -175,10 +175,7 @@ fields: [
   },
   versions: {
     drafts: {
-      autosave: ({ isNewDocument, data }) => {
-        if (isNewDocument) {
-          return false;
-        }
+      autosave: ({ data }) => {
         const hasData = Object.values(data).some((value) => Boolean(value));
         return hasData;
       },
