@@ -39,7 +39,6 @@ services:
       - --storageEngine=wiredTiger
     volumes:
       - data:/data/db
-      - config:/data/configdb
     logging:
       driver: none
     networks:
@@ -47,7 +46,6 @@ services:
 
 volumes:
   data:
-  config:
   node_modules:
 
 networks:
