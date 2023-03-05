@@ -3,19 +3,19 @@ import { Field } from '@payloadcms/config/dist/fields';
 const contactFields: Field[] = [
   {
     name: 'Name',
-    label: 'Name',
+    label: () => req.t('nameLabel'),
     type: 'text',
     required: true,
   },
   {
     name: 'Email',
-    label: 'Email',
+    label: () => req.t('emailLabel'),
     type: 'email',
     required: true,
   },
   {
     name: 'Phone',
-    label: 'Phone',
+    label: () => req.t('phoneLabel'),
     type: 'text',
     required: false,
     validate: (value) => {

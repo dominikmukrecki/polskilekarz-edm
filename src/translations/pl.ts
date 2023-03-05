@@ -1,5 +1,14 @@
-export const pl = {
-    invalidPhoneFormat: 'Nieprawidłowy format numeru telefonu',
-    // more translations for the 'pl' locale
+export default {
+    fields: {
+      name: 'Imię',
+      email: 'Email',
+      roles: 'Role',
+      admin: 'Admin',
+      doctor: 'Lekarz',
+      assistant: 'Asystent',
+    },
+    errors: {
+      invalidPhoneFormat: 'Nieprawidłowy format numeru telefonu',
+    },
   };
   
