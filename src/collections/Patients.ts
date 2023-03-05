@@ -1,4 +1,5 @@
 import { CollectionConfig, Hook } from 'payload/types';
+import { format } from 'date-fns';
 
 const Patients: CollectionConfig = {
   slug: 'patients',
@@ -47,6 +48,17 @@ const Patients: CollectionConfig = {
   ],
   admin: {
     useAsTitle: 'displayName',
+  },
+  hooks: {
+    beforeChange: [
+      async (hook) => {
+        const { data } = hook;
+        const { name, birthdate } = data;
+        const formattedBirthdate = format(new Date(birthdate), 'yyyy-MM-dd');
+        data.displayName = `${name} - ${formattedBirthdate}`;
+        return hook;
+      },
+    ],
   },
 };
 
