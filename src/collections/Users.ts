@@ -1,6 +1,6 @@
-import { CollectionConfig, Field } from 'payload/types';
+import { CollectionConfig } from 'payload/types';
 
-const Fields: Field[] = [
+const Fields = [
   {
     name: 'name',
     label: 'Name',
@@ -16,7 +16,7 @@ const Fields: Field[] = [
   {
     name: 'roles',
     label: 'Roles',
-    type: 'multiselect',
+    type: 'select',
     options: [
       {
         label: 'Admin',
@@ -31,10 +31,12 @@ const Fields: Field[] = [
         value: 'assistant',
       },
     ],
+    hasMany: true,
     defaultValue: ['assistant'],
     required: true,
   },
-];
+  // Add more fields as needed
+] as const;
 
 const Users: CollectionConfig = {
   slug: 'users',
