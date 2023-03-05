@@ -1,5 +1,3 @@
-import { CollectionConfig } from 'payload/types';
-
 const contactFields = [
   {
     name: 'name',
@@ -24,6 +22,22 @@ const contactFields = [
         return 'Invalid phone number format';
       }
       return true;
+    },
+  },
+  {
+    name: 'address',
+    label: 'Address',
+    type: 'textarea',
+    required: true,
+    validate: (value) => {
+      const regex = /^(\d+[a-z]? )?(.*?) ?(.*?), (.*?), (.*?)$/i;
+      if (value && !regex.test(value)) {
+        return 'Invalid address format. Please use the format: "Street Address, City, State, Zip Code".';
+      }
+      return true;
+    },
+    admin: {
+      placeholder: 'Street Address, City, State, Zip Code',
     },
   },
 ];

@@ -35,26 +35,7 @@ const Patients: CollectionConfig = {
       ],
       required: true,
     },
-    {
-      name: 'displayedName',
-      label: 'Displayed Name',
-      type: 'text',
-      required: false,
-      admin: {
-        readOnly: true,
-        hidden: false,
-      },
-    },
   ],
-  hooks: {
-    afterChange: [
-      (hook: Hook) => {
-        const { data } = hook;
-        data.displayedName = `${data.name} - ${data.birthdate}`;
-        return hook;
-      },
-    ],
-  },
 };
 
 export default Patients;
