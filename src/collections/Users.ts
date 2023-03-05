@@ -6,19 +6,17 @@ const Fields = [
     label: 'Name',
     type: 'text',
     required: true,
-    maxLength: 50,
   },
   {
     name: 'email',
     label: 'Email',
     type: 'email',
     required: true,
-    maxLength: 100,
   },
   {
-    name: 'role',
-    label: 'Role',
-    type: 'select',
+    name: 'roles',
+    label: 'Roles',
+    type: 'multiselect',
     options: [
       {
         label: 'Admin',
@@ -33,7 +31,7 @@ const Fields = [
         value: 'assistant',
       },
     ],
-    defaultValue: 'assistant',
+    defaultValue: ['assistant'],
     required: true,
   },
   // Add more fields as needed
