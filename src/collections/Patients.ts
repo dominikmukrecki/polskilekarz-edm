@@ -57,13 +57,34 @@ const Patients: CollectionConfig = {
       ],
     },
     {
+      name: 'pesel',
+      label: 'PESEL',
+      type: 'text',
+      required: true,
+      validate: (value) => {
+        const regex = /^[0-9]{11}$/;
+        if (value && !regex.test(value)) {
+          return 'Invalid PESEL format';
+        }
+        return true;
+      },
+      admin: {
+        width: '50%',
+      },
+    },
+    {
       type: 'row',
       fields: [
         {
           name: 'birthdate',
           label: 'Birthdate',
           type: 'date',
-          required: true,
+          required: false,
+          dependsOn: {
+            pesel: {
+              exists: false,
+            },
+          },
           admin: {
             width: '50%',
           },
@@ -86,28 +107,17 @@ const Patients: CollectionConfig = {
               value: 'other',
             },
           ],
-          required: true,
+          required: false,
+          dependsOn: {
+            pesel: {
+              exists: false,
+            },
+          },
           admin: {
             width: '50%',
           },
         },
       ],
-    },
-    {
-      name: 'pesel',
-      label: 'PESEL',
-      type: 'text',
-      required: true,
-      validate: (value) => {
-        const regex = /^[0-9]{11}$/;
-        if (value && !regex.test(value)) {
-          return 'Invalid PESEL format';
-        }
-        return true;
-      },
-      admin: {
-        width: '50%',
-      },
     },
     {
       name: 'age',
@@ -142,7 +152,7 @@ const Patients: CollectionConfig = {
       },
     },
   ],
-  admin: {
+    admin: {
     useAsTitle: 'displayName',
   },
   hooks: {
