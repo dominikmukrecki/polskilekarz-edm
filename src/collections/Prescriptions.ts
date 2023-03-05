@@ -11,7 +11,7 @@ const calculateExpirationDate: CollectionBeforeValidateHook<PrescriptionData> = 
   const { issuingDate, daysOfValidity } = data;
   if (!issuingDate || !daysOfValidity) return data;
 
-  data.expirationDate = daysOfValidity;
+  data.expirationDate = issuingDate;
   return data;
 };
 
