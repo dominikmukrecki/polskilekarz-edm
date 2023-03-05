@@ -1,10 +1,12 @@
 import { CollectionConfig, Hook, CollectionBeforeChangeHook } from 'payload/types';
+import { useRouter } from 'next/router'
 
 const beforeChangeHook: CollectionBeforeChangeHook = async ({
   data,
 }) => {
   const { name, birthdate } = data;
-  const formattedBirthdate = new Date(birthdate).toLocaleDateString();
+  const currentLang =  router.locale;
+  const formattedBirthdate = new Date(birthdate).toLocaleDateString(currentLangs);
   data.displayName = `${name} - ${formattedBirthdate}`;
   return data;
 }
