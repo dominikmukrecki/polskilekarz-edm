@@ -47,7 +47,7 @@ const Patients: CollectionConfig = {
     },
   ],
   hooks: {
-    beforeChange: [
+    afterChange: [
       (hook: Hook) => {
         const { data } = hook;
         const { name, birthdate } = data;
