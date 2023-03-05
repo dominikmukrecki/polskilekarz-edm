@@ -1,6 +1,6 @@
 import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
 
-interface Medicine {
+interface MedicineData {
   commonName: string;
   brandName: string;
   pharmaceuticalForm: string;
@@ -8,7 +8,7 @@ interface Medicine {
   displayName: string;
 }
 
-const createDisplayName: CollectionBeforeValidateHook<Medicine> = async ({ data }) => {
+const createDisplayName: CollectionBeforeValidateHook<MedicineData> = async ({ data }) => {
   const { commonName, brandName, pharmaceuticalForm, amountAndUnit } = data;
   data.displayName = `${commonName} (${brandName}) - ${pharmaceuticalForm}, ${amountAndUnit}`;
   return data;
