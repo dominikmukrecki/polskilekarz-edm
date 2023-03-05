@@ -53,16 +53,7 @@ const Patients: CollectionConfig = {
       async (hook: Hook) => {
         const { data } = hook;
         const { name, birthdate } = data;
-
-        if (name && birthdate) {
-          const formattedBirthdate = new Date(birthdate).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          });
-          data.displayedName = `${name} - ${formattedBirthdate}`;
-        }
-
+        data.displayedName = `${name} - ${birthdate}`;
         return hook;
       },
     ],
