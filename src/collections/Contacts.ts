@@ -19,7 +19,7 @@ const contactFields = [
     type: 'text',
     required: false,
     validate: (value) => {
-      const regex = /^\+?\d{0,3}[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+      const regex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
       if (value && !regex.test(value)) {
         return 'Invalid phone number format';
       }
