@@ -23,7 +23,7 @@ const generateAgeHook: CollectionBeforeValidateHook = async ({ data }) => {
   return data;
 };
 
-const validatePeselHook: CollectionBeforeValidateHook<Medicine> = async ({ data }) => {
+const validatePeselHook: CollectionBeforeValidateHook = async ({ data }) => {
   const { pesel } = data;
   if (!pesel) return null;
 
