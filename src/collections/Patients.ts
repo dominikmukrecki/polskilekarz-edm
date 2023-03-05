@@ -38,6 +38,17 @@ const parsePeselHook: CollectionBeforeValidateHook = async ({ data }) => {
   return data;
 };
 
+const validatePeselOrBirthdateAndGender: CollectionBeforeValidateHook = async ({ data }) => {
+  const { pesel, birthdate, gender } = data;
+
+  if (!pesel && (!birthdate || !gender)) {
+    throw new Error('Either PESEL or both birthdate and gender are required');
+  }
+
+  return data;
+};
+
+
 const Patients: CollectionConfig = {
   slug: 'patients',
 fields: [
@@ -71,7 +82,7 @@ fields: [
         name: 'birthdate',
         label: 'Birthdate',
         type: 'date',
-        required: true,
+        required: false,
         admin: {
           width: '50%',
         },
@@ -122,6 +133,7 @@ fields: [
     label: 'Age',
     type: 'text',
     required: false,
+    defaultValue: 'Age not calculated yet'
     admin: {
       readOnly: true,
       position: 'sidebar',
@@ -154,9 +166,14 @@ fields: [
     useAsTitle: 'displayName',
   },
   hooks: {
-    beforeValidate: [parsePeselHook,createDisplayNameHook,generateAgeHook],
+    beforeValidate: [
+      validatePeselOrBirthdateAndGender,
+      parsePeselHook,
+      createDisplayNameHook,
+      generateAgeHook,
+    ],
   },
-  versions: {
+    versions: {
     drafts: {
       autosave: true,
     },
