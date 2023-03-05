@@ -1,4 +1,18 @@
-import { CollectionConfig } from 'payload/types';
+import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
+
+interface Medicine {
+  commonName: string;
+  brandName: string;
+  pharmaceuticalForm: string;
+  amountAndUnit: string;
+  displayName: string;
+}
+
+const createDisplayName: CollectionBeforeValidateHook<Medicine> = async ({ data }) => {
+  const { commonName, brandName, pharmaceuticalForm, amountAndUnit } = data;
+  data.displayName = `${commonName} (${brandName}) - ${pharmaceuticalForm} (${amountAndUnit})`;
+  return data;
+};
 
 const Medicines: CollectionConfig = {
   slug: 'medicines',
@@ -10,6 +24,7 @@ const Medicines: CollectionConfig = {
       required: true,
       admin: {
         width: '50%',
+        columns: 2, // span two columns
       },
     },
     {
@@ -19,6 +34,7 @@ const Medicines: CollectionConfig = {
       required: true,
       admin: {
         width: '50%',
+        columns: 2, // span two columns
       },
     },
     {
@@ -27,7 +43,8 @@ const Medicines: CollectionConfig = {
       type: 'text',
       required: true,
       admin: {
-        width: '50%',
+        width: '33.33%',
+        columns: 1, // span one column
       },
     },
     {
@@ -36,7 +53,8 @@ const Medicines: CollectionConfig = {
       type: 'text',
       required: true,
       admin: {
-        width: '50%',
+        width: '66.67%',
+        columns: 2, // span two columns
       },
     },
     {
@@ -49,17 +67,13 @@ const Medicines: CollectionConfig = {
         position: 'sidebar',
         readOnly: true,
       },
-      hooks: {
-        beforeValidate: ({ data }) => {
-          const { commonName, brandName, pharmaceuticalForm, amountAndUnit } = data;
-          data.displayName = `${commonName} (${brandName}) - ${pharmaceuticalForm} (${amountAndUnit})`;
-          return data;
-        },
-      },
     },
   ],
   admin: {
     useAsTitle: 'displayName',
+  },
+  hooks: {
+    beforeValidate: [createDisplayName],
   },
 };
 
