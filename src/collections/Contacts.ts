@@ -23,11 +23,6 @@ const Contacts: CollectionConfig = {
       },
     },
   ],
-  versions: {
-    drafts: {
-      autosave: true,
-    },
-  },
 };
 
 export default Contacts;
