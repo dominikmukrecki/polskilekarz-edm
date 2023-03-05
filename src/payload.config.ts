@@ -2,7 +2,7 @@ import { buildConfig } from 'payload/config';
 import path from 'path';
 import Contacts from './collections/Contacts';
 import Users from './collections/Users';
-import Tests from '.collection/Tests';
+import Tests from './collections/Tests';
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
