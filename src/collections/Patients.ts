@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload/types';
+import { CollectionConfig, Hook } from 'payload/types';
 
 const Patients: CollectionConfig = {
   slug: 'patients',
@@ -36,13 +36,18 @@ const Patients: CollectionConfig = {
       required: true,
     },
     {
-      name: 'contacts',
-      label: 'Contacts',
-      type: 'relationship',
-      relationTo: 'contacts',
-      hasMany: true,
+      name: 'displayName',
+      label: 'Display Name',
+      type: 'text',
+      required: false,
+      admin: {
+        position: 'sidebar',
+      },
     },
   ],
+  admin: {
+    useAsTitle: 'displayName',
+  },
 };
 
 export default Patients;
