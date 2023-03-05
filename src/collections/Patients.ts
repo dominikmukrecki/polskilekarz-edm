@@ -23,7 +23,7 @@ const parsePeselHook: CollectionBeforeChangeHook = async ({ data }) => {
   const birthYear = parseInt(pesel.substring(0, 2));
   const birthMonth = parseInt(pesel.substring(2, 4)) % 20;
   const birthDay = parseInt(pesel.substring(4, 6));
-  const gender = parseInt(pesel.substring(9, 10)) % 2 === 0 ? 'Female' : 'Male';
+  const gender = parseInt(pesel.substring(9, 10)) % 2 === 0 ? 'female' : 'male';
   const birthdate = new Date(`${birthYear}-${birthMonth}-${birthDay}`).toISOString();
   data.birthdate = birthdate;
   data.gender = gender;
