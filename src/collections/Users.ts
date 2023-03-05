@@ -47,3 +47,5 @@ const Users: CollectionConfig = {
     // Add more fields as needed
   ],
 };
+
+export default Users;
