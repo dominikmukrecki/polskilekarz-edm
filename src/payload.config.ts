@@ -22,7 +22,7 @@ export default buildConfig({
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
   i18n: {
-    locales: ['en', 'pl'],
-    defaultLocale: 'pl',
+    locales: ['en-US', 'pl-PL'],
+    defaultLocale: 'pl-PL',
   },
 });
