@@ -65,7 +65,7 @@ const contactFields = [
       },
     ],
     admin: {
-      readOnly: true,
+      readOnly: false,
     },
   }
   ];
