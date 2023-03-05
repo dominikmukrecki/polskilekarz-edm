@@ -20,7 +20,7 @@ const validateExpirationDate: CollectionBeforeValidateHook<PrescriptionData> = a
 
 const today = new Date();
 
-const Prescription: CollectionConfig = {
+const Prescriptions: CollectionConfig = {
   slug: 'prescriptions',
   fields: [
     {
@@ -65,3 +65,4 @@ const Prescription: CollectionConfig = {
   },
 };
 
+export default Prescriptions;
