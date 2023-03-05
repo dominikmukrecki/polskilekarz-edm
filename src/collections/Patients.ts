@@ -14,6 +14,8 @@ const createDisplayNameHook: CollectionBeforeValidateHook = async ({
 };
 
 const generateAgeHook: CollectionBeforeValidateHook = async ({ data }) => {
+  if (!data.birthdate) return null;
+
   const birthDate = new Date(data.birthdate);
   const diff = Date.now() - birthDate.getTime();
   const age = new Date(diff);
