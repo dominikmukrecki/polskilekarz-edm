@@ -16,8 +16,7 @@ const Patients: CollectionConfig = {
       required: true,
         admin: {
             date: {
-                yearDropdown: true,
-                scrollableYearDropdown: true,
+                monthsToShow: 2,
             },
         },
     },
