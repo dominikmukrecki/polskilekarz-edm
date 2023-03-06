@@ -7,6 +7,7 @@ interface PrescriptionData {
   expirationDate?: string;
 }
 
+// Calculates the expiration date based on the issuing date and days of validity
 const calculateExpirationDate: CollectionBeforeValidateHook<PrescriptionData> = async ({ data }) => {
   const { issuingDate, expirationDate, daysOfValidity } = data;
 
@@ -25,6 +26,7 @@ const today = new Date();
 
 const Prescriptions: CollectionConfig = {
   slug: 'prescriptions',
+  // Define the fields for the Prescription collection
   fields: [
     {
       name: 'patient',
@@ -41,18 +43,18 @@ const Prescriptions: CollectionConfig = {
       required: true,
     },
     {
-        name: 'amount',
-        label: 'Amount',
-        type: 'relationship',
-        relationTo: 'medicine-amounts',
-        required: true,
+      name: 'amount',
+      label: 'Amount',
+      type: 'relationship',
+      relationTo: 'medicine-amounts',
+      required: true,
     },  
     {
-        name: 'dosage',
-        label: 'Dosage',
-        type: 'relationship',
-        relationTo: 'dosage-descriptions',
-        required: true,
+      name: 'dosage',
+      label: 'Dosage',
+      type: 'relationship',
+      relationTo: 'dosage-descriptions',
+      required: true,
     },
     {
       name: 'issuingDate',
@@ -85,10 +87,12 @@ const Prescriptions: CollectionConfig = {
       },
     },
   ],
+  // Use the common name of the medicine as the title in the admin UI
   admin: {
     useAsTitle: 'medicine.commonName',
   },
   hooks: {
+    // Add the beforeValidate hook to calculate the expiration date
     beforeValidate: [calculateExpirationDate],
   },
 };
