@@ -1,14 +1,5 @@
-import { CollectionConfig, CollectionBeforeChangeHook } from "payload/types";
-
-const generateDisplayNameHook: CollectionBeforeChangeHook = async ({
-  data,
-}) => {
-  const { name, contactEmails, contactPhones } = data;
-  const email = contactEmails?.[0]?.email || '';
-  const phone = contactPhones?.[0]?.phone || '';
-  data.displayName = `${name}, ${email}, ${phone}`;
-  return data;
-};
+import { CollectionConfig } from 'payload/types';
+import generateDisplayName from '../hooks/generateDisplayName';
 
 const Contacts: CollectionConfig = {
   slug: "contacts",
@@ -73,24 +64,16 @@ const Contacts: CollectionConfig = {
       type: "text",
       required: true,
     },
-    {
-      name: "displayName",
-      label: "Display Name",
-      type: "text",
-      required: true,
-      defaultValue: "New Contact",
-      admin: {
-        position: "sidebar",
-        readOnly: true,
-      },
-    },
   ],
   admin: {
-    useAsTitle: "displayName",
     group: "Personal Data",
   },
   hooks: {
-    beforeChange: [generateDisplayNameHook],
+    beforeChange: [generateDisplayName({
+      fieldSlugs: ['name'],
+      separator: ', ',
+      useAsTitle: 'displayName',
+    })],
   },
 };
 
