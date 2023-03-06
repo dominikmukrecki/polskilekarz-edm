@@ -10,7 +10,7 @@ type GenerateDisplayNameArgs = {
 
 const generateDisplayName = ({ defaultLabel }: GenerateDisplayNameArgs) => {
   return async ({ data, collection }: Context<RecordData>): Promise<RecordData> => {
-    const singularLabel = collection.labels.singular || 'Record';
+    const singularLabel = collection.labels?.singular ?? 'Record';
 
     if (!data.displayName) {
       data.displayName = `New ${singularLabel}`;
