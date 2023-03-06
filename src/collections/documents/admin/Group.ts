@@ -1,1 +1,0 @@
-const Group = 'documents';
