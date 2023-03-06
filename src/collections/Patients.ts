@@ -205,9 +205,6 @@ fields: [
       generateAgeHook,
     ],
   },
-  versions: {
-    drafts: true,
-  },
 };
 
 export default Patients;
