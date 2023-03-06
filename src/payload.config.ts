@@ -22,7 +22,7 @@ const locales = ['en', 'pl'];
 const defaultLocale = 'en';
 
 // Build and export the Payload configuration object
-module.exports = buildConfig({
+export default buildConfig({
   // Define your Payload server settings
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   cors: '*',
@@ -66,20 +66,18 @@ module.exports = buildConfig({
     defaultLocale,
   },
 
-  // Add a "isArchived" field to all collections
-  hooks: {
-    beforeBootstrap: ({ collections }) => {
-      collections.forEach((collection) => {
-        collection.fields.push({
-          name: 'isArchived',
-          label: 'Archived',
-          type: 'checkbox',
-          defaultValue: false,
-          admin: {
-            position: 'sidebar',
-          },
-        });
+  // Add the beforeStart hook
+  beforeStart: async ({ collections }) => {
+    collections.forEach((collection) => {
+      collection.fields.push({
+        name: 'isArchived',
+        label: 'Archived',
+        type: 'checkbox',
+        defaultValue: false,
+        admin: {
+          position: 'sidebar',
+        },
       });
-    },
+    });
   },
 });
