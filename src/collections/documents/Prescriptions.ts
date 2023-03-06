@@ -1,4 +1,5 @@
 import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
+import Group from './config/Group';
 
 interface PrescriptionData {
   patient: string;
@@ -90,6 +91,7 @@ const Prescriptions: CollectionConfig = {
   // Use the common name of the medicine as the title in the admin UI
   admin: {
     useAsTitle: 'medicine.commonName',
+    group: Group,
   },
   hooks: {
     // Add the beforeValidate hook to calculate the expiration date
