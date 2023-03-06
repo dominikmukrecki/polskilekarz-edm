@@ -3,11 +3,11 @@ import path from 'path';
 
 // Import your collection definitions
 import Contacts from './collections/Contacts';
-import Users from './collections/personal/Users';
-import Patients from './collections/personal/Patients';
+import Users from './collections/Users';
+import Patients from './collections/Patients';
 
-import Medicines from './collections/medicines/Medicines';
-import MedicineAmounts from './collections/medicines/MedicineAmounts';
+import Medicines from './collections/Medicines';
+import MedicineAmounts from './collections/MedicineAmounts';
 import DosageDescriptions from './collections/DosageDescriptions';
 
 import Prescriptions from './collections/Prescriptions';
