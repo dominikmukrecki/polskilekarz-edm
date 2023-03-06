@@ -18,6 +18,8 @@ import Users from './collections/Users';
 
 import Labels from './collections/Labels';
 
+import addIsArchivedField from './plugins/addIsArchivedField';
+
 const locales = ['en', 'pl'];
 const defaultLocale = 'en';
 
@@ -65,19 +67,7 @@ export default buildConfig({
     locales,
     defaultLocale,
   },
+  // Add the addIsArchivedField plugin
+  plugins: [addIsArchivedField],
 
-  // Add the beforeStart hook
-  beforeStart: async ({ collections }) => {
-    collections.forEach((collection) => {
-      collection.fields.push({
-        name: 'isArchived',
-        label: 'Archived',
-        type: 'checkbox',
-        defaultValue: false,
-        admin: {
-          position: 'sidebar',
-        },
-      });
-    });
-  },
 });
