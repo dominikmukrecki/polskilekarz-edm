@@ -14,9 +14,6 @@ const DosageDescriptions: CollectionConfig = {
       required: true,
     },
   ],
-  access: {
-    read: () => true,
-  },
   admin: {
     useAsTitle: 'description',
   },

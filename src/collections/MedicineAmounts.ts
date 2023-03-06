@@ -15,6 +15,9 @@ const MedicineAmounts: CollectionConfig = {
       unique: true,
     },
   ],
+  admin: {
+    useAsTitle: 'description',
+  },
 };
 
 export default MedicineAmounts;
