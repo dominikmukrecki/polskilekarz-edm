@@ -224,6 +224,7 @@ const Patients: CollectionConfig = {
   },
   versions: {
     drafts: true,
+    group: 'Personal Data',
   },
 };
 
