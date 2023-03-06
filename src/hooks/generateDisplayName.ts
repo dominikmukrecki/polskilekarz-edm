@@ -11,7 +11,7 @@ type GenerateDisplayNameArgs = {
   useAsTitle?: string;
 };
 
-const generateDisplayName = ({ fieldSlugs, separator = ', ', displayNameField = 'displayName', useAsTitle }: GenerateDisplayNameArgs) => {
+const generateDisplayName: (payload: any) => (args: GenerateDisplayNameArgs) => CollectionBeforeChangeHook = (payload) => ({ fieldSlugs, separator = ', ', displayNameField = 'displayName', useAsTitle }: GenerateDisplayNameArgs) => {
   return async ({ data }: Context<RecordData>): Promise<RecordData> => {
     let displayName = '';
     for (let i = 0; i < fieldSlugs.length; i++) {

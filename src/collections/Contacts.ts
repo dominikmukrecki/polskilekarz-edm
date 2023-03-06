@@ -69,11 +69,13 @@ const Contacts: CollectionConfig = {
     group: "Personal Data",
   },
   hooks: {
-    beforeChange: [generateDisplayName({
-      fieldSlugs: ['name'],
-      separator: ', ',
-      useAsTitle: 'displayName',
-    })],
+    beforeChange: [
+      generateDisplayName(payload)({
+        fieldSlugs: ['name'],
+        separator: ', ',
+        useAsTitle: 'displayName',
+      }),
+    ],
   },
 };
 
