@@ -22,18 +22,18 @@ const parseSlug = (slug: string, data: RecordData): any => {
 };
 
 const generateDisplayNameHook = ({ fieldSlugs, separator = ', ', displayNameField }: GenerateDisplayNameArgs): CollectionBeforeChangeHook => {
-    return async ({ data }: Context<RecordData>): Promise<RecordData> => {
-      let displayName = '';
-      for (let i = 0; i < fieldSlugs.length; i++) {
-        const slug = fieldSlugs[i];
-        const value = parseSlug(slug, data);
-        if (value !== undefined && value !== '') {
-          displayName += `${value}${i === fieldSlugs.length - 1 ? '' : separator}`;
-        }
+  return async ({ data }: Context<RecordData>): Promise<RecordData> => {
+    let displayName = '';
+    for (let i = 0; i < fieldSlugs.length; i++) {
+      const slug = fieldSlugs[i];
+      const value = parseSlug(slug, data);
+      if (value !== undefined && value !== '') {
+        displayName += `${value}${i === fieldSlugs.length - 1 ? '' : separator}`;
       }
-      data[displayNameField] = displayName;
-      return data;
-    };
+    }
+    data[displayNameField] = displayName;
+    return data;
   };
-  
+};
+
 export default generateDisplayNameHook;
