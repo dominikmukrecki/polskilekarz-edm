@@ -32,15 +32,15 @@ export default buildConfig({
 
   // Define your Payload collections
   collections: [
-    Users,
     Contacts,
     Patients,
-    Medicines,
     Prescriptions,
+    Medicines,
     MedicineAmounts,
     DosageDescriptions,
     ICD10,
-  ],
+    Users,
+],
 
   // Configure TypeScript output
   typescript: {
