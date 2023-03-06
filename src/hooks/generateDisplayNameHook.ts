@@ -1,36 +1,24 @@
-import { CollectionBeforeChangeHook, Context } from 'payload/types';
-
-type RecordData = {
-  [key: string]: any;
-};
+import { CollectionBeforeOperationHook } from 'payload/types';
 
 type GenerateDisplayNameArgs = {
   defaultValue: string;
 };
 
 const generateDisplayName = ({ defaultValue }: GenerateDisplayNameArgs) => {
-  return async ({ data, collection }: Context<RecordData>): Promise<RecordData> => {
-    if (!data.displayName) {
-      data.displayName = defaultValue;
-    }
-
-    const displayNameField = collection.fields.find((field) => field.slug === 'displayName');
-
-    if (!displayNameField) {
+  return async ({ collection, payload }: any) => {
+    if (!collection.fields.some((field) => field.name === 'Display Name')) {
       await payload.fields.add(collection, {
         type: 'text',
-        name: 'displayName',
+        name: 'Display Name',
         label: 'Display Name',
         required: false,
         defaultValue,
       });
     }
-
-    return data;
   };
 };
 
-const generateDisplayNameHook: CollectionBeforeChangeHook = generateDisplayName({
+const generateDisplayNameHook: CollectionBeforeOperationHook = generateDisplayName({
   defaultValue: 'New Record',
 });
 
