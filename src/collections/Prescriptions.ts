@@ -3,17 +3,28 @@ import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
 interface PrescriptionData {
   patient: string;
   medicine: string;
-  issuingDate: Date;
-  expirationDate?: Date;
+  issuingDate: string;
+  expirationDate?: string;
 }
 
 const calculateExpirationDate: CollectionBeforeValidateHook<PrescriptionData> = async ({ data }) => {
-  const { issuingDate, daysOfValidity } = data;
+  const { issuingDate, expirationDate, daysOfValidity } = data;
 
   if (!issuingDate || !daysOfValidity) return data;
 
-  data.expirationDate = new Date(issuingDate.getTime() + daysOfValidity * 24 * 60 * 60 * 1000);
+  const issuingDateTime = new Date(issuingDate).getTime();
+  const daysInMilliseconds = daysOfValidity * 24 * 60 * 60 * 1000;
 
+  if (expirationDate) {
+    const expirationDateTime = new Date(expirationDate).getTime();
+    if (expirationDateTime < issuingDateTime + daysInMilliseconds) {
+      throw new Error('Expiration date must be later than issuing date');
+    }
+  }
+
+  const expirationDateTime = issuingDateTime + daysInMilliseconds;
+  data.expirationDate = new Date(expirationDateTime).toISOString();
+  
   return data;
 };
 
