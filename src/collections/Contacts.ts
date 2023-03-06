@@ -66,7 +66,8 @@ const Contacts: CollectionConfig = {
     },
   ],
   admin: {
-    group: "Personal Data",
+    group: 'Personal Data',
+    useAsTitle: 'displayName',
   },
   hooks: {
     beforeChange: [
