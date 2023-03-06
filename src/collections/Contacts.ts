@@ -1,4 +1,4 @@
-import { CollectionConfig, CollectionBeforeChangeHook } from "payload/types";
+import { CollectionConfig } from "payload/types";
 import generateDisplayNameHook from '../hooks/generateDisplayNameHook';
 
 const Contacts: CollectionConfig = {
@@ -83,8 +83,8 @@ const Contacts: CollectionConfig = {
   hooks: {
     beforeChange: [
       generateDisplayNameHook({
-        fieldSlugs: ['name', 'contactEmails.0.email'],
-        separator: ' - ',
+        fieldSlugs: ['name', 'contactEmails.0.email', 'contactPhones.0.phone'],
+        separator: ', ',
         displayNameField: 'displayName',
       }),
     ],
