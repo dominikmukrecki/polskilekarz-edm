@@ -1,14 +1,5 @@
-import { CollectionConfig, CollectionBeforeChangeHook } from "payload/types";
-
-const generateDisplayNameHook: CollectionBeforeChangeHook = async ({
-  data,
-}) => {
-  const { name, contactEmails, contactPhones } = data;
-  const email = contactEmails?.[0]?.email || '';
-  const phone = contactPhones?.[0]?.phone || '';
-  data.displayName = `${name}, ${email}, ${phone}`;
-  return data;
-};
+import { CollectionConfig } from "payload/types";
+import generateDisplayNameHook from '../hooks/generateDisplayNameHook';
 
 const Contacts: CollectionConfig = {
   slug: "contacts",
