@@ -50,4 +50,8 @@ export default buildConfig({
     locales: ['en-US', 'pl-PL'], // Supported locales
     defaultLocale: 'en-US', // Default locale
   },
+  localization: {
+    locales: ['en-US', 'pl-PL'], // Supported locales
+    defaultLocale: 'en-US', // Default locale
+  },
 });
