@@ -1,3 +1,5 @@
+// This file defines the Users collection in Payload CMS, including its fields and hooks
+
 import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
 
 interface UserData {
@@ -36,29 +38,43 @@ const Users: CollectionConfig = {
       required: true,
     },
     {
-      name: 'roles',
-      label: 'Roles',
-      type: 'select',
-      options: [
+      type: 'row',
+      fields: [
         {
-          label: 'Admin',
-          value: 'admin',
+          name: 'roles',
+          label: 'Roles',
+          type: 'select',
+          options: [
+            {
+              label: 'Admin',
+              value: 'admin',
+            },
+            {
+              label: 'Doctor',
+              value: 'doctor',
+            },
+            {
+              label: 'Assistant',
+              value: 'assistant',
+            },
+          ],
+          hasMany: true,
+          defaultValue: ['assistant'],
+          required: true,
+          admin: {
+            width: '50%',
+          },
         },
         {
-          label: 'Doctor',
-          value: 'doctor',
-        },
-        {
-          label: 'Assistant',
-          value: 'assistant',
+          name: 'pesel',
+          label: 'PESEL',
+          type: 'text',
+          required: false,
+          admin: {
+            width: '50%',
+          },
         },
       ],
-      hasMany: true,
-      defaultValue: ['assistant'],
-      required: true,
-      admin: {
-        position: 'sidebar',
-      },
     },
     {
       name: 'displayName',
@@ -79,3 +95,5 @@ const Users: CollectionConfig = {
 };
 
 export default Users;
+
+// Improved Users collection file with a row field containing the roles and pesel fields, adjusted width, and removed the sidebar from the age field.
