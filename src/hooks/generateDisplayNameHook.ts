@@ -21,8 +21,7 @@ const generateDisplayName = ({ defaultLabel }: GenerateDisplayNameArgs) => {
     if (!displayNameField) {
       await payload.fields.add(collection, {
         type: 'text',
-        name: 'Display Name',
-        slug: 'displayName',
+        name: 'displayName',
         label: 'Display Name',
         required: false,
         defaultValue: `New ${singularLabel}`,
