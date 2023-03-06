@@ -41,7 +41,7 @@ const parsePeselHook: CollectionBeforeValidateHook<PatientData> = async ({ data 
   if (!pesel) {
     return null;
   }
-  
+
   const birthYear = parseInt(pesel.substring(0, 2));
   const birthMonth = parseInt(pesel.substring(2, 4)) % 20;
   const birthDay = parseInt(pesel.substring(4, 6));
@@ -72,136 +72,144 @@ const validatePesel = (value?: string) => {
   if (!value) {
     return true; // Field is not required, so empty value is allowed
   }
-  
+
   const regex = /^[0-9]{11}$/;
   if (!regex.test(value)) {
     return 'Invalid PESEL format';
   }
-  
+
   const [year, month, day, _, gender] = value.match(/^(\d{2})(\d{2})(\d{2})\d(\d{1})$/)?.slice(1) || [];
   if (!year || !month || !day || !gender) {
     return 'Invalid PESEL format';
   }
-  
+
   const monthNumber = parseInt(month);
   const century = monthNumber < 13 ? '19' : monthNumber < 33 ? '20' : monthNumber < 53 ? '21' : '18';
   const birthDate = new Date(`${century}${year}-${month}-${day}`);
   if (isNaN(birthDate.getTime())) {
     return 'Invalid PESEL format';
   }
-  
+
   const checkSum = (9 * parseInt(value[0]) + 7 * parseInt(value[1]) + 3 * parseInt(value[2]) + parseInt(value[3]) + 9 * parseInt(value[4]) + 7 * parseInt(value[5]) + 3 * parseInt(value[6]) + parseInt(value[7]) + 9 * parseInt(value[8]) + 7 * parseInt(value[9])) % 10;
   if (checkSum !== parseInt(value[10])) {
     return 'Invalid PESEL checksum';
   }
-  
+
   return true;
 };
 
 const Patients: CollectionConfig = {
   slug: 'patients',
-fields: [
-  {
-    type: 'row',
-    fields: [
-      {
-        name: 'firstName',
-        label: 'First Name',
-        type: 'text',
-        required: true,
-        admin: {
-          width: '50%',
-        },
-      },
-      {
-        name: 'lastName',
-        label: 'Last Name',
-        type: 'text',
-        required: true,
-        admin: {
-          width: '50%',
-        },
-      },
-    ],
-  },
-  {
-    type: 'row',
-    fields: [
-      {
-        name: 'birthdate',
-        label: 'Birthdate',
-        type: 'date',
-        required: false,
-        admin: {
-          width: '50%',
-        },
-      },
-      {
-        name: 'gender',
-        label: 'Gender',
-        type: 'select',
-        options: [
-          {
-            label: 'Male',
-            value: 'male',
+  fields: [
+    {
+      type: 'row',
+      fields: [
+        {
+          name: 'firstName',
+          label: 'First Name',
+          type: 'text',
+          required: true,
+          admin: {
+            width: '50%',
           },
-          {
-            label: 'Female',
-            value: 'female',
-          },
-          {
-            label: 'Other',
-            value: 'other',
-          },
-        ],
-        required: false,
-        admin: {
-          width: '50%',
         },
+        {
+          name: 'lastName',
+          label: 'Last Name',
+          type: 'text',
+          required: true,
+          admin: {
+            width: '50%',
+          },
+        },
+      ],
+    },
+    {
+      type: 'row',
+      fields: [
+        {
+          name: 'birthdate',
+          label: 'Birthdate',
+          type: 'date',
+          required: false,
+          admin: {
+            width: '50%',
+          },
+        },
+        {
+          name: 'gender',
+          label: 'Gender',
+          type: 'select',
+          options: [
+            {
+              label: 'Male',
+              value: 'male',
+            },
+            {
+              label: 'Female',
+              value: 'female',
+            },
+            {
+              label: 'Other',
+              value: 'other',
+            },
+          ],
+          required: false,
+          admin: {
+            width: '50%',
+          },
+        },
+      ],
+    },
+    {
+      type: 'row',
+      fields: [
+        {
+          name: 'pesel',
+          label: 'PESEL',
+          type: 'text',
+          required: false,
+          validate: validatePesel,
+          admin: {
+            width: '50%',
+          },
+        },
+        {
+          name: 'age',
+          label: 'Age',
+          type: 'text',
+          required: false,
+          defaultValue: 'Age not calculated yet',
+          admin: {
+            readOnly: true,
+            width: '50%',
+          },
+        },
+      ],
+    },
+    {
+      name: 'contacts',
+      label: 'Contacts',
+      type: 'relationship',
+      relationTo: 'contacts',
+      hasMany: true,
+      required: false,
+      admin: {
+        position: 'sidebar',
       },
-    ],
-  },
-  {
-    name: 'pesel',
-    label: 'PESEL',
-    type: 'text',
-    required: false,
-    validate: validatePesel,
-  },
-  {
-    name: 'age',
-    label: 'Age',
-    type: 'text',
-    required: false,
-    defaultValue: 'Age not calculated yet',
-    admin: {
-      readOnly: true,
-      position: 'sidebar',
     },
-  },
-  {
-    name: 'contacts',
-    label: 'Contacts',
-    type: 'relationship',
-    relationTo: 'contacts',
-    hasMany: true,
-    required: false,
-    admin: {
-      position: 'sidebar',
+    {
+      name: 'displayName',
+      label: 'Display Name',
+      type: 'text',
+      required: true,
+      defaultValue: 'New Patient',
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+      },
     },
-  },
-  {
-    name: 'displayName',
-    label: 'Display Name',
-    type: 'text',
-    required: true,
-    defaultValue: 'New Patient',
-    admin: {
-      position: 'sidebar',
-      readOnly: true,
-    },
-  },
-],
+  ],
   admin: {
     useAsTitle: 'displayName',
   },
