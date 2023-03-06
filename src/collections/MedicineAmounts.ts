@@ -17,7 +17,7 @@ const MedicineAmounts: CollectionConfig = {
   ],
   admin: {
     useAsTitle: 'amount',
-    group: "Medicines",
+    group: 'Medicines',
   },
 };
 
