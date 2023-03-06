@@ -2,17 +2,17 @@ import { buildConfig } from 'payload/config';
 import path from 'path';
 
 // Import your collection definitions
-import Contacts from './collections/personal/Contacts';
+import Contacts from './collections/Contacts';
 import Users from './collections/personal/Users';
 import Patients from './collections/personal/Patients';
 
 import Medicines from './collections/medicines/Medicines';
 import MedicineAmounts from './collections/medicines/MedicineAmounts';
-import DosageDescriptions from './collections/medicines/DosageDescriptions';
+import DosageDescriptions from './collections/DosageDescriptions';
 
-import Prescriptions from './collections/documents/Prescriptions';
+import Prescriptions from './collections/Prescriptions';
 
-import ICD10 from './collections/indexes/ICD10';
+import ICD10 from './collections/ICD10';
 
 const locales = ['en', 'pl'];
 const defaultLocale = 'en';
