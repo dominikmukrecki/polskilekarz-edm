@@ -21,7 +21,8 @@ const Contacts: CollectionConfig = {
         {
           name: "label",
           label: "Label",
-          type: "text",
+          type: "relationship",
+          relationTo: "labels",
           required: false,
         },
         {
@@ -40,7 +41,8 @@ const Contacts: CollectionConfig = {
         {
           name: "label",
           label: "Label",
-          type: "text",
+          type: "relationship",
+          relationTo: "labels",
           required: false,
         },
         {
@@ -83,7 +85,7 @@ const Contacts: CollectionConfig = {
   hooks: {
     beforeChange: [
       generateDisplayNameHook({
-        fieldSlugs: ['name', 'contactEmails.0.email', 'contactPhones.0.phone'],
+        fieldSlugs: ['name', 'contactEmails.0.label.name', 'contactEmails.0.email', 'contactPhones.0.label.name', 'contactPhones.0.phone'],
         separator: ', ',
         displayNameField: 'displayName',
       }),
