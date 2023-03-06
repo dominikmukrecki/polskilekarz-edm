@@ -87,14 +87,15 @@ const validatePesel = (value?: string) => {
     return 'Invalid PESEL format';
   }
 
-  const checkSum = value.split('').reduce((acc, digit, i) => {
-    if (i === 10) return acc;
-    return acc + (parseInt(digit) * ((i % 4) + 1) % 10);
-  }, 0);
-  if (checkSum % 10 !== 0) {
+  const weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
+  const checkSum = value
+    .slice(0, -1)
+    .split('')
+    .reduce((acc, digit, i) => acc + (parseInt(digit) * weights[i]), 0);
+  if ((10 - (checkSum % 10)) % 10 !== parseInt(value[10])) {
     return 'Invalid PESEL checksum';
   }
-
+  
   return true;
 };
 
