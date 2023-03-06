@@ -1,6 +1,13 @@
-import { CollectionConfig, CollectionBeforeChangeHook } from 'payload/types';
+import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
 
-const beforeChangeHook: CollectionBeforeChangeHook = async ({ data }) => {
+interface UserData {
+  name: string;
+  email: string;
+  displayName?: string;
+  roles: string[];
+}
+
+const generateDisplayName: CollectionBeforeValidateHook<UserData> = async ({ data }) => {
   const { name, email } = data;
   data.displayName = `${name}, ${email}`;
   return data;
@@ -69,7 +76,7 @@ const Users: CollectionConfig = {
   },
   fields: userFields,
   hooks: {
-    beforeChange: [beforeChangeHook],
+    beforeValidate: [generateDisplayName],
   },
 };
 
