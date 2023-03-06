@@ -14,7 +14,6 @@ import Prescriptions from './collections/Prescriptions';
 import ICD10 from './collections/ICD10';
 
 import Users from './collections/Users';
-import Tags from './collections/Tags'
 
 const locales = ['en', 'pl'];
 const defaultLocale = 'en';
@@ -41,7 +40,6 @@ export default buildConfig({
     DosageDescriptions,
     ICD10,
     Users,
-    Tags,
 ],
 
   // Configure TypeScript output
