@@ -61,6 +61,16 @@ const Contacts: CollectionConfig = {
       ],
     },
     {
+      name: "labels",
+      label: "Labels",
+      type: "relationship",
+      relationTo: "labels",
+      hasMany: true,
+      admin: {
+        position: "sidebar",
+      },
+    },
+    {
       name: "address",
       label: "Address",
       type: "text",
@@ -85,7 +95,7 @@ const Contacts: CollectionConfig = {
   hooks: {
     beforeChange: [
       generateDisplayNameHook({
-        fieldSlugs: ['name', 'contactEmails.0.label.name', 'contactEmails.0.email', 'contactPhones.0.label.name', 'contactPhones.0.phone'],
+        fieldSlugs: ['name', 'contactEmails.0.email', 'contactPhones.0.phone'],
         separator: ', ',
         displayNameField: 'displayName',
       }),
