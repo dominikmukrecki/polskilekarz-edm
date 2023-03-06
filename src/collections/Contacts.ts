@@ -71,11 +71,11 @@ const Contacts: CollectionConfig = {
   hooks: {
     beforeChange: [
       generateDisplayName({
-        fieldSlugs: ['firstName', 'lastName'],
+        fieldSlugs: ['name'],
         separator: ' ',
         displayNameField: 'displayName',
         useAsTitle: 'displayName',
-      }),
+      })(),
     ],
   },
 };
