@@ -4,6 +4,8 @@ import Contacts from './collections/Contacts';
 import Users from './collections/Users';
 import Patients from './collections/Patients';
 import Medicines from './collections/Medicines';
+import MedicineAmounts from './collections/MedicineAmounts';
+import DosageDescriptions from './collections/DosageDescriptions';
 import Prescriptions from './collections/Prescriptions';
 
 export default buildConfig({
@@ -19,6 +21,8 @@ export default buildConfig({
     Patients,
     Medicines,
     Prescriptions,
+    MedicineAmounts,
+    DosageDescriptions,
   ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),

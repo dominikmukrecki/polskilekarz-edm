@@ -41,6 +41,20 @@ const Prescriptions: CollectionConfig = {
       required: true,
     },
     {
+        name: 'amount',
+        label: 'Amount',
+        type: 'relationship',
+        relationTo: 'medicine-amounts',
+        required: true,
+    },  
+    {
+        name: 'dosage',
+        label: 'Dosage',
+        type: 'relationship',
+        relationTo: 'dosage-descriptions',
+        required: true,
+    },
+    {
       name: 'issuingDate',
       label: 'Date of Issuing',
       type: 'date',
