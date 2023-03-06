@@ -197,14 +197,14 @@ fields: [
   admin: {
     useAsTitle: 'displayName',
   },
-/*  hooks: {
+  hooks: {
     beforeValidate: [
       validatePeselOrBirthdateAndGender,
       parsePeselHook,
       createDisplayNameHook,
       generateAgeHook,
     ],
-  },*/
+  },
   versions: {
     drafts: true,
   },
