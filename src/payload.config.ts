@@ -11,8 +11,8 @@ import DosageDescriptions from './collections/DosageDescriptions';
 import Prescriptions from './collections/Prescriptions';
 import ICD10 from './collections/ICD10';
 
-const locales = ['en-US', 'pl-PL'];
-const defaultLocale = 'en-US';
+const locales = ['en', 'pl'];
+const defaultLocale = 'en';
 
 // Build and export the Payload configuration object
 export default buildConfig({
