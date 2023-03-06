@@ -213,6 +213,7 @@ const Patients: CollectionConfig = {
   ],
   admin: {
     useAsTitle: 'displayName',
+    group: 'Personal Data',
   },
   hooks: {
     beforeValidate: [
@@ -224,7 +225,6 @@ const Patients: CollectionConfig = {
   },
   versions: {
     drafts: true,
-    group: 'Personal Data',
   },
 };
 
