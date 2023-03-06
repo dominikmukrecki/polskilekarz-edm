@@ -69,14 +69,7 @@ const Contacts: CollectionConfig = {
     group: 'Personal Data',
   },
   hooks: {
-    beforeChange: [
-      async ({ data }) => {
-        if (!data.displayName) {
-          data.displayName = "New Record";
-        }
-        return data;
-      }
-    ]
+    beforeOperation: [generateDisplayNameHook],
   },
 };
 
