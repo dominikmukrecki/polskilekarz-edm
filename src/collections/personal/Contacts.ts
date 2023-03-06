@@ -1,78 +1,93 @@
-import { CollectionConfig, CollectionBeforeChangeHook } from 'payload/types';
+import { CollectionConfig, CollectionBeforeChangeHook } from "payload/types";
 
-const generateDisplayNameHook: CollectionBeforeChangeHook = async ({ data }) => {
+const generateDisplayNameHook: CollectionBeforeChangeHook = async ({
+  data,
+}) => {
   const { name, email, phone } = data;
   data.displayName = `${name}, ${email}, ${phone}`;
   return data;
 };
 
 const Contacts: CollectionConfig = {
-  slug: 'contacts',
+  slug: "contacts",
   access: {
     read: () => true,
   },
   fields: [
     {
-      type: 'row',
+      type: "row",
       fields: [
         {
-          name: 'name',
-          label: 'Name',
-          type: 'text',
+          name: "name",
+          label: "Name",
+          type: "text",
           required: true,
         },
         {
-          name: 'email',
-          label: 'Email',
-          type: 'email',
-          required: true,
+          name: "contactEmails",
+          label: "Contact Emails",
+          type: "array",
+          fields: [
+            {
+              name: "label",
+              label: "Label",
+              type: "text",
+              required: false,
+            },
+            {
+              name: "email",
+              label: "Email",
+              type: "email",
+              required: true,
+            },
+          ],
         },
       ],
       admin: {
-        width: '50%',
+        width: "50%",
       },
     },
     {
-      type: 'row',
+      type: "row",
       fields: [
         {
-          name: 'phone',
-          label: 'Phone',
-          type: 'text',
+          name: "phone",
+          label: "Phone",
+          type: "text",
           required: false,
           validate: (value) => {
             const regex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
             if (value && !regex.test(value)) {
-              return 'Invalid phone number format';
+              return "Invalid phone number format";
             }
             return true;
           },
         },
         {
-          name: 'address',
-          label: 'Address',
-          type: 'text',
+          name: "address",
+          label: "Address",
+          type: "text",
           required: true,
         },
       ],
       admin: {
-        width: '50%',
+        width: "50%",
       },
     },
     {
-      name: 'displayName',
-      label: 'Display Name',
-      type: 'text',
+      name: "displayName",
+      label: "Display Name",
+      type: "text",
       required: true,
-      defaultValue: 'New Contact',
+      defaultValue: "New Contact",
       admin: {
-        position: 'sidebar',
+        position: "sidebar",
         readOnly: true,
       },
     },
   ],
   admin: {
-    useAsTitle: 'displayName',
+    useAsTitle: "displayName",
   },
   hooks: {
     beforeChange: [generateDisplayNameHook],
