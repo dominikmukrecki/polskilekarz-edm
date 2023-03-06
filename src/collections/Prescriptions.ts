@@ -55,6 +55,7 @@ const Prescriptions: CollectionConfig = {
       type: 'relationship',
       relationTo: 'dosage-descriptions',
       required: true,
+      hasMany: true,
     },
     {
       name: 'issuingDate',
