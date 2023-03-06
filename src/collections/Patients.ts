@@ -159,9 +159,6 @@ fields: [
     type: 'text',
     required: false,
     validate: validatePesel,
-    admin: {
-      width: '50%',
-    },
   },
   {
     name: 'age',
@@ -200,14 +197,14 @@ fields: [
   admin: {
     useAsTitle: 'displayName',
   },
-  hooks: {
+/*  hooks: {
     beforeValidate: [
       validatePeselOrBirthdateAndGender,
       parsePeselHook,
       createDisplayNameHook,
       generateAgeHook,
     ],
-  },
+  },*/
   versions: {
     drafts: true,
   },
