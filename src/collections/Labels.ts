@@ -1,5 +1,4 @@
 import { CollectionConfig } from 'payload/types';
-import slugify from 'slugify';
 
 const Labels: CollectionConfig = {
   slug: 'labels',
@@ -22,7 +21,7 @@ const Labels: CollectionConfig = {
         beforeChange: [
           async ({ data }) => {
             if (data.name) {
-              data.slug = slugify(data.name, { lower: true });
+              data.slug = data.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
             }
             return data;
           },
