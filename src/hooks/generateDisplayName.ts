@@ -11,7 +11,7 @@ type GenerateDisplayNameArgs = {
   useAsTitle?: string;
 };
 
-const generateDisplayName: (payload: any) => (args: GenerateDisplayNameArgs) => CollectionBeforeChangeHook = (payload) => ({ fieldSlugs, separator = ', ', displayNameField = 'displayName', useAsTitle }: GenerateDisplayNameArgs) => {
+const generateDisplayName = ({ fieldSlugs, separator = ', ', displayNameField = 'displayName', useAsTitle }: GenerateDisplayNameArgs) => {
   return async ({ data }: Context<RecordData>): Promise<RecordData> => {
     let displayName = '';
     for (let i = 0; i < fieldSlugs.length; i++) {
@@ -25,7 +25,7 @@ const generateDisplayName: (payload: any) => (args: GenerateDisplayNameArgs) => 
     data[displayNameField] = displayName;
     if (useAsTitle) {
       data.admin = {
-        ...data.admin,
+        ...(data.admin || {}),
         useAsTitle,
       };
     }
@@ -33,4 +33,19 @@ const generateDisplayName: (payload: any) => (args: GenerateDisplayNameArgs) => 
   };
 };
 
-export default generateDisplayName;
+const generateDisplayNameHook: CollectionBeforeChangeHook = async ({ data, collection }) => {
+  const { fieldSlugs, separator, displayNameField, useAsTitle } = collection.admin || {};
+
+  const args: GenerateDisplayNameArgs = {
+    fieldSlugs,
+    separator,
+    displayNameField,
+    useAsTitle,
+  };
+
+  const displayNameData = await generateDisplayName(args)({ data });
+
+  return { ...displayNameData };
+};
+
+export default generateDisplayNameHook;

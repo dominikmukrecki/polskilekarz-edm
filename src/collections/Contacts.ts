@@ -70,9 +70,10 @@ const Contacts: CollectionConfig = {
   },
   hooks: {
     beforeChange: [
-      generateDisplayName(payload)({
-        fieldSlugs: ['name'],
-        separator: ', ',
+      generateDisplayName({
+        fieldSlugs: ['firstName', 'lastName'],
+        separator: ' ',
+        displayNameField: 'displayName',
         useAsTitle: 'displayName',
       }),
     ],
