@@ -12,6 +12,7 @@ const DosageDescriptions: CollectionConfig = {
       label: 'Description',
       type: 'text',
       required: true,
+      unique: true,
     },
   ],
   admin: {

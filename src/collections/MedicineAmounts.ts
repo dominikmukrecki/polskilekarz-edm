@@ -16,7 +16,7 @@ const MedicineAmounts: CollectionConfig = {
     },
   ],
   admin: {
-    useAsTitle: 'description',
+    useAsTitle: 'amount',
   },
 };
 
