@@ -66,15 +66,6 @@ const Users: CollectionConfig = {
             width: '50%',
           },
         },
-        {
-          name: 'pesel',
-          label: 'PESEL',
-          type: 'text',
-          required: false,
-          admin: {
-            width: '50%',
-          },
-        },
       ],
     },
     {
