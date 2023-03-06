@@ -63,6 +63,10 @@ const Users: CollectionConfig = {
   auth: true,
   admin: {
     useAsTitle: 'displayName',
+    labels: {
+      singular: '👤 User',
+      plural: '👥 Users',
+    },  
   },
   access: {
     read: () => true,
