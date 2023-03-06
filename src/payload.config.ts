@@ -1,4 +1,5 @@
 import { buildConfig } from 'payload/config';
+import { collections } from 'payload';
 import path from 'path';
 
 // Import your collection definitions
@@ -21,7 +22,7 @@ const locales = ['en', 'pl'];
 const defaultLocale = 'en';
 
 // Build and export the Payload configuration object
-export default buildConfig({
+module.exports = buildConfig({
   // Define your Payload server settings
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   cors: '*',
@@ -43,7 +44,7 @@ export default buildConfig({
     ICD10,
     Users,
     Labels,
-],
+  ],
 
   // Configure TypeScript output
   typescript: {
@@ -64,9 +65,8 @@ export default buildConfig({
     locales,
     defaultLocale,
   },
-});
 
-module.exports = {
+  // Add a "isArchived" field to all collections
   hooks: {
     beforeBootstrap: ({ collections }) => {
       collections.forEach((collection) => {
@@ -82,4 +82,4 @@ module.exports = {
       });
     },
   },
-};
+});
