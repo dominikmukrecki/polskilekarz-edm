@@ -78,23 +78,20 @@ const validatePesel = (value?: string) => {
     return 'Invalid PESEL format';
   }
 
-  const [, year, month, day, , gender] = value.match(/^(\d{2})(\d{2})(\d{2})\d(\d{1})$/) ?? [];
-  if (!year || !month || !day || !gender) {
-    return 'Invalid PESEL format';
-  }
-
+  const year = value.substr(0, 2);
+  const month = value.substr(2, 2);
+  const day = value.substr(4, 2);
   const century = month < 13 ? '19' : month < 33 ? '20' : month < 53 ? '21' : '18';
   const birthDate = new Date(`${century}${year}-${month}-${day}`);
   if (isNaN(birthDate.getTime())) {
     return 'Invalid PESEL format';
   }
 
-  const weights = [9, 7, 3, 1, 9, 7, 3, 1, 9, 7];
-  const checkSum = value
-    .slice(0, -1)
-    .split('')
-    .reduce((acc, digit, i) => acc + (parseInt(digit) * weights[i]), 0) % 10;
-  if (checkSum !== parseInt(value[10])) {
+  const checkSum = value.split('').reduce((acc, digit, i) => {
+    if (i === 10) return acc;
+    return acc + (parseInt(digit) * ((i % 4) + 1) % 10);
+  }, 0);
+  if (checkSum % 10 !== 0) {
     return 'Invalid PESEL checksum';
   }
 
