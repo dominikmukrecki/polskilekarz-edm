@@ -5,7 +5,7 @@ interface PatientData {
   lastName: string;
   birthdate?: Date;
   pesel?: string;
-  gender?: 'male' | 'female';
+  gender?: 'male' | 'female' | 'other';
   displayName?: string;
   age?: string;
 }
