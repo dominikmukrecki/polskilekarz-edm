@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload/types';
+import generateDisplayNameHook from '../hooks/generateDisplayNameHook';
 
 const Labels: CollectionConfig = {
   slug: 'labels',
@@ -10,10 +11,30 @@ const Labels: CollectionConfig = {
       required: true,
       unique: true,
     },
+    {
+      name: "displayName",
+      label: "Display Name",
+      type: "text",
+      required: true,
+      defaultValue: "New Label",
+      admin: {
+        position: "sidebar",
+        readOnly: true,
+      },
+    },
   ],
   admin: {
-    useAsTitle: 'name',
-  }
+    useAsTitle: 'displayName',
+  },
+  hooks: {
+    beforeChange: [
+      generateDisplayNameHook({
+        fieldSlugs: ['name'],
+        separator: ', ',
+        displayNameField: 'displayName',
+      }),
+    ],
+  },
 };
 
 export default Labels;
