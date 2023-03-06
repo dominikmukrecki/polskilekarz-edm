@@ -65,3 +65,21 @@ export default buildConfig({
     defaultLocale,
   },
 });
+
+module.exports = {
+  hooks: {
+    beforeBootstrap: ({ collections }) => {
+      collections.forEach((collection) => {
+        collection.fields.push({
+          name: 'isArchived',
+          label: 'Archived',
+          type: 'checkbox',
+          defaultValue: false,
+          admin: {
+            position: 'sidebar',
+          },
+        });
+      });
+    },
+  },
+};
