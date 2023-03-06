@@ -52,3 +52,4 @@ const ICD10: CollectionConfig = {
     },
   };
   
+  export default ICD10;
