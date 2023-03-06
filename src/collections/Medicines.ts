@@ -55,6 +55,7 @@ const Medicines: CollectionConfig = {
   ],
   admin: {
     useAsTitle: 'displayName',
+    group: "Medicines",
   },
   hooks: {
     beforeValidate: [createDisplayName],

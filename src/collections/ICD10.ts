@@ -46,6 +46,7 @@ const ICD10: CollectionConfig = {
     ],
     admin: {
       useAsTitle: 'displayName',
+      group: "Indexes",
     },
     hooks: {
       beforeValidate: [generateDisplayName],

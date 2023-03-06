@@ -17,6 +17,7 @@ const DosageDescriptions: CollectionConfig = {
   ],
   admin: {
     useAsTitle: 'description',
+    group: "Medicines",
   },
 };
 

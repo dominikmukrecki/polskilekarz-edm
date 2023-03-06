@@ -20,6 +20,7 @@ const Users: CollectionConfig = {
   auth: true,
   admin: {
     useAsTitle: 'displayName',
+    group: "Administration",
   },
   access: {
     read: () => true,

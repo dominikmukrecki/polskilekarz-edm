@@ -87,7 +87,7 @@ const Contacts: CollectionConfig = {
   ],
   admin: {
     useAsTitle: "displayName",
-    group: "Personal Data"
+    group: "Personal Data",
   },
   hooks: {
     beforeChange: [generateDisplayNameHook],
