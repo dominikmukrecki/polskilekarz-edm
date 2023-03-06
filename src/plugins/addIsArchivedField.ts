@@ -1,7 +1,7 @@
 import { PayloadPlugin } from 'payload/types';
 
-const addIsArchivedField: PayloadPlugin = ({ addField }) => {
-  addField({
+const addIsArchivedField: PayloadPlugin = (context) => {
+  context.addField({
     name: 'isArchived',
     label: 'Archived',
     type: 'checkbox',
