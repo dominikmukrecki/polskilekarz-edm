@@ -1,5 +1,5 @@
 import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
-import Group from './config/Group';
+import Group from './admin/Group';
 
 interface PrescriptionData {
   patient: string;
