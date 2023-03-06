@@ -1,3 +1,16 @@
+import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
+
+interface ICD10Data {
+  code: string;
+  description: string;
+}
+
+const generateDisplayName: CollectionBeforeValidateHook<ICD10Data> = async ({ data }) => {
+  const { code, description } = data;
+  data.displayName = `${code} - ${description}`;
+  return data;
+};
+
 const ICD10: CollectionConfig = {
     slug: 'icd10',
     labels: {
