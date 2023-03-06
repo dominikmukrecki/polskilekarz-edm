@@ -30,7 +30,7 @@ const ICD10: CollectionConfig = {
         label: 'Description',
         type: 'text',
         required: true,
-        i18n: true, // <-- add i18n property
+        localized: true, // <-- add i18n property
       },
       {
         name: 'displayName',
@@ -41,7 +41,7 @@ const ICD10: CollectionConfig = {
           position: 'sidebar',
           readOnly: true,
         },
-        i18n: true, // <-- add i18n property
+        localized: true, // <-- add i18n property
       },
     ],
     admin: {
