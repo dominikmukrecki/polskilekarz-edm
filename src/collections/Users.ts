@@ -60,13 +60,13 @@ const userFields = [
 
 const Users: CollectionConfig = {
   slug: 'users',
+  labels: {
+    singular: 'User 👤',
+    plural: 'Users 👥',
+  },
   auth: true,
   admin: {
     useAsTitle: 'displayName',
-    labels: {
-      singular: '👤 User',
-      plural: '👥 Users',
-    },  
   },
   access: {
     read: () => true,
