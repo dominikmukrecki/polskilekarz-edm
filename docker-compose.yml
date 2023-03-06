@@ -36,8 +36,6 @@ services:
 
   mongo:
     image: mongo:latest
-    expose:
-      - 27017
     command:
       - --storageEngine=wiredTiger
     volumes:
