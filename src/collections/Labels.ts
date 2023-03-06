@@ -10,25 +10,10 @@ const Labels: CollectionConfig = {
       required: true,
       unique: true,
     },
-    {
-      name: 'slug',
-      label: 'Slug',
-      type: 'text',
-      admin: {
-        readOnly: true,
-      },
-      hooks: {
-        beforeChange: [
-          async ({ data }) => {
-            if (data.name) {
-              data.slug = data.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-            }
-            return data;
-          },
-        ],
-      },
-    },
   ],
+  admin: {
+    useAsTitle: 'name',
+  }
 };
 
 export default Labels;
