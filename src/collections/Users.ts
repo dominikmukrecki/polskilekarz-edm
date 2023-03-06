@@ -64,7 +64,7 @@ const Users: CollectionConfig = {
       name: 'displayName',
       label: 'Display Name',
       type: 'text',
-      required: true,
+      required: false,
       defaultValue: 'New User',
       admin: {
         position: 'sidebar',
