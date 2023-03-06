@@ -64,20 +64,8 @@ const Contacts: CollectionConfig = {
       type: "text",
       required: true,
     },
-    {
-      name: "displayName",
-      label: "Display Name",
-      type: "text",
-      required: true,
-      defaultValue: "New Contact",
-      admin: {
-        position: "sidebar",
-        readOnly: true,
-      },
-    },
   ],
   admin: {
-    useAsTitle: "displayName",
     group: 'Personal Data',
   },
   hooks: {
