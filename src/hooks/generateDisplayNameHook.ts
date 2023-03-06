@@ -10,7 +10,7 @@ type GenerateDisplayNameArgs = {
 
 const generateDisplayName = ({ defaultLabel }: GenerateDisplayNameArgs) => {
   return async ({ data, collection }: Context<RecordData>): Promise<RecordData> => {
-    const singularLabel = collection.labels?.singular ?? 'Record';
+    const singularLabel = collection.labels?.singular || defaultLabel;
 
     if (!data.displayName) {
       data.displayName = `New ${singularLabel}`;
@@ -34,7 +34,7 @@ const generateDisplayName = ({ defaultLabel }: GenerateDisplayNameArgs) => {
 };
 
 const generateDisplayNameHook: CollectionBeforeChangeHook = generateDisplayName({
-  defaultLabel: 'New Record',
+  defaultLabel: 'Record',
 });
 
 export default generateDisplayNameHook;
