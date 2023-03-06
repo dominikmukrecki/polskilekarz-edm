@@ -34,7 +34,7 @@ const generateDisplayName = ({ fieldSlugs, separator = ', ', displayNameField = 
 };
 
 const generateDisplayNameHook: CollectionBeforeChangeHook = async ({ data, collection }) => {
-  const { fieldSlugs, separator, displayNameField, useAsTitle } = collection.admin || {};
+    const { fieldSlugs, separator, displayNameField, useAsTitle } = collection.admin ?? {};
 
   const args: GenerateDisplayNameArgs = {
     fieldSlugs,
@@ -44,8 +44,7 @@ const generateDisplayNameHook: CollectionBeforeChangeHook = async ({ data, colle
   };
 
   const displayNameData = await generateDisplayName(args)({ data });
-
-  return { ...displayNameData };
-};
+  return () => ({ ...displayNameData });
+  };
 
 export default generateDisplayNameHook;
