@@ -83,7 +83,7 @@ const Contacts: CollectionConfig = {
   hooks: {
     beforeChange: [
       generateDisplayNameHook({
-        fieldSlugs: ['name'],
+        fieldSlugs: ['name', 'contactEmails.0.email'],
         separator: ' - ',
         displayNameField: 'displayName',
       }),
