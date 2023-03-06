@@ -15,13 +15,6 @@ const calculateExpirationDate: CollectionBeforeValidateHook<PrescriptionData> = 
   const issuingDateTime = new Date(issuingDate).getTime();
   const daysInMilliseconds = daysOfValidity * 24 * 60 * 60 * 1000;
 
-  if (expirationDate) {
-    const expirationDateTime = new Date(expirationDate).getTime();
-    if (expirationDateTime < issuingDateTime + daysInMilliseconds) {
-      throw new Error('Expiration date must be later than issuing date');
-    }
-  }
-
   const expirationDateTime = issuingDateTime + daysInMilliseconds;
   data.expirationDate = new Date(expirationDateTime).toISOString();
   
