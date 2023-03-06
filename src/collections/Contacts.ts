@@ -69,7 +69,7 @@ const Contacts: CollectionConfig = {
     group: 'Personal Data',
   },
   hooks: {
-    beforeChange: [generateDisplayNameHook],
+    beforeChange: [generateDisplayNameHook({ defaultValue: 'New Contact' })],
   },
 };
 

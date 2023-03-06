@@ -5,15 +5,13 @@ type RecordData = {
 };
 
 type GenerateDisplayNameArgs = {
-  defaultLabel: string;
+  defaultValue: string;
 };
 
-const generateDisplayName = ({ defaultLabel }: GenerateDisplayNameArgs) => {
+const generateDisplayName = ({ defaultValue }: GenerateDisplayNameArgs) => {
   return async ({ data, collection }: Context<RecordData>): Promise<RecordData> => {
-    const singularLabel = collection.labels?.singular || defaultLabel;
-
     if (!data.displayName) {
-      data.displayName = `New ${singularLabel}`;
+      data.displayName = defaultValue;
     }
 
     const displayNameField = collection.fields.find((field) => field.slug === 'displayName');
@@ -24,7 +22,7 @@ const generateDisplayName = ({ defaultLabel }: GenerateDisplayNameArgs) => {
         name: 'displayName',
         label: 'Display Name',
         required: false,
-        defaultValue: `New ${singularLabel}`,
+        defaultValue,
       });
     }
 
@@ -33,7 +31,7 @@ const generateDisplayName = ({ defaultLabel }: GenerateDisplayNameArgs) => {
 };
 
 const generateDisplayNameHook: CollectionBeforeChangeHook = generateDisplayName({
-  defaultLabel: 'Record',
+  defaultValue: 'New Record',
 });
 
 export default generateDisplayNameHook;
