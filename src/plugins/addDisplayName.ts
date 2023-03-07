@@ -22,7 +22,6 @@ const addDisplayName: Plugin = (incomingConfig: Config): Config => {
             admin: {
               position: 'sidebar',
               readOnly: true,
-              displayNameField: 'displayName',
             },
           },
         ],
