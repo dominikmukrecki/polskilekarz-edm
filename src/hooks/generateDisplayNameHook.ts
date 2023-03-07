@@ -31,6 +31,10 @@ const generateDisplayNameHook = ({ fieldSlugs, separator = ', ', displayNameFiel
         displayName += `${value}${i === fieldSlugs.length - 1 ? '' : separator}`;
       }
     }
+    // Remove trailing separator if data is an array or object
+    if (Array.isArray(data[displayNameField]) || typeof data[displayNameField] === 'object') {
+      displayName = displayName.slice(0, -separator.length);
+    }
     data[displayNameField] = displayName;
     return data;
   };
