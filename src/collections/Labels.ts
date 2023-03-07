@@ -21,6 +21,9 @@ const Labels: CollectionConfig = {
       }),
     ],
   },
+  admin: {
+    group: 'Workflow',
+  }
 };
 
 export default Labels;
