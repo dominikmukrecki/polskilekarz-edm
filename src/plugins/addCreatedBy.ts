@@ -35,6 +35,7 @@ const addCreatedBy: Plugin = (incomingConfig: Config): Config => {
             admin: {
               position: 'sidebar',
               readOnly: true,
+              condition: (data) => Boolean(data.createdBy),
             },
           },
         ],
