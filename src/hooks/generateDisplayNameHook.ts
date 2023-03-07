@@ -5,8 +5,7 @@ type RecordData = {
 };
 
 type GenerateDisplayNameArgs = {
-  fieldSlugs: string[];
-  separator: string;
+  template: string;
   displayNameField: string;
 };
 
@@ -21,19 +20,16 @@ const parseSlug = (slug: string, data: RecordData): any => {
   return value;
 };
 
-const generateDisplayNameHook = ({ fieldSlugs, separator = ', ', displayNameField }: GenerateDisplayNameArgs): CollectionBeforeChangeHook => {
+const generateDisplayNameHook = ({ template, displayNameField }: GenerateDisplayNameArgs): CollectionBeforeChangeHook => {
   return async ({ data }: Context<RecordData>): Promise<RecordData> => {
-    let displayName = '';
-    for (let i = 0; i < fieldSlugs.length; i++) {
-      const slug = fieldSlugs[i];
-      const value = parseSlug(slug, data);
-      if (value !== undefined && value !== '') {
-        displayName += `${value}${i === fieldSlugs.length - 1 ? '' : separator}`;
-      }
-    }
-    // Remove trailing separator if data is an array or object
-    if (Array.isArray(data[displayNameField]) || typeof data[displayNameField] === 'object') {
-      displayName = displayName.slice(0, -separator.length);
+    let displayName = template;
+    const matches = displayName.match(/{{(.*?)}}/g);
+    if (matches) {
+      matches.forEach((match) => {
+        const slug = match.slice(2, -2);
+        const value = parseSlug(slug, data);
+        displayName = displayName.replace(match, value !== undefined && value !== '' ? value : '');
+      });
     }
     data[displayNameField] = displayName;
     return data;
