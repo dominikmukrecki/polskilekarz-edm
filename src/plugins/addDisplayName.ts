@@ -1,5 +1,4 @@
 import { Config, Plugin } from 'payload/config';
-import { getLabel } from 'payload';
 
 const addDisplayName: Plugin = (incomingConfig: Config): Config => {
   // Spread the existing config
@@ -19,7 +18,7 @@ const addDisplayName: Plugin = (incomingConfig: Config): Config => {
             label: 'Display Name',
             type: 'text',
             required: true,
-            defaultValue: getLabel(collection, 'singular') ? `New ${getLabel(collection, 'singular')}` : 'New Record',
+            defaultValue: () => `New ${collection.labels.singular}`,
             admin: {
               position: 'sidebar',
               readOnly: true,
