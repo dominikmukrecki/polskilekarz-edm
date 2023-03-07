@@ -23,10 +23,10 @@ const parseSlug = (slug: string, data: RecordData): any => {
 const generateDisplayNameHook = ({ template, displayNameField }: GenerateDisplayNameArgs): CollectionBeforeChangeHook => {
   return async ({ data }: Context<RecordData>): Promise<RecordData> => {
     let displayName = template;
-    const matches = displayName.match(/{{(.*?)}}/g);
+    const matches = template.match(/\${(.*?)}/g);
     if (matches) {
       matches.forEach((match) => {
-        const slug = match.slice(2, -2);
+        const slug = match.slice(2, -1);
         const value = parseSlug(slug, data);
         displayName = displayName.replace(match, value !== undefined && value !== '' ? value : '');
       });
