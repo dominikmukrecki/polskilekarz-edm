@@ -19,7 +19,6 @@ const Users: CollectionConfig = {
   slug: 'users',
   auth: true,
   admin: {
-    useAsTitle: 'displayName',
     group: "Administration",
   },
   access: {
@@ -67,17 +66,6 @@ const Users: CollectionConfig = {
           },
         },
       ],
-    },
-    {
-      name: 'displayName',
-      label: 'Display Name',
-      type: 'text',
-      required: false,
-      defaultValue: 'New User',
-      admin: {
-        position: 'sidebar',
-        readOnly: true,
-      },
     },
     // Add more fields as needed
   ],

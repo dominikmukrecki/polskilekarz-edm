@@ -32,17 +32,6 @@ const ICD10: CollectionConfig = {
         required: true,
         localized: true, // <-- add i18n property
       },
-      {
-        name: 'displayName',
-        label: 'Display Name',
-        type: 'text',
-        required: false,
-        admin: {
-          position: 'sidebar',
-          readOnly: true,
-        },
-        localized: true, // <-- add i18n property
-      },
     ],
     admin: {
       useAsTitle: 'displayName',

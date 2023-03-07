@@ -41,20 +41,8 @@ const Medicines: CollectionConfig = {
       type: 'text',
       required: true,
     },
-    {
-      name: 'displayName',
-      label: 'Display Name',
-      type: 'text',
-      required: true,
-      defaultValue: 'New Medicine',
-      admin: {
-        position: 'sidebar',
-        readOnly: true,
-        },        
-    },
   ],
   admin: {
-    useAsTitle: 'displayName',
     group: "Medicines",
   },
   hooks: {
