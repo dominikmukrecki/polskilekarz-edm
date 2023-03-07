@@ -16,6 +16,7 @@ import Labels from './collections/Labels';
 // import addIsArchivedField from './plugins/addIsArchivedField';
 
 import addLastModified from './plugins/addLastModified';
+import addCreatedBy from './plugins/addCreatedBy';
 
 const locales = ['en', 'pl'];
 const defaultLocale = 'en';
@@ -65,6 +66,6 @@ export default buildConfig({
     defaultLocale,
   },
   // Add the addIsArchivedField plugin
-  plugins: [addLastModified],
+  plugins: [addLastModified, addCreatedBy],
 
 });
