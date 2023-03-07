@@ -1,5 +1,5 @@
 import { Config, Plugin } from 'payload/config';
-import { getLabel } from 'payload/dist/utils/getLabel';
+import { getLabel } from 'payload';
 
 const addDisplayName: Plugin = (incomingConfig: Config): Config => {
   // Spread the existing config
@@ -23,13 +23,7 @@ const addDisplayName: Plugin = (incomingConfig: Config): Config => {
             admin: {
               position: 'sidebar',
               readOnly: true,
-              condition: (data, siblingData) => {
-                if (data.displayName) {
-                  return true;
-                } else {
-                  return false;
-                }
-              },
+              displayNameField: 'displayName',
             },
           },
         ],
