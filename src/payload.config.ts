@@ -18,7 +18,7 @@ import Labels from './collections/Labels';
 import addLastModified from './plugins/addLastModified';
 import addCreatedBy from './plugins/addCreatedBy';
 import addIsArchived from './plugins/addIsArchived';
-import addDisplayNameField from './plugins/addDisplayName'
+import addDisplayName from './plugins/addDisplayName'
 
 const locales = ['en', 'pl'];
 const defaultLocale = 'en';
