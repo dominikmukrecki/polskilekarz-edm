@@ -25,6 +25,9 @@ const addDisplayName: Plugin = (incomingConfig: Config): Config => {
             },
           },
         ],
+        admin: {
+          useAsTitle: 'displayName',
+        },
       };
     }),
   };
