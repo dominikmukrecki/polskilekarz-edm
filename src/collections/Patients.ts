@@ -199,20 +199,8 @@ const Patients: CollectionConfig = {
         position: 'sidebar',
       },
     },
-    {
-      name: 'displayName',
-      label: 'Display Name',
-      type: 'text',
-      required: true,
-      defaultValue: 'New Patient',
-      admin: {
-        position: 'sidebar',
-        readOnly: true,
-      },
-    },
   ],
   admin: {
-    useAsTitle: 'displayName',
     group: 'Personal Data',
   },
   hooks: {

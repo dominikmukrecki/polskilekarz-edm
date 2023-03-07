@@ -11,21 +11,7 @@ const Labels: CollectionConfig = {
       required: true,
       unique: true,
     },
-    {
-      name: "displayName",
-      label: "Display Name",
-      type: "text",
-      required: true,
-      defaultValue: "New Label",
-      admin: {
-        position: "sidebar",
-        readOnly: true,
-      },
-    },
   ],
-  admin: {
-    useAsTitle: 'displayName',
-  },
   hooks: {
     beforeChange: [
       generateDisplayNameHook({
@@ -35,6 +21,9 @@ const Labels: CollectionConfig = {
       }),
     ],
   },
+  admin: {
+    group: 'Workflow',
+  }
 };
 
 export default Labels;

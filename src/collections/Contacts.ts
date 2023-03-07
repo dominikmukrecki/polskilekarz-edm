@@ -76,27 +76,14 @@ const Contacts: CollectionConfig = {
       type: "text",
       required: true,
     },
-    {
-      name: "displayName",
-      label: "Display Name",
-      type: "text",
-      required: true,
-      defaultValue: "New Contact",
-      admin: {
-        position: "sidebar",
-        readOnly: true,
-      },
-    },
   ],
   admin: {
-    useAsTitle: "displayName",
     group: 'Personal Data',
   },
   hooks: {
     beforeChange: [
       generateDisplayNameHook({
-        fieldSlugs: ['name', 'contactEmails.0.email', 'contactPhones.0.phone'],
-        separator: ', ',
+        template: '${name}, email: ${contactEmails[0].email}',
         displayNameField: 'displayName',
       }),
     ],

@@ -90,7 +90,6 @@ const Prescriptions: CollectionConfig = {
   ],
   // Use the common name of the medicine as the title in the admin UI
   admin: {
-    useAsTitle: 'medicine.commonName',
     group: 'Documents',
   },
   hooks: {
