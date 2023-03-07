@@ -83,7 +83,7 @@ const Contacts: CollectionConfig = {
   hooks: {
     beforeChange: [
       generateDisplayNameHook({
-        template: '${name}, email: ${contactEmails[0]?.email}',
+        template: '${name}, email: ${contactEmails[0].email}',
         displayNameField: 'displayName',
       }),
     ],
