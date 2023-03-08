@@ -2,7 +2,6 @@ import { buildConfig } from 'payload/config';
 import path from 'path';
 
 // Import your collection definitions
-import Labels from './collections/Labels';
 import Contacts from './collections/Contacts';
 import Patients from './collections/Patients';
 import Medicines from './collections/Medicines';
@@ -45,7 +44,6 @@ export default buildConfig({
     DosageDescriptions,
     ICD10,
     Users,
-    Labels,
   ],
 
   // Configure TypeScript output
