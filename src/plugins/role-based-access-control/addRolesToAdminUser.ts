@@ -1,6 +1,6 @@
 import { Config, Plugin } from 'payload/config';
 
-const addRolesToAdminUser: Plugin = async (incomingConfig: Config): Promise<Config> => {
+const addRolesToAuthCollection: Plugin = async (incomingConfig: Config): Promise<Config> => {
   // Get the slug of the authentication collection from the config
   const authCollectionSlug = incomingConfig.admin?.user;
 
@@ -26,15 +26,7 @@ const addRolesToAdminUser: Plugin = async (incomingConfig: Config): Promise<Conf
     throw new Error('The roles collection was not found');
   }
 
-  // Update the admin user collection to add the 'roles' field with the retrieved roles
-  const adminUserCollection = incomingConfig.collections.find(
-    collection => collection.slug === 'admin.user'
-  );
-
-  if (!adminUserCollection) {
-    throw new Error('The admin.user collection was not found');
-  }
-
+  // Update the authentication collection to add the 'roles' field with the retrieved roles
   const rolesField = {
     name: 'roles',
     type: 'relationship',
@@ -45,16 +37,16 @@ const addRolesToAdminUser: Plugin = async (incomingConfig: Config): Promise<Conf
     },
   };
 
-  if (adminUserCollection.fields) {
-    adminUserCollection.fields.push(rolesField);
+  if (authCollection.fields) {
+    authCollection.fields.push(rolesField);
   } else {
-    adminUserCollection.fields = [rolesField];
+    authCollection.fields = [rolesField];
   }
 
   // Update the collection in the config
   const collections = incomingConfig.collections.map(collection => {
-    if (collection.slug === 'admin.user') {
-      return adminUserCollection;
+    if (collection.slug === authCollectionSlug) {
+      return authCollection;
     }
 
     return collection;
@@ -66,4 +58,4 @@ const addRolesToAdminUser: Plugin = async (incomingConfig: Config): Promise<Conf
   };
 };
 
-export default addRolesToAdminUser;
+export default addRolesToAuthCollection;
