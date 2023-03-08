@@ -23,6 +23,7 @@ const DosageDescriptions: CollectionConfig = {
     beforeChange: [
       generateDisplayNameHook({
         template: '${description}',
+        defaultDisplayName: 'Emtpy dosage description',
       }),
     ],
   },

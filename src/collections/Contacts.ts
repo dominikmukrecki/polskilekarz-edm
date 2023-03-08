@@ -88,6 +88,7 @@ const Contacts: CollectionConfig = {
     beforeChange: [
       generateDisplayNameHook({
         template: '${name}, email: ${email}',
+        defaultDisplayName: 'New contact',
       }),
     ],
   },
