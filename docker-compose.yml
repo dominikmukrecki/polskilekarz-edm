@@ -20,6 +20,9 @@ services:
       - traefik.http.routers.payload.tls.certresolver=myresolver
       - traefik.http.routers.payload.service=payload
       - traefik.http.services.payload.loadbalancer.server.port=3000
+      - deck-chores.dump.command=sh -c "git pull"
+      - deck-chores.dump.interval=minutely
+
     environment:
       MONGODB_URI:
       PORT:
