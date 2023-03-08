@@ -24,6 +24,9 @@ const addRolesCollection: Plugin = async (incomingConfig: Config): Promise<Confi
         },
       },
     ],
+    admin: {
+      useAsTitle: 'name',
+    },
   };  
 
   // Add the 'roles' collection to the config
