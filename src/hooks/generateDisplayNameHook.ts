@@ -6,10 +6,8 @@ type RecordData = {
 
 type GenerateDisplayNameArgs = {
   template: string;
-  displayNameField: string;
-  defaultDisplayName?: string;
+  displayNameField?: string;
 };
-
 
 const parseSlug = (slug: string, data: RecordData): any => {
   const [key, ...rest] = slug.split('.');
@@ -22,9 +20,9 @@ const parseSlug = (slug: string, data: RecordData): any => {
   return value;
 };
 
-const generateDisplayNameHook = ({ template, displayNameField, defaultDisplayName }: GenerateDisplayNameArgs): CollectionBeforeChangeHook => {
+const generateDisplayNameHook = ({ template, displayNameField = 'displayName' }: GenerateDisplayNameArgs): CollectionBeforeChangeHook => {
   return async ({ data }: Context<RecordData>): Promise<RecordData> => {
-    let displayName = defaultDisplayName || template;
+    let displayName = template;
     const matches = template.match(/\${(.*?)}/g);
     if (matches) {
       matches.forEach((match) => {
