@@ -83,10 +83,7 @@ const Contacts: CollectionConfig = {
     {
       name: 'displayName',
       type: "text",
-      defaultValue: {
-        en: 'New contact',
-        pl: 'Nowy kontakt'
-      },
+      defaultValue: 'New contact',
     },
   ],
   admin: {
@@ -96,7 +93,6 @@ const Contacts: CollectionConfig = {
     beforeChange: [
       generateDisplayNameHook({
         template: '${name}, email: ${email}',
-        defaultDisplayName: 'New contact',
       }),
     ],
   },
