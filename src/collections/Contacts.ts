@@ -96,6 +96,14 @@ const Contacts: CollectionConfig = {
       }),
     ],
   },
+  beforeOperation: [
+    async ({ operation, args }) => {
+      if (operation === 'read') {
+        console.log(`The ${args.slug} collection is being read!`);
+      }
+      return args;
+    },
+  ],
 };
 
 export default Contacts;
