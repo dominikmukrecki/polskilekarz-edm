@@ -1,4 +1,5 @@
 import { Config, Plugin } from 'payload/config';
+import { formatLabels } from 'payload/dist/utilities/formatLabels';
 
 type Collection = {
   [key: string]: any;
@@ -12,7 +13,8 @@ const addDisplayName: Plugin = (incomingConfig: Config): Config => {
       // Spread each item that we are modifying,
       // and add our new field - complete with
       // hooks and proper admin UI config
-      const defaultDisplayName = `New ${collection.slug}`;
+      const formattedSlug = formatLabels(collection.labels.singular, collection.slug);
+      const defaultDisplayName = `New ${formattedSlug}`;
       return {
         ...collection,
         fields: [
