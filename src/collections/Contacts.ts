@@ -3,9 +3,6 @@ import generateDisplayNameHook from '../hooks/generateDisplayNameHook';
 
 const Contacts: CollectionConfig = {
   slug: "contacts",
-  access: {
-    read: () => true,
-  },
   fields: [
     {
       name: "name",
