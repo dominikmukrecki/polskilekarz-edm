@@ -5,7 +5,6 @@ const addRolesCollection: Plugin = async (incomingConfig: Config): Promise<Confi
   // Create the global 'roles' collection
   const rolesCollection: Collection = {
     slug: 'roles',
-    label: 'Roles',
     fields: [
       {
         name: 'name',
