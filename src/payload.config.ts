@@ -17,8 +17,7 @@ import Users from './collections/Users';
 import addLastModified from './plugins/addLastModified';
 import addCreatedBy from './plugins/addCreatedBy';
 import addIsArchived from './plugins/addIsArchived';
-import addDisplayName from './plugins/addDisplayName';
-import roleBasedAccessControlPlugin from './plugins/role-based-access-control';
+import generateDisplayNameAndMetadataFields from './plugins/generateDisplayNameAndMetadataFields';
 
 const locales = ['en', 'pl'];
 const defaultLocale = 'en';
@@ -71,7 +70,6 @@ export default buildConfig({
     addLastModified,
     addCreatedBy,
     addIsArchived,
-    addDisplayName,
-    roleBasedAccessControlPlugin
+    generateDisplayNameAndMetadataFields,
   ],
 });

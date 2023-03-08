@@ -80,11 +80,6 @@ const Contacts: CollectionConfig = {
       type: "text",
       required: true,
     },
-    {
-      name: 'displayName',
-      type: "text",
-      defaultValue: 'New contact',
-    },
   ],
   admin: {
     group: 'Personal Data',
@@ -94,14 +89,6 @@ const Contacts: CollectionConfig = {
       generateDisplayNameHook({
         template: '${name}, email: ${email}',
       }),
-    ],
-    beforeOperation: [
-      async ({ operation, args }) => {
-        if (operation === 'read') {
-          console.log(`The ${args.slug} collection is being read!`);
-        }
-        return args;
-      },
     ],
   },
 };
