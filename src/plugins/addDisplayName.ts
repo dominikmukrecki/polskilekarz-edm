@@ -12,7 +12,7 @@ const addDisplayName: Plugin = (incomingConfig: Config): Config => {
       // Spread each item that we are modifying,
       // and add our new field - complete with
       // hooks and proper admin UI config
-      const defaultDisplayName = `New ${collection.labels.singular}`;
+      const defaultDisplayName = `New ${collection.labels.singular[collection.admin.locale]}`;
       return {
         ...collection,
         fields: [
