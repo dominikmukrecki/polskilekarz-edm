@@ -82,9 +82,8 @@ const Contacts: CollectionConfig = {
     },
     {
       name: 'displayName',
-      defaultValue: {
-        en: 'New contact',
-      },
+      ype: "text",
+      defaultValue: 'New contact',
     },
   ],
   admin: {
