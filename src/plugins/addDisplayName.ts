@@ -18,7 +18,6 @@ const addDisplayName: Plugin = (incomingConfig: Config): Config => {
             label: 'Display Name',
             type: 'text',
             required: true,
-            defaultValue: () => 'New Record',
             admin: {
               position: 'sidebar',
               readOnly: true,
