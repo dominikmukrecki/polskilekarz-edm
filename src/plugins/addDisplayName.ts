@@ -14,21 +14,25 @@ const addDisplayName: Plugin = (incomingConfig: Config): Config => {
       // and add our new field - complete with
       // hooks and proper admin UI config
       const formattedLabels = formatLabels(collection.slug);
-      const defaultDisplayName = collection.displayNameDefaultValue || `New ${formattedLabels.singular}`;
+      const defaultDisplayName = `New ${formattedLabels.singular}`;
+      const existingDisplayNameField = collection.fields.find((field) => field.name === 'displayName');
+      const defaultValue = existingDisplayNameField?.defaultValue || defaultDisplayName;
+      const displayNameField = {
+        name: 'displayName',
+        label: 'Display Name',
+        type: 'text',
+        localized: true, // enable localized default value
+        defaultValue,
+        admin: {
+          position: 'sidebar',
+          readOnly: true,
+        },
+      };
       return {
         ...collection,
         fields: [
-          ...collection.fields,
-          {
-            name: 'displayName',
-            label: 'Display Name',
-            type: 'text',
-            defaultValue: defaultDisplayName,
-            admin: {
-              position: 'sidebar',
-              readOnly: true,
-            },
-          },
+          ...collection.fields.filter((field) => field.name !== 'displayName'),
+          displayNameField,
         ],
         admin: {
           ...collection.admin,

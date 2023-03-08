@@ -80,6 +80,12 @@ const Contacts: CollectionConfig = {
       type: "text",
       required: true,
     },
+    {
+      name: 'displayName',
+      defaultValue: {
+        en: 'New contact',
+      },
+    },
   ],
   admin: {
     group: 'Personal Data',
@@ -92,7 +98,6 @@ const Contacts: CollectionConfig = {
       }),
     ],
   },
-  displayNameDefaultValue: 'New Contact',
 };
 
 export default Contacts;
