@@ -17,17 +17,15 @@ const addRolesCollection: Plugin = async (incomingConfig: Config): Promise<Confi
         },
       },
       {
-        name: 'slug',
-        type: 'slug',
-        label: 'Slug',
-        required: true,
+        name: 'description',
+        type: 'textarea',
+        label: 'Description',
         admin: {
           position: 'sidebar',
         },
       },
     ],
-    timestamps: true,
-  };
+  };  
 
   // Add the 'roles' collection to the config
   const collections = [...incomingConfig.collections, rolesCollection];
