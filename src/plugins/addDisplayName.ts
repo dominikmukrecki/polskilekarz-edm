@@ -10,6 +10,10 @@ const addDisplayName: Plugin = (incomingConfig: Config): Config => {
   const config: Config = {
     ...incomingConfig,
     collections: incomingConfig.collections.map((collection) => {
+      // Check if labels is defined for the collection
+      if (!collection.labels) {
+        return collection;
+      }
       // Spread each item that we are modifying,
       // and add our new field - complete with
       // hooks and proper admin UI config
