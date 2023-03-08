@@ -14,7 +14,7 @@ const addDisplayName: Plugin = (incomingConfig: Config): Config => {
       // and add our new field - complete with
       // hooks and proper admin UI config
       const formattedLabels = formatLabels(collection.slug);
-      const defaultDisplayName = `New ${formattedLabels.singular}`;
+      const defaultDisplayName = collection.displayNameDefaultValue || `New ${formattedLabels.singular}`;
       return {
         ...collection,
         fields: [

@@ -92,6 +92,7 @@ const Contacts: CollectionConfig = {
       }),
     ],
   },
+  displayNameDefaultValue: 'New Contact',
 };
 
 export default Contacts;
