@@ -1,6 +1,5 @@
 import { CollectionConfig } from "payload/types";
 import generateDisplayNameHook from '../hooks/generateDisplayNameHook';
-import { CollectionBeforeOperationHook } from 'payload/types';
 
 const Contacts: CollectionConfig = {
   slug: "contacts",
@@ -96,15 +95,15 @@ const Contacts: CollectionConfig = {
         template: '${name}, email: ${email}',
       }),
     ],
+    beforeOperation: [
+      async ({ operation, args }) => {
+        if (operation === 'read') {
+          console.log(`The ${args.slug} collection is being read!`);
+        }
+        return args;
+      },
+    ],
   },
-  beforeOperation: [
-    async ({ operation, args }) => {
-      if (operation === 'read') {
-        console.log(`The ${args.slug} collection is being read!`);
-      }
-      return args;
-    },
-  ],
 };
 
 export default Contacts;
