@@ -14,16 +14,34 @@ const Contacts: CollectionConfig = {
       required: true,
     },
     {
-      name: "contactEmails",
-      label: "Contact Emails",
+      name: "email",
+      label: "Primary Email",
+      type: "email",
+      required: true,
+    },
+    {
+      name: "phone",
+      label: "Primary Phone",
+      type: "text",
+      required: true,
+      validate: (value) => {
+        const regex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
+        if (value && !regex.test(value)) {
+          return "Invalid phone number format";
+        }
+        return true;
+      },
+    },
+    {
+      name: "additionalEmails",
+      label: "Additional Emails",
       type: "array",
       fields: [
         {
-          name: "label",
-          label: "Label",
-          type: "relationship",
-          relationTo: "labels",
-          required: false,
+          name: "description",
+          label: "Description",
+          type: "text",
+          required: true,
         },
         {
           name: "email",
@@ -34,16 +52,15 @@ const Contacts: CollectionConfig = {
       ],
     },
     {
-      name: "contactPhones",
-      label: "Contact Phones",
+      name: "additionalPhones",
+      label: "Additional Phones",
       type: "array",
       fields: [
         {
-          name: "label",
-          label: "Label",
-          type: "relationship",
-          relationTo: "labels",
-          required: false,
+          name: "description",
+          label: "Description",
+          type: "text",
+          required: true,
         },
         {
           name: "phone",
@@ -61,16 +78,6 @@ const Contacts: CollectionConfig = {
       ],
     },
     {
-      name: "labels",
-      label: "Labels",
-      type: "relationship",
-      relationTo: "labels",
-      hasMany: true,
-      admin: {
-        position: "sidebar",
-      },
-    },
-    {
       name: "address",
       label: "Address",
       type: "text",
@@ -83,7 +90,7 @@ const Contacts: CollectionConfig = {
   hooks: {
     beforeChange: [
       generateDisplayNameHook({
-        template: '${name}, email: ${contactEmails[0].email}',
+        template: '${name}, email: ${email}',
         displayNameField: 'displayName',
       }),
     ],
