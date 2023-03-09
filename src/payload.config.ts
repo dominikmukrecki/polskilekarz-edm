@@ -70,6 +70,5 @@ export default buildConfig({
     addLastModified,
     addCreatedBy,
     addIsArchived,
-    generateDisplayNameAndMetadataFields,
   ],
 });
