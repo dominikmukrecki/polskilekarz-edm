@@ -24,15 +24,10 @@ const Contacts: CollectionConfig = {
     },
     {
       name: "addressList",
-      type: "array",
-      minRows: 1,
-      fields: [
-        {
-          name: "address",
-          type: "text",
-          required: true,
-        },
-      ],
+      type: "relationship",
+      relationTo: "addresses",
+      hasMany: true,
+      required: true,
     },
   ],
 };
