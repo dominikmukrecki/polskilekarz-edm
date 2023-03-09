@@ -1,6 +1,6 @@
-import Contacts from './personalData/Contacts';
-import Emails from './personalData/Emails';
-import PhoneNumbers from './personalData/PhoneNumbers';
+import Contacts from './Contacts';
+import Emails from './Emails';
+import PhoneNumbers from './PhoneNumbers';
 
 const PersonalData = [
   Contacts,
