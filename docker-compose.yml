@@ -1,18 +1,22 @@
-version: '3'
+version: '3.8'
+
 services:
   payload:
     image: node:18-buster
-    expose:
-      - 3000
-    ports:
-      - 3000:3000
-    volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
     command: sh -c "npm install && npm run dev"
-    depends_on:
-      - mongo
+    working_dir: /home/node/app/
+    environment:
+      MONGODB_URI: ${MONGODB_URI:-mongodb://mongo:27017/payload}
+      PORT: ${PORT:-3000}
+      NODE_ENV: ${NODE_ENV:-development}
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET:-mysecret}
+      PAYLOAD_PUBLIC_SERVER_URL: ${PAYLOAD_PUBLIC_SERVER_URL:-http://localhost:3000}
+      HOSTNAME: ${HOSTNAME:-localhost}
+    volumes:
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - traefik
+      - backend
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik
@@ -20,34 +24,20 @@ services:
       - traefik.http.routers.payload.tls.certresolver=myresolver
       - traefik.http.routers.payload.service=payload
       - traefik.http.services.payload.loadbalancer.server.port=3000
-      - deck-chores.dump.command=sh -c "git pull"
-      - deck-chores.dump.interval=5s
 
-    environment:
-      MONGODB_URI:
-      PORT:
-      NODE_ENV:
-      PAYLOAD_SECRET:
-      PAYLOAD_PUBLIC_SERVER_URL:
-      HOSTNAME:
-    networks:
-      - traefik
-      - backend
   mongo:
     image: mongo:latest
-    expose:
-      - 27017
     command:
       - --storageEngine=wiredTiger
     volumes:
       - data:/data/db
-    logging:
-      driver: none
     networks:
       - backend
+
 volumes:
   data:
   node_modules:
+
 networks:
   backend:
   traefik:
