@@ -8,13 +8,6 @@ const Addresses: CollectionConfig = {
       type: "text",
       required: true,
     },
-    {
-      name: "contactList",
-      type: "relationship",
-      relationTo: "contacts",
-      hasMany: true,
-      required: true,
-    },
   ],
 };
 
