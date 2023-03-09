@@ -1,4 +1,5 @@
 import { buildConfig } from 'payload/config';
+import Users from './Users';
 import path from 'path';
 
 // Import your collection definitions
