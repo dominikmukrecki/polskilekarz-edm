@@ -14,10 +14,7 @@ import Users from './collections/Users';
 // Import the addIsArchivedField plugin
 // import addIsArchivedField from './plugins/addIsArchivedField';
 
-import addLastModified from './plugins/addLastModified';
-import addCreatedBy from './plugins/addCreatedBy';
-import addIsArchived from './plugins/addIsArchived';
-import generateDisplayNameAndMetadataFields from './plugins/generateDisplayNameAndMetadataFields';
+import metadataPlugin from './plugins/metadataPlugin';
 
 const locales = ['en', 'pl'];
 const defaultLocale = 'en';
@@ -67,8 +64,6 @@ export default buildConfig({
   },
   // Add the addIsArchivedField plugin
   plugins: [
-    addLastModified,
-    addCreatedBy,
-    addIsArchived,
+    metadataPlugin,
   ],
 });
