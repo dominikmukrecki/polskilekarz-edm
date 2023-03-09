@@ -2,6 +2,10 @@ import { addLastModified } from './addLastModified';
 import { addCreatedBy } from './addCreatedBy';
 import { addIsArchived } from './addIsArchived';
 
-const metadataPlugin = [addLastModified, addCreatedBy, addIsArchived];
+const mergePlugins = () => [
+  addLastModified(),
+  addCreatedBy(),
+  addIsArchived(),
+];
 
-export default metadataPlugin;
+export default mergePlugins;
