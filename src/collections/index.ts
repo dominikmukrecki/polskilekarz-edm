@@ -3,7 +3,7 @@ import Users from './Users';
 
 const collections = [
   ...PersonalData,
-  ...Users,
+  Users,
 ];
 
 export default collections;
