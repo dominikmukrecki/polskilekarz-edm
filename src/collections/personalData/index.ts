@@ -11,6 +11,7 @@ const PersonalData = [
   ...(PhoneNumbers ?? []),
   ...(Addresses ?? []),
 ].reduce((acc, collection) => {
+  console.log('Collection:', collection);
   return [
     ...acc,
     {
