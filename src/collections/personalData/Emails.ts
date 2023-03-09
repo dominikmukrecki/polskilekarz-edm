@@ -10,6 +10,9 @@ const Emails: CollectionConfig = {
       required: true,
     },
   ],
+  admin: {
+    useAsTitle: 'email',
+  }
 };
 
 export default Emails;
