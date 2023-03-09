@@ -1,7 +1,7 @@
 import { CollectionConfig } from "payload/types";
 
 const PhoneNumbers: CollectionConfig = {
-  slug: "phone-numbers",
+  slug: "phoneNumbers",
   fields: [
     {
       name: "number",
