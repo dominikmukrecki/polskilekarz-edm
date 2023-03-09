@@ -8,34 +8,14 @@ const admin = {
 };
 
 const PersonalData = [
-  ...Contacts.map(collection => ({
-    ...collection,
-    admin: {
-      ...admin,
-      ...collection.admin
-    }
-  })),
-  ...Emails.map(collection => ({
-    ...collection,
-    admin: {
-      ...admin,
-      ...collection.admin
-    }
-  })),
-  ...PhoneNumbers.map(collection => ({
-    ...collection,
-    admin: {
-      ...admin,
-      ...collection.admin
-    }
-  })),
-  ...Addresses.map(collection => ({
-    ...collection,
-    admin: {
-      ...admin,
-      ...collection.admin
-    }
-  })),
+  Contacts,
+  Emails,
+  PhoneNumbers,
+  Addresses,
 ];
+
+PersonalData.forEach(collection => {
+  collection.admin = {...admin, ...collection.admin};
+});
 
 export default PersonalData;
