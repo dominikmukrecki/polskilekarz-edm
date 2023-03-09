@@ -18,11 +18,6 @@ const Contacts: CollectionConfig = {
           type: "email",
           required: true,
         },
-        {
-          name: "description",
-          type: "text",
-          required: true,
-        },
       ],
     },
     {
@@ -42,11 +37,6 @@ const Contacts: CollectionConfig = {
             return true;
           },
         },
-        {
-          name: "description",
-          type: "text",
-          required: true,
-        },
       ],
     },
     {
@@ -56,11 +46,6 @@ const Contacts: CollectionConfig = {
       fields: [
         {
           name: "address",
-          type: "text",
-          required: true,
-        },
-        {
-          name: "description",
           type: "text",
           required: true,
         },
