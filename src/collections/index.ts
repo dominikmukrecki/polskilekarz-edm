@@ -1,9 +1,9 @@
 import PersonalData from './personalData';
+import Users from './Users';
 
 const collections = [
   ...PersonalData,
+  ...Users,
 ];
-
-const adminGroup = 'Personal Data';
 
 export default collections;
