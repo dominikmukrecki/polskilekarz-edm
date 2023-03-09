@@ -3,25 +3,39 @@ import Emails from './Emails';
 import PhoneNumbers from './PhoneNumbers';
 import Addresses from './Addresses';
 
-const adminGroup = 'Personal Data';
+const admin = {
+  group: 'Personal Data',
+};
 
 const PersonalData = [
-  ...(Contacts ?? []),
-  ...(Emails ?? []),
-  ...(PhoneNumbers ?? []),
-  ...(Addresses ?? []),
-].reduce((acc, collection) => {
-  console.log('Collection:', collection);
-  return [
-    ...acc,
-    {
-      ...collection,
-      admin: {
-        ...(collection.admin ?? {}),
-        group: adminGroup,
-      },
-    },
-  ];
-}, []);
+  ...Contacts.map(collection => ({
+    ...collection,
+    admin: {
+      ...admin,
+      ...collection.admin
+    }
+  })),
+  ...Emails.map(collection => ({
+    ...collection,
+    admin: {
+      ...admin,
+      ...collection.admin
+    }
+  })),
+  ...PhoneNumbers.map(collection => ({
+    ...collection,
+    admin: {
+      ...admin,
+      ...collection.admin
+    }
+  })),
+  ...Addresses.map(collection => ({
+    ...collection,
+    admin: {
+      ...admin,
+      ...collection.admin
+    }
+  })),
+];
 
 export default PersonalData;
