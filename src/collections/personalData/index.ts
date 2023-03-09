@@ -10,7 +10,7 @@ const PersonalData = [
 
 const adminGroup = 'Personal Data';
 
-personalDataCollections.forEach(collection => {
+PersonalData.forEach(collection => {
   if (collection.admin) {
     collection.admin.group = adminGroup;
   } else {
@@ -19,3 +19,4 @@ personalDataCollections.forEach(collection => {
 });
 
 export default PersonalData;
+
