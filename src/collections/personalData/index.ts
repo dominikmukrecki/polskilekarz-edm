@@ -6,17 +6,17 @@ import Addresses from './Addresses';
 const adminGroup = 'Personal Data';
 
 const PersonalData = [
-  ...Contacts,
-  ...Emails,
-  ...PhoneNumbers,
-  ...Addresses,
+  ...(Contacts ?? []),
+  ...(Emails ?? []),
+  ...(PhoneNumbers ?? []),
+  ...(Addresses ?? []),
 ].reduce((acc, collection) => {
   return [
     ...acc,
     {
       ...collection,
       admin: {
-        ...(collection.admin || {}),
+        ...(collection.admin ?? {}),
         group: adminGroup,
       },
     },
