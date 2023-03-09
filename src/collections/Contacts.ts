@@ -5,62 +5,33 @@ const Contacts: CollectionConfig = {
   fields: [
     {
       name: "name",
-      label: "Name",
       type: "text",
       required: true,
     },
     {
-      name: "email",
-      label: "Primary Email",
-      type: "email",
-      required: true,
-    },
-    {
-      name: "phone",
-      label: "Primary Phone",
-      type: "text",
-      required: true,
-      validate: (value) => {
-        const regex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
-        if (value && !regex.test(value)) {
-          return "Invalid phone number format";
-        }
-        return true;
-      },
-    },
-    {
-      name: "additionalEmails",
-      label: "Additional Emails",
+      name: "emailList",
       type: "array",
+      minRows: 1,
       fields: [
         {
-          name: "description",
-          label: "Description",
-          type: "text",
+          name: "email",
+          type: "email",
           required: true,
         },
         {
-          name: "email",
-          label: "Email",
-          type: "email",
+          name: "description",
+          type: "text",
           required: true,
         },
       ],
     },
     {
-      name: "additionalPhones",
-      label: "Additional Phones",
+      name: "phoneList",
       type: "array",
+      minRows: 1,
       fields: [
         {
-          name: "description",
-          label: "Description",
-          type: "text",
-          required: true,
-        },
-        {
           name: "phone",
-          label: "Phone",
           type: "text",
           required: true,
           validate: (value) => {
@@ -71,13 +42,29 @@ const Contacts: CollectionConfig = {
             return true;
           },
         },
+        {
+          name: "description",
+          type: "text",
+          required: true,
+        },
       ],
     },
     {
-      name: "address",
-      label: "Address",
-      type: "text",
-      required: true,
+      name: "addressList",
+      type: "array",
+      minRows: 1,
+      fields: [
+        {
+          name: "address",
+          type: "text",
+          required: true,
+        },
+        {
+          name: "description",
+          type: "text",
+          required: true,
+        },
+      ],
     },
   ],
   admin: {
