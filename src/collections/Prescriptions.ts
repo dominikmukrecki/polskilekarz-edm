@@ -1,26 +1,4 @@
-import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
-
-interface PrescriptionData {
-  patient: string;
-  medicine: string;
-  issuingDate: string;
-  expirationDate?: string;
-}
-
-// Calculates the expiration date based on the issuing date and days of validity
-const calculateExpirationDate: CollectionBeforeValidateHook<PrescriptionData> = async ({ data }) => {
-  const { issuingDate, expirationDate, daysOfValidity } = data;
-
-  if (!issuingDate || !daysOfValidity) return data;
-
-  const issuingDateTime = new Date(issuingDate).getTime();
-  const daysInMilliseconds = daysOfValidity * 24 * 60 * 60 * 1000;
-
-  const expirationDateTime = issuingDateTime + daysInMilliseconds;
-  data.expirationDate = new Date(expirationDateTime).toISOString();
-  
-  return data;
-};
+import { CollectionConfig } from 'payload/types';
 
 const today = new Date();
 
@@ -91,10 +69,6 @@ const Prescriptions: CollectionConfig = {
   // Use the common name of the medicine as the title in the admin UI
   admin: {
     group: 'Documents',
-  },
-  hooks: {
-    // Add the beforeValidate hook to calculate the expiration date
-    beforeValidate: [calculateExpirationDate],
   },
 };
 

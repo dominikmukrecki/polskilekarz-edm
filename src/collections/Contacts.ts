@@ -1,5 +1,4 @@
 import { CollectionConfig } from "payload/types";
-import generateDisplayNameHook from '../hooks/generateDisplayNameHook';
 
 const Contacts: CollectionConfig = {
   slug: "contacts",
@@ -83,13 +82,6 @@ const Contacts: CollectionConfig = {
   ],
   admin: {
     group: 'Personal Data',
-  },
-  hooks: {
-    beforeChange: [
-      generateDisplayNameHook({
-        template: '${name}, email: ${email}',
-      }),
-    ],
   },
 };
 

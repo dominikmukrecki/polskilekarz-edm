@@ -1,18 +1,6 @@
 // This file defines the Users collection in Payload CMS, including its fields and hooks
 
-import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
-
-interface UserData {
-  name: string;
-  email: string;
-  displayName?: string;
-}
-
-const generateDisplayName: CollectionBeforeValidateHook<UserData> = async ({ data }) => {
-  const { name, email } = data;
-  data.displayName = `${name}, ${email}`;
-  return data;
-};
+import { CollectionConfig } from 'payload/types';
 
 const Users: CollectionConfig = {
   slug: 'users',
@@ -38,9 +26,6 @@ const Users: CollectionConfig = {
     },
     // Add more fields as needed
   ],
-  hooks: {
-    beforeValidate: [generateDisplayName],
-  },
 };
 
 export default Users;

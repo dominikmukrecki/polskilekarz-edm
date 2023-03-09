@@ -1,5 +1,4 @@
 import { CollectionConfig } from 'payload/types';
-import generateDisplayNameHook from '../hooks/generateDisplayNameHook';
 
 const DosageDescriptions: CollectionConfig = {
   slug: 'dosage-descriptions',
@@ -18,14 +17,6 @@ const DosageDescriptions: CollectionConfig = {
   ],
   admin: {
     group: "Medicines",
-  },
-  hooks: {
-    beforeChange: [
-      generateDisplayNameHook({
-        template: '${description}',
-        defaultDisplayName: 'Emtpy dosage description',
-      }),
-    ],
   },
 };
 

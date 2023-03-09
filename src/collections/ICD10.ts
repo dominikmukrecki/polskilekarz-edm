@@ -1,15 +1,4 @@
-import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
-
-interface ICD10Data {
-  code: string;
-  description: string;
-}
-
-const generateDisplayName: CollectionBeforeValidateHook<ICD10Data> = async ({ data }) => {
-  const { code, description } = data;
-  data.displayName = `${code} - ${description}`;
-  return data;
-};
+import { CollectionConfig } from 'payload/types';
 
 const ICD10: CollectionConfig = {
     slug: 'icd10',
@@ -35,9 +24,6 @@ const ICD10: CollectionConfig = {
     ],
     admin: {
       group: "Indexes",
-    },
-    hooks: {
-      beforeValidate: [generateDisplayName],
     },
   };
   

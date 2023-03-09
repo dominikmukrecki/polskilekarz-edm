@@ -1,18 +1,4 @@
-import { CollectionConfig, CollectionBeforeValidateHook } from 'payload/types';
-
-interface MedicineData {
-  commonName: string;
-  brandName: string;
-  pharmaceuticalForm: string;
-  amountAndUnit: string;
-  displayName: string;
-}
-
-const createDisplayName: CollectionBeforeValidateHook<MedicineData> = async ({ data }) => {
-  const { commonName, brandName, pharmaceuticalForm, amountAndUnit } = data;
-  data.displayName = `${commonName} (${brandName}) - ${pharmaceuticalForm}, ${amountAndUnit}`;
-  return data;
-};
+import { CollectionConfig } from 'payload/types';
 
 const Medicines: CollectionConfig = {
   slug: 'medicines',
@@ -44,9 +30,6 @@ const Medicines: CollectionConfig = {
   ],
   admin: {
     group: "Medicines",
-  },
-  hooks: {
-    beforeValidate: [createDisplayName],
   },
 };
 
