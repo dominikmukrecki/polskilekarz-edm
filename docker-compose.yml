@@ -14,7 +14,7 @@ services:
       HOSTNAME: ${HOSTNAME:-localhost}
     volumes:
       - node_modules:/home/node/app/node_modules
-      - app:/home/node/app
+      - ./:/home/node/app
     networks:
       - traefik
       - backend
@@ -37,7 +37,6 @@ services:
 
 volumes:
   data:
-  app:
   node_modules:
 
 networks:
