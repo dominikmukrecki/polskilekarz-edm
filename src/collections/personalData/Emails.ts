@@ -5,14 +5,11 @@ const Emails: CollectionConfig = {
   fields: [
     {
       name: "email",
-      label: "Email",
       type: "email",
       required: true,
+      unique: true,
     },
   ],
-  admin: {
-    useAsTitle: 'email',
-  }
 };
 
 export default Emails;
