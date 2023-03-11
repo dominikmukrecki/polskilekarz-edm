@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload/types';
+import { name, emailList, phoneList, addressList } from '../common/fields';
 
 const Contacts: CollectionConfig = {
   slug: 'contacts',
@@ -13,32 +14,10 @@ const Contacts: CollectionConfig = {
     },
   },
   fields: [
-    {
-      name: 'name',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'emailList',
-      type: 'relationship',
-      relationTo: 'emails',
-      hasMany: true,
-      required: true,
-    },
-    {
-      name: 'phoneList',
-      type: 'relationship',
-      relationTo: 'phoneNumbers',
-      hasMany: true,
-      required: true,
-    },
-    {
-      name: 'addressList',
-      type: 'relationship',
-      relationTo: 'addresses',
-      hasMany: true,
-      required: true,
-    },
+    name,
+    emailList,
+    phoneList,
+    addressList,
   ],
 };
 
