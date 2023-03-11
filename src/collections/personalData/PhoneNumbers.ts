@@ -1,22 +1,9 @@
 import { CollectionConfig } from 'payload/types';
+import { phoneNumberField } from '../common/fields';
 
 const PhoneNumbers: CollectionConfig = {
   slug: 'phoneNumbers',
-  fields: [
-    {
-      name: 'number',
-      type: 'text',
-      required: true,
-      unique: true,
-      validate: (value) => {
-        const regex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
-        if (value && !regex.test(value)) {
-          return 'Invalid phone number format';
-        }
-        return true;
-      },
-    },
-  ],
+  fields: [phoneNumberField],
 };
 
 export default PhoneNumbers;

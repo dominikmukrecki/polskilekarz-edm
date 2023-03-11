@@ -1,8 +1,10 @@
-import { Config, Plugin } from 'payload/config';
-import addCreatedBy from './addCreatedBy';
-import addIsArchived from './addIsArchived';
-import addLastModified from './addLastModified';
-import addDisplayName from './addDisplayName';
+import { Config, Plugin } from "payload/config";
+import {
+  addCreatedBy,
+  addDisplayName,
+  addIsArchived,
+  addLastModified,
+} from "./metadataPlugins";
 
 const composePlugins = (...plugins: Plugin[]): Plugin => {
   return (config: Config) => {
@@ -20,3 +22,5 @@ const metadataPlugin = composePlugins(
 );
 
 export default metadataPlugin;
+
+// where metadataPlugins is a separate file that exports the individual metadata plugins
