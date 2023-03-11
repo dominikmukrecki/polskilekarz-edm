@@ -1,15 +1,9 @@
 import { CollectionConfig } from "payload/types";
+import { emailField } from "../common/fields";
 
 const Emails: CollectionConfig = {
   slug: "emails",
-  fields: [
-    {
-      name: "email",
-      type: "email",
-      required: true,
-      unique: true,
-    },
-  ],
+  fields: [emailField],
 };
 
 export default Emails;
