@@ -1,24 +1,10 @@
-import { CollectionConfig } from 'payload/types';
-import { name, emailList, phoneList, addressList } from '../common/fields';
+import { CollectionConfig } from "payload/types";
+import { name } from "../common/fields";
+import { emailList, phoneList, addressList } from "./relationships/fields";
 
 const Contacts: CollectionConfig = {
-  slug: 'contacts',
-  labels: {
-    singular: {
-      en: 'Contact',
-      pl: 'Kontakt',
-    },
-    plural: {
-      en: 'Contacts',
-      pl: 'Kontakty',
-    },
-  },
-  fields: [
-    name,
-    emailList,
-    phoneList,
-    addressList,
-  ],
+  slug: "contacts",
+  fields: [name, emailList, phoneList, addressList],
 };
 
 export default Contacts;
