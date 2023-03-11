@@ -1,15 +1,9 @@
 import { CollectionConfig } from 'payload/types';
+import { addressField } from '../common/fields';
 
 const Addresses: CollectionConfig = {
   slug: 'addresses',
-  fields: [
-    {
-      name: 'address',
-      type: 'text',
-      required: true,
-      unique: true,
-    },
-  ],
+  fields: [addressField],
 };
 
 export default Addresses;

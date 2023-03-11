@@ -29,3 +29,11 @@ export const addressList: Field = {
   hasMany: true,
   required: true,
 };
+
+export const addressList: Field = {
+    name: 'addressList',
+    type: 'relationship',
+    relationTo: 'addresses',
+    hasMany: true,
+    required: true,
+  };  
