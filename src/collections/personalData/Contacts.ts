@@ -7,7 +7,7 @@ import { phoneList } from "./PhoneNumbers";
 
 export const Contacts: CollectionConfig = {
   slug: "contacts",
-  fields: [nameField, emailList, phoneList, addressList, chatwootContact],
+  fields: [nameField(), emailList, phoneList, addressList, chatwootContact],
 };
 
 export const contactList: Field = {
