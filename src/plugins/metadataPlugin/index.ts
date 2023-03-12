@@ -1,6 +1,5 @@
 import { Config, Plugin, AsyncPlugin } from "payload/config";
 import addCreatedBy from "./addCreatedBy";
-import addIsArchived from "./addIsArchived";
 import addLastModified from "./addLastModified";
 import addDisplayName from "./addDisplayName";
 import addDisplayNameHook from "./addDisplayNameHook";
@@ -16,7 +15,6 @@ const composePlugins = (...plugins: Plugin[]): AsyncPlugin => {
 };
 
 const metadataPlugin = composePlugins(
-  addIsArchived,
   addCreatedBy,
   addLastModified,
   addDisplayName,
