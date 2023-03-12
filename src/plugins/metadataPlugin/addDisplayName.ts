@@ -24,7 +24,6 @@ const addDisplayName: Plugin = async (
               : fallbackDisplayName[locale];
           },
           admin: {
-            position: "sidebar",
             readOnly: true,
           },
         };

@@ -37,10 +37,7 @@ export default buildConfig({
   },
 
   // Configure internationalization (i18n)
-  i18n: {
-    locales,
-    defaultLocale,
-  },
+
   localization: {
     locales,
     defaultLocale,
