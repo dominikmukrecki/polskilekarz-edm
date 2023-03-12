@@ -13,7 +13,7 @@ const Users: CollectionConfig = {
     read: () => true,
   },
   fields: [
-    nameField(),
+    nameField,
     emailField,
     // Add more fields as needed
   ],

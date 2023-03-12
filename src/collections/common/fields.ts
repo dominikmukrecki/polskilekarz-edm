@@ -1,11 +1,10 @@
 import { Field } from "payload/types";
 
-export const nameField = ({ required = true, unique = false } = {}): Field => ({
+export const nameField: Field = {
   name: "name",
   type: "text",
-  required,
-  unique,
-});
+  required: true,
+};
 
 export const addressField: Field = {
   name: "address",
@@ -17,6 +16,7 @@ export const emailField: Field = {
   name: "email",
   type: "email",
   unique: true,
+  required: true,
 };
 
 export const phoneNumberField: Field = {
@@ -35,11 +35,13 @@ export const phoneNumberField: Field = {
 export const firstNameField: Field = {
   name: "firstName",
   type: "text",
+  required: true,
 };
 
 export const lastNameField: Field = {
   name: "lastName",
   type: "text",
+  required: true,
 };
 
 export const birthdateField: Field = {
@@ -53,6 +55,7 @@ export const birthdateField: Field = {
     }
     return true;
   },
+  required: true,
 };
 
 export const genderField: Field = {
@@ -67,24 +70,23 @@ export const genderField: Field = {
 
 export const commonNameField: Field = {
   name: "commonName",
-  label: "Common Name",
   type: "text",
+  required: true,
 };
 
 export const brandNameField: Field = {
   name: "brandName",
-  label: "Brand Name",
   type: "text",
 };
 
 export const pharmaceuticalFormField: Field = {
   name: "pharmaceuticalForm",
-  label: "Pharmaceutical Form",
   type: "text",
+  required: true,
 };
 
 export const amountAndUnitField: Field = {
   name: "amountAndUnit",
-  label: "Amount and Unit",
   type: "text",
+  required: true,
 };
