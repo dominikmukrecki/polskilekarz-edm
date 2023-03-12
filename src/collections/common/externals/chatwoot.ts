@@ -20,6 +20,7 @@ const fieldAdmin = {
 const chatwootContactIDField: Field = {
   name: "chatwootContactID",
   type: "number",
+  required: false, // set required to false
   validate: positiveIntegerValidation,
   admin: fieldAdmin,
 };
@@ -27,6 +28,7 @@ const chatwootContactIDField: Field = {
 const chatwootAccountIDField: Field = {
   name: "chatwootAccountID",
   type: "number",
+  required: false, // set required to false
   validate: positiveIntegerValidation,
   admin: fieldAdmin,
 };

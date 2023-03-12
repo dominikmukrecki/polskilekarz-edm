@@ -1,6 +1,6 @@
 import { Config, Plugin } from "payload/config";
 import { CollectionConfig } from "payload/types";
-import { defaultDisplayNames, fallbackDisplayName } from "./localization/defaultDisplayNames";
+import { defaultDisplayNames } from "./localization/defaultDisplayNames";
 
 const addDisplayName: Plugin = async (
   incomingConfig: Config
@@ -18,6 +18,7 @@ const addDisplayName: Plugin = async (
           localized: true,
           defaultValue: ({ locale }) => {
             const defaultDisplayName = defaultDisplayNames[collection.slug];
+            const fallbackDisplayName = defaultDisplayNames._fallback;
             return defaultDisplayName && defaultDisplayName[locale]
               ? defaultDisplayName[locale]
               : fallbackDisplayName[locale];
