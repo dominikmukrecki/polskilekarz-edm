@@ -1,5 +1,3 @@
-import pluginsMetadata from "./pluginsMetadata";
-
-const globals = [...pluginsMetadata];
+const globals = [];
 
 export default globals;
