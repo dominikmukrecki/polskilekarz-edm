@@ -13,9 +13,7 @@ const positiveIntegerValidation = (value) => {
 };
 
 const fieldAdmin = {
-  readOnly: false,
-  position: "sidebar",
-  width: '50%',
+  readOnly: true,
   disabled: true,
 };
 
@@ -35,8 +33,5 @@ const chatwootAccountIDField: Field = {
 
 export const chatwootContact: Field = {
   type: "row",
-  admin: {
-    position: "sidebar",
-  },
   fields: [chatwootContactIDField, chatwootAccountIDField],
 };
