@@ -1,6 +1,6 @@
 import { Field } from "payload/types";
 
-export const name: Field = {
+export const nameField: Field = {
   name: "name",
   type: "text",
   required: true,

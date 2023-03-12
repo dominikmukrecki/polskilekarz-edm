@@ -1,7 +1,7 @@
 import { Field } from "payload/types";
-import Emails from "../Emails";
-import PhoneNumbers from "../PhoneNumbers";
-import Addresses from "../Addresses";
+import Emails from "../personalData/Emails";
+import PhoneNumbers from "../personalData/PhoneNumbers";
+import Addresses from "../personalData/Addresses";
 
 
 export const emailList: Field = {
@@ -9,7 +9,7 @@ name: "emailList",
 type: "relationship",
 relationTo: Emails.slug,
 hasMany: true,
-required: true,
+required: true, 
 };
 
 export const phoneList: Field = {

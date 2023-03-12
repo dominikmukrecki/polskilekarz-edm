@@ -1,10 +1,10 @@
 // This file defines the Users collection in Payload CMS, including its fields and hooks
 
-import { CollectionConfig } from 'payload/types';
-import { name } from "../common/fields";
+import { CollectionConfig } from "payload/types";
+import { nameField, emailField } from "./common/fields";
 
 const Users: CollectionConfig = {
-  slug: 'users',
+  slug: "users",
   auth: true,
   admin: {
     group: "Administration",
@@ -13,18 +13,8 @@ const Users: CollectionConfig = {
     read: () => true,
   },
   fields: [
-    {
-      name: 'name',
-      label: 'Name',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'email',
-      label: 'Email',
-      type: 'email',
-      required: true,
-    },
+    nameField,
+    emailField,
     // Add more fields as needed
   ],
 };
