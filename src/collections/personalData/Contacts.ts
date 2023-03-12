@@ -5,7 +5,7 @@ import { emailList } from "./Emails";
 import { addressList } from "./Addresses";
 import { phoneList } from "./PhoneNumbers";
 
-const Contacts: CollectionConfig = {
+export const Contacts: CollectionConfig = {
   slug: "contacts",
   fields: [nameField, emailList, phoneList, addressList, chatwootContact],
 };
@@ -16,5 +16,3 @@ export const contactList: Field = {
   relationTo: Contacts.slug,
   hasMany: true,
 };
-
-export default Contacts;
