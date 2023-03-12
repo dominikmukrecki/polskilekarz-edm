@@ -41,9 +41,17 @@ export const lastNameField: Field = {
 };
 
 export const birthdateField: Field = {
-  name: "birthdate",
-  type: "date",
-};
+    name: "birthdate",
+    type: "date",
+    validate: (value) => {
+      const now = new Date();
+      const date = new Date(value);
+      if (date > now) {
+        return "Date cannot be later than now";
+      }
+      return true;
+    },
+  };
 
 export const genderField: Field = {
   name: "gender",

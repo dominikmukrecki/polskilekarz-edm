@@ -1,13 +1,13 @@
 import PersonalData from './personalData';
 import Users from './Users';
-import Medicines from './Medicines';
+import MedicinesIndex from './medicinesIndex';
 import MedicalData from './medicalData';
 
 const collections = [
   ...PersonalData,
   ...MedicalData,
+  ...MedicinesIndex,
   Users,
-  Medicines, 
 ];
 
 export default collections;
