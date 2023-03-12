@@ -41,17 +41,17 @@ export const lastNameField: Field = {
 };
 
 export const birthdateField: Field = {
-    name: "birthdate",
-    type: "date",
-    validate: (value) => {
-      const now = new Date();
-      const date = new Date(value);
-      if (date > now) {
-        return "Date cannot be later than now";
-      }
-      return true;
-    },
-  };
+  name: "birthdate",
+  type: "date",
+  validate: (value) => {
+    const now = new Date();
+    const date = new Date(value);
+    if (date > now) {
+      return "Date cannot be later than now";
+    }
+    return true;
+  },
+};
 
 export const genderField: Field = {
   name: "gender",
@@ -61,4 +61,32 @@ export const genderField: Field = {
     { label: "Female", value: "female" },
     { label: "Other", value: "other" },
   ],
+};
+
+export const commonNameField: Field = {
+  name: "commonName",
+  label: "Common Name",
+  type: "text",
+  required: true,
+};
+
+export const brandNameField: Field = {
+  name: "brandName",
+  label: "Brand Name",
+  type: "text",
+  required: true,
+};
+
+export const pharmaceuticalFormField: Field = {
+  name: "pharmaceuticalForm",
+  label: "Pharmaceutical Form",
+  type: "text",
+  required: true,
+};
+
+export const amountAndUnitField: Field = {
+  name: "amountAndUnit",
+  label: "Amount and Unit",
+  type: "text",
+  required: true,
 };
