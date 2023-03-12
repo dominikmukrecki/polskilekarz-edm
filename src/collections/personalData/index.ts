@@ -1,7 +1,7 @@
 import Contacts from "./Contacts";
-import Emails from "./Emails";
-import PhoneNumbers from "./PhoneNumbers";
-import Addresses from "./Addresses";
+import { Emails } from "./Emails";
+import { PhoneNumbers } from "./PhoneNumbers";
+import { Addresses } from "./Addresses";
 
 const admin = {
   group: "Personal Data",

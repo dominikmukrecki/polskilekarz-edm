@@ -1,9 +1,14 @@
-import { CollectionConfig } from 'payload/types';
+import { CollectionConfig, Field } from 'payload/types';
 import { addressField } from '../common/fields';
 
-const Addresses: CollectionConfig = {
+export const Addresses: CollectionConfig = {
   slug: 'addresses',
   fields: [addressField],
 };
 
-export default Addresses;
+export const addressList: Field = {
+  name: "addressList",
+  type: "relationship",
+  relationTo: Addresses.slug,
+  hasMany: true,
+};

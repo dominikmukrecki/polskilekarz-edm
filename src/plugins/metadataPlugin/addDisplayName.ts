@@ -25,6 +25,9 @@ const addDisplayName: Plugin = async (
           },
           admin: {
             readOnly: true,
+            condition: () => {
+              return false;
+            },
           },
         };
 

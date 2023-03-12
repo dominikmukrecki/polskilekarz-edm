@@ -3,33 +3,54 @@ import { Field } from "payload/types";
 export const nameField: Field = {
   name: "name",
   type: "text",
-  required: true,
 };
 
 export const addressField: Field = {
-    name: 'address',
-    type: 'text',
-    required: true,
-    unique: true,
-  };
+  name: "address",
+  type: "text",
+  unique: true,
+};
 
 export const emailField: Field = {
   name: "email",
   type: "email",
-  required: true,
   unique: true,
 };
 
 export const phoneNumberField: Field = {
-    name: 'number',
-    type: 'text',
-    required: true,
-    unique: true,
-    validate: (value) => {
-      const regex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
-      if (value && !regex.test(value)) {
-        return 'Invalid phone number format';
-      }
-      return true;
-    },
-  };  
+  name: "number",
+  type: "text",
+  unique: true,
+  validate: (value) => {
+    const regex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
+    if (value && !regex.test(value)) {
+      return "Invalid phone number format";
+    }
+    return true;
+  },
+};
+
+export const firstNameField: Field = {
+  name: "firstName",
+  type: "text",
+};
+
+export const lastNameField: Field = {
+  name: "lastName",
+  type: "text",
+};
+
+export const birthdateField: Field = {
+  name: "birthdate",
+  type: "date",
+};
+
+export const genderField: Field = {
+  name: "gender",
+  type: "select",
+  options: [
+    { label: "Male", value: "male" },
+    { label: "Female", value: "female" },
+    { label: "Other", value: "other" },
+  ],
+};
