@@ -1,6 +1,6 @@
 import { Config, Plugin } from "payload/config";
 import { CollectionConfig } from "payload/types";
-import { defaultDisplayNames } from "./localization/defaultDisplayNames";
+import defaultDisplayNames from "./localization/defaultDisplayNames";
 
 const addDisplayName: Plugin = async (
   incomingConfig: Config

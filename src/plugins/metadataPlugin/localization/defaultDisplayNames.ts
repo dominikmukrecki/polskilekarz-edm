@@ -1,4 +1,4 @@
-export const defaultDisplayNames = {
+const defaultDisplayNames = {
   contacts: {
     en: "Create New Contact",
     pl: "Dodaj nowy kontakt",
@@ -25,7 +25,4 @@ export const defaultDisplayNames = {
   },
 };
 
-export const fallbackDisplayName = {
-  en: "Create New Entity",
-  pl: "Dodaj nowy wpis",
-};
+export default defaultDisplayNames;

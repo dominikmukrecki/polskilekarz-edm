@@ -1,12 +1,7 @@
 import { Field } from "payload/types";
 
 const positiveIntegerValidation = (value) => {
-  if (
-    value === undefined ||
-    value === null ||
-    !Number.isInteger(value) ||
-    value <= 0
-  ) {
+  if (value != null && (!Number.isInteger(value) || value <= 0)) {
     return "It should be a positive integer";
   }
   return true;

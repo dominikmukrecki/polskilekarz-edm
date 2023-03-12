@@ -1,5 +1,6 @@
 import { Config, Plugin } from "payload/config";
 import { CollectionConfig } from "payload/types";
+import displayNameTemplates from "./localization/displayNameTemplates";
 
 const addDisplayNameHook: Plugin = async (
   incomingConfig: Config
@@ -12,10 +13,23 @@ const addDisplayNameHook: Plugin = async (
     if (displayNameField) {
       collection.hooks = {
         beforeChange: [
-          async ({ data }) => {
+          async ({ data, req }) => {
             if (data.displayName) {
-              data.displayName = `${data[firstField.name]}`;
+              const template =
+                displayNameTemplates[collection.slug]?.[req.locale]
+              if (template) {
+                data.displayName = template.replace(
+                  /\${data\.(\w+)}/g,
+                  (match, key) => {
+                    const value = key.split(".").reduce((o, i) => o?.[i], data);
+                    return value ?? "";
+                  }
+                );
+              } else {
+                data.displayName = `${data[firstField.name]}`;
+              }
             }
+            console.log(data);
             return data;
           },
           ...(collection.hooks?.beforeChange || []),
@@ -24,7 +38,6 @@ const addDisplayNameHook: Plugin = async (
     }
   };
 
-  // Spread the existing config
   const config: Config = {
     ...incomingConfig,
     collections: incomingConfig.collections.map(
