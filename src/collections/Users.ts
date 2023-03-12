@@ -1,6 +1,7 @@
 // This file defines the Users collection in Payload CMS, including its fields and hooks
 
 import { CollectionConfig } from 'payload/types';
+import { name } from "../common/fields";
 
 const Users: CollectionConfig = {
   slug: 'users',

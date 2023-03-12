@@ -5,9 +5,7 @@ const addDisplayName: Plugin = async (incomingConfig: Config): Promise<Config> =
   // Spread the existing config
   const config: Config = {
     ...incomingConfig,
-    collections: incomingConfig.collections.map((collection: CollectionConfig) => {
-      const displayName = `New Record`;
-
+    collections: incomingConfig.collections.map((collection: CollectionConfig) => {      
       // Spread each item that we are modifying,
       // and add our new field - complete with
       // hooks and proper admin UI config
@@ -20,7 +18,7 @@ const addDisplayName: Plugin = async (incomingConfig: Config): Promise<Config> =
             label: 'Display Name',
             type: 'text',
             required: true,
-            defaultValue: displayName,
+            defaultValue: 'New Record',
             admin: {
               position: 'sidebar',
               readOnly: true,
