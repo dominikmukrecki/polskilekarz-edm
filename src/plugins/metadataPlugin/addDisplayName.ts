@@ -1,36 +1,46 @@
-import { Config, Plugin } from 'payload/config';
-import { CollectionConfig } from 'payload/types';
+import { Config, Plugin } from "payload/config";
+import { CollectionConfig } from "payload/types";
+import { defaultDisplayNames, fallbackDisplayName } from "./localization/defaultDisplayNames";
 
-const addDisplayName: Plugin = async (incomingConfig: Config): Promise<Config> => {
+const addDisplayName: Plugin = async (
+  incomingConfig: Config
+): Promise<Config> => {
   // Spread the existing config
   const config: Config = {
     ...incomingConfig,
-    collections: incomingConfig.collections.map((collection: CollectionConfig) => {      
-      // Spread each item that we are modifying,
-      // and add our new field - complete with
-      // hooks and proper admin UI config
-      return {
-        ...collection,
-        fields: [
-          ...collection.fields,
-          {
-            name: 'displayName',
-            label: 'Display Name',
-            type: 'text',
-            required: true,
-            defaultValue: 'New Record',
-            admin: {
-              position: 'sidebar',
-              readOnly: true,
-            },
+    collections: incomingConfig.collections.map(
+      (collection: CollectionConfig) => {
+        const displayNameField = {
+          name: "displayName",
+          label: "Display Name",
+          type: "text",
+          required: true,
+          localized: true,
+          defaultValue: ({ locale }) => {
+            const defaultDisplayName = defaultDisplayNames[collection.slug];
+            return defaultDisplayName && defaultDisplayName[locale]
+              ? defaultDisplayName[locale]
+              : fallbackDisplayName[locale];
           },
-        ],
-        admin: {
-          useAsTitle: 'displayName',
-          ...collection.admin,
-        },
-      };
-    }),
+          admin: {
+            position: "sidebar",
+            readOnly: true,
+          },
+        };
+
+        // Spread each item that we are modifying,
+        // and add our new field - complete with
+        // hooks and proper admin UI config
+        return {
+          ...collection,
+          fields: [...collection.fields, displayNameField],
+          admin: {
+            useAsTitle: "displayName",
+            ...collection.admin,
+          },
+        };
+      }
+    ),
   };
 
   return config;

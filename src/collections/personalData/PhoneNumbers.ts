@@ -2,7 +2,7 @@ import { CollectionConfig } from 'payload/types';
 import { phoneNumberField } from '../common/fields';
 
 const PhoneNumbers: CollectionConfig = {
-  slug: 'phoneNumbers',
+  slug: 'phone-numbers',
   fields: [phoneNumberField],
 };
 

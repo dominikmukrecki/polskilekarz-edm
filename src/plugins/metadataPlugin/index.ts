@@ -3,7 +3,6 @@ import addCreatedBy from "./addCreatedBy";
 import addIsArchived from "./addIsArchived";
 import addLastModified from "./addLastModified";
 import addDisplayName from "./addDisplayName";
-import globalDefaultDisplayNames from "./globalDefaultDisplayNames";
 
 const composePlugins = (...plugins: Plugin[]): AsyncPlugin => {
   return async (config: Config) => {
@@ -20,7 +19,6 @@ const metadataPlugin = composePlugins(
   addCreatedBy,
   addLastModified,
   addDisplayName,
-  globalDefaultDisplayNames,
 );
 
 export default metadataPlugin;
