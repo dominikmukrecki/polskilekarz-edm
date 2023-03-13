@@ -15,6 +15,14 @@ const defaultDisplayNames = {
     en: "Create New Phone Number",
     pl: "Dodaj nowy numer telefonu",
   },
+  patients: {
+    en: "Create New Patient",
+    pl: "Dodaj nowego pacjenta",
+  },
+  medicines: {
+    en: "Create New Medicine",
+    pl: "Dodaj nowy lek",
+  },
   users: {
     en: "Create New User",
     pl: "Dodaj nowego użytkownika",
